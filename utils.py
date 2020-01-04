@@ -4,7 +4,6 @@ from queue import Queue
 from itertools import count, islice
 import numpy as np
 
-
 SQRT5 = math.sqrt(5)
 PHI = (1 + SQRT5) / 2
 
@@ -126,3 +125,7 @@ def fast_primes(n):
             sieve[((k * k) // 3)::2 * k] = False
             sieve[(k * k + 4 * k - 2 * k * (i & 1)) // 3::2 * k] = False
     return np.r_[2, 3, ((3 * np.nonzero(sieve)[0] + 1) | 1)]
+
+
+def binomial(n, k):
+    return math.factorial(n) // (math.factorial(k) * math.factorial(n - k))
