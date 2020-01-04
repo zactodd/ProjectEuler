@@ -1,7 +1,8 @@
 import math
 import random
 from queue import Queue
-
+from itertools import count, islice
+import numpy as np
 
 
 SQRT5 = math.sqrt(5)
@@ -12,7 +13,7 @@ def fast_fib(n):
     return round(math.pow(PHI, n) / SQRT5)
 
 
-def isprime(n):
+def is_prime(n):
     if n & 1 == 0:
         return False
     d = 3
@@ -25,7 +26,7 @@ def isprime(n):
 
 
 # primes below 1000
-SMALL_PRIMES = (2,) + tuple(n for n in range(3, 1000, 2) if isprime(n))
+SMALL_PRIMES = (2,) + tuple(n for n in range(3, 1000, 2) if is_prime(n))
 
 
 def rabin_miller(p):
@@ -103,3 +104,25 @@ def factors(n):
 
 def gauss(n):
     return n * (n + 1) // 2
+
+
+def generate_primes():
+    yield 2
+    for num in count(3, 2):
+        if is_prime(num):
+            yield num
+
+
+def nth_prime(n):
+    return next(islice(generate_primes(), n, None))
+
+
+def fast_primes(n):
+    sieve = np.ones(n // 3 + (n % 6 == 2), dtype=np.bool)
+    sieve[0] = False
+    for i in range(int(n ** 0.5) // 3 + 1):
+        if sieve[i]:
+            k = 3 * i + 1 | 1
+            sieve[((k * k) // 3)::2 * k] = False
+            sieve[(k * k + 4 * k - 2 * k * (i & 1)) // 3::2 * k] = False
+    return np.r_[2, 3, ((3 * np.nonzero(sieve)[0] + 1) | 1)]
