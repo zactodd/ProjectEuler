@@ -129,3 +129,11 @@ def fast_primes(n):
 
 def binomial(n, k):
     return math.factorial(n) // (math.factorial(k) * math.factorial(n - k))
+
+
+def is_palindrome(n):
+    return str(n) == str(n)[::-1]
+
+
+def bin_as_10(n):
+    return int(str(bin(n))[2:])
