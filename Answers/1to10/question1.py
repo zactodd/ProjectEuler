@@ -5,14 +5,11 @@ If we list all the natural numbers below 10 that are multiples of 3 or 5, we get
 
 Find the sum of all the multiples of 3 or 5 below 1000.
 """
-
-
-def gauss(n):
-    return n * (n + 1)
+from utils import gauss
 
 
 def divide_gauss(n, f):
-    return f * gauss(n // f) // 2
+    return f * gauss(n // f)
 
 
 def answer():

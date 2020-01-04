@@ -99,3 +99,7 @@ def factors(n):
             q1.put(d)
             q1.put(l / d)
     return q2
+
+
+def gauss(n):
+    return n * (n + 1) // 2
