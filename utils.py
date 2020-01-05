@@ -148,3 +148,37 @@ def is_prime_list(n):
             sieve[((k * k) // 3)::2 * k] = False
             sieve[(k * k + 4 * k - 2 * k * (i & 1)) // 3::2 * k] = False
     return sieve
+
+
+def intpow(base, exp):
+    if exp == 0:
+        return 1
+    elif exp == 1:
+        return base
+    elif (exp & 1) != 0:
+        return base * intpow(base * base, exp // 2)
+    else:
+        return intpow(base * base, exp // 2)
+
+
+def pell(n):
+    m, k, a, b = 1, 1, 1, 0
+    while k != 1 or b == 0:
+        m = k * (m // k + 1) - m
+        m = m - int((m - math.sqrt(n)) // k) * k
+        a, b = (a + b * m) // abs(k), (a * m + n * b) // abs(k)
+        k = (m * m - n) // k
+    return a
+
+
+def is_perm(a, b):
+    return sorted(str(a)) == sorted(str(b))
+
+
+def totients(n):
+    result = list(range(n + 1))
+    for i in range(2, len(result)):
+        if result[i] == i:
+            for j in range(i, len(result), i):
+                result[j] -= result[j] // i
+    return result
