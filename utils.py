@@ -137,3 +137,14 @@ def is_palindrome(n):
 
 def bin_as_10(n):
     return int(str(bin(n))[2:])
+
+
+def is_prime_list(n):
+    sieve = np.ones(n // 3 + (n % 6 == 2), dtype=np.bool)
+    sieve[0] = False
+    for i in range(int(n ** 0.5) // 3 + 1):
+        if sieve[i]:
+            k = 3 * i + 1 | 1
+            sieve[((k * k) // 3)::2 * k] = False
+            sieve[(k * k + 4 * k - 2 * k * (i & 1)) // 3::2 * k] = False
+    return sieve
