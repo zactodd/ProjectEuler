@@ -202,3 +202,13 @@ def next_permutation(arr):
     # Reverse suffix
     arr[i:] = arr[len(arr) - 1: i - 1: -1]
     return True
+
+
+def reciprocal_mod(x, m):
+    y = x
+    x = m
+    a, b = 0, 1
+    while y != 0:
+        a, b = b, a - x // y * b
+        x, y = y, x % y
+    return a % m
