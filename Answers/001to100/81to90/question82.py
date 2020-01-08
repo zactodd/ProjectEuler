@@ -6,7 +6,7 @@ The minimal path sum in the 5 by 5 matrix below, by starting in any cell in the 
 Find the minimal path sum from the top left to the bottom right by only moving right and down in matrix.txt (right click and "Save Link/Target As..."), a 31K text file containing an 80 by 80 matrix.
 """
 
-MATRIX_FILE = "../../resources/matrix.txt"
+MATRIX_FILE = "../../../resources/matrix.txt"
 with open(MATRIX_FILE, "r") as f:
     MATRIX = [list(map(int, row.split(','))) for row in f.readlines()]
 

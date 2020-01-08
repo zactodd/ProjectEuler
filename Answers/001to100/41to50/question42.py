@@ -11,7 +11,7 @@ Using words.txt (right click and 'Save Link/Target As...'), a 16K text file cont
 """
 
 
-WORDS_FILE = "../../resources/words.txt"
+WORDS_FILE = "../../../resources/words.txt"
 TRIANGLES = [t * (t + 1) // 2 for t in range(100)]
 
 

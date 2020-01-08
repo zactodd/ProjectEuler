@@ -8,7 +8,7 @@ Find the minimal path sum from the top left to the bottom right by only moving r
 import networkx as nx
 
 
-MATRIX_FILE = "../../resources/matrix.txt"
+MATRIX_FILE = "../../../resources/matrix.txt"
 with open(MATRIX_FILE, "r") as f:
     MATRIX = [list(map(int, row.split(','))) for row in f.readlines()]
 

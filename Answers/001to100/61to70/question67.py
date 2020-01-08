@@ -14,7 +14,7 @@ Find the maximum total from top to bottom in triangle.txt (right click and 'Save
 NOTE: This is a much more difficult version of Problem 18. It is not possible to try every route to solve this problem, as there are 299 altogether! If you could check one trillion (1012) routes every second it would take over twenty billion years to check them all. There is an efficient algorithm to solve it. ;o)
 """
 
-TRIANGLE_FILE = "../../resources/triangle.txt"
+TRIANGLE_FILE = "../../../resources/triangle.txt"
 
 with open(TRIANGLE_FILE, "r") as f:
     TRIANGLE = [[int(v) for v in line.split()] for line in f.readlines()]

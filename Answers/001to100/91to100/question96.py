@@ -52,7 +52,7 @@ The 6K text file, sudoku.txt (right click and 'Save Link/Target As...'), contain
 By solving all fifty puzzles find the sum of the 3-digit numbers found in the top left corner of each solution grid; for example, 483 is the 3-digit number found in the top left corner of the solution grid above.
 """
 
-SUDOKU_FILE = "../../resources/sudoku.txt"
+SUDOKU_FILE = "../../../resources/sudoku.txt"
 GRID = "Grid"
 
 with open(SUDOKU_FILE, "r") as f:

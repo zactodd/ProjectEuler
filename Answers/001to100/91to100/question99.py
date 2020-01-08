@@ -9,7 +9,7 @@ Using base_exp.txt (right click and 'Save Link/Target As...'), a 22K text file c
 NOTE: The first two lines in the file represent the numbers in the example given above.
 """
 from math import log
-BASE_EXP_FILE = "../../resources/base_exp.txt"
+BASE_EXP_FILE = "../../../resources/base_exp.txt"
 with open(BASE_EXP_FILE, "r") as f:
     PAIRS = [tuple(map(int, line.split(","))) for line in f.readlines()]
 

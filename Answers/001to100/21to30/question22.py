@@ -7,7 +7,7 @@ For example, when the list is sorted into alphabetical order, COLIN, which is wo
 What is the total of all the name scores in the file?
 """
 
-NAMES_FILE = "../../resources/names.txt"
+NAMES_FILE = "../../../resources/names.txt"
 
 with open(NAMES_FILE, "r") as f:
     NAMES = [n.replace("\"", "") for n in f.readlines()[0].split(",")]

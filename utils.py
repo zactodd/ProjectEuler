@@ -182,3 +182,5 @@ def totients(n):
             for j in range(i, len(result), i):
                 result[j] -= result[j] // i
     return result
+
+
