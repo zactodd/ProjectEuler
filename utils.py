@@ -3,6 +3,8 @@ import random
 from queue import Queue
 from itertools import count, islice
 import numpy as np
+import math
+
 
 SQRT5 = math.sqrt(5)
 PHI = (1 + SQRT5) / 2
@@ -140,13 +142,12 @@ def bin_as_10(n):
 
 
 def is_prime_list(n):
-    sieve = np.ones(n // 3 + (n % 6 == 2), dtype=np.bool)
-    sieve[0] = False
-    for i in range(int(n ** 0.5) // 3 + 1):
+    sieve = [True] * (n + 1)
+    sieve[0] = sieve[1] = False
+    for i in range(int(math.sqrt(n)) + 1):
         if sieve[i]:
-            k = 3 * i + 1 | 1
-            sieve[((k * k) // 3)::2 * k] = False
-            sieve[(k * k + 4 * k - 2 * k * (i & 1)) // 3::2 * k] = False
+            for j in range(i * i, len(sieve), i):
+                sieve[j] = False
     return sieve
 
 
@@ -184,3 +185,20 @@ def totients(n):
     return result
 
 
+def next_permutation(arr):
+    # Find non-increasing suffix
+    i = len(arr) - 1
+    while i > 0 and arr[i - 1] >= arr[i]:
+        i -= 1
+    if i <= 0:
+        return False
+
+    # Find successor to pivot
+    j = len(arr) - 1
+    while arr[j] <= arr[i - 1]:
+        j -= 1
+    arr[i - 1], arr[j] = arr[j], arr[i - 1]
+
+    # Reverse suffix
+    arr[i:] = arr[len(arr) - 1: i - 1: -1]
+    return True
