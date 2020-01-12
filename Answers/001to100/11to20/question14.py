@@ -13,7 +13,7 @@ It can be seen that this sequence (starting at 13 and finishing at 1) contains 1
 Which starting number, under one million, produces the longest chain?
 """
 
-L = 1000000
+LIMIT = 1000000
 
 
 def hailstone(n):
