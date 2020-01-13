@@ -15,12 +15,12 @@ NOTE: This problem is related to Problem 103 and Problem 105.
 from utils import binomial
 
 
+def catalan(n):
+    return binomial(n * 2, n) // (n + 1)
+
+
 def answer():
     s = 12
-
-    def catalan(n):
-        return binomial(n * 2, n) // (n + 1)
-
     return sum(binomial(s, i * 2) * (binomial(i * 2, i) // 2 - catalan(i)) for i in range(2, s // 2 + 1))
 
 

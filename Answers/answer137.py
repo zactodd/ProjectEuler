@@ -23,7 +23,7 @@ from utils import fast_fib
 
 def answer():
     n = 15
-    return fast_fib(2*n) * fast_fib(2*n+1)
+    return fast_fib(2 * n) * fast_fib(2 * n + 1)
 
 
 if __name__ == '__main__':

@@ -13,16 +13,7 @@ from utils import fast_primes
 
 def answer():
     n = 50000000
-    primes = fast_primes(n)
-    c = 0
-    for i in range(len(primes)):
-        if primes[i] < n / 4:
-            c += 1
-        if primes[i] < n / 16:
-            c += 1
-        if (primes[i] - 3) % 4 == 0:
-            c += 1
-    return c
+    return sum((p < n / 4) + (p < n / 16) + ((p - 3) % 4 == 0) for p in fast_primes(n))
 
 
 if __name__ == '__main__':

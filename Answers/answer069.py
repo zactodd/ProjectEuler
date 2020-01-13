@@ -20,12 +20,9 @@ from utils import SMALL_PRIMES
 
 
 def answer():
-    max_n = 1
     limit = int(1e6)
-    for p in SMALL_PRIMES:
-        if max_n * p > limit: return max_n
-        max_n *= p
-    return None
+    max_n = 1
+    return next(p for p in SMALL_PRIMES if (max_n := (max_n * p)) > limit)
 
 
 if __name__ == '__main__':

@@ -26,14 +26,7 @@ import math
 
 def answer():
     limit = 1000
-    max_x = 0
-    max_d = 2
-    for d in range(2, limit + 1):
-        if int(math.sqrt(d)) ** 2 != d:
-            x = pell(d)
-            if x > max_x:
-                max_x, max_d = x, d
-    return max_d
+    return max(range(2, limit + 1), key=lambda d: pell(d) if int(math.sqrt(d)) ** 2 != d else 0)
 
 
 if __name__ == '__main__':

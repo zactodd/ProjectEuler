@@ -11,13 +11,11 @@ from decimal import getcontext, Decimal
 
 def answer():
     getcontext().prec = 102
-    limit, d, s = 100, 100, 0
+    limit, d = 100, 100,
     p = 10 ** (d - 1)
-    for i in range(2, limit):
-        q = Decimal(i).sqrt()
-        s += sum(int(c) for c in str(q * p)[:d]) if q % 1 != 0 else 0
-    return s
+    return sum(sum(int(c) for c in str(q * p)[:d]) for q in map(lambda i: Decimal(i).sqrt(), (2, limit)) if q % 1 != 0)
 
 
 if __name__ == '__main__':
     print("Answer is:", answer())
+

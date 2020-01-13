@@ -15,10 +15,7 @@ from utils import fast_primes
 def answer():
     limit = 10 ** 10
     primes = [0] + fast_primes(250000)
-    for n in range(1, len(primes), 2):
-        if 2 * n * int(primes[n]) > limit:
-            return n + 2
-    return None
+    return next((n + 2 for n in range(1, len(primes), 2) if 2 * n * int(primes[n]) > limit), None)
 
 
 if __name__ == '__main__':

@@ -24,9 +24,7 @@ def least_divisible(n):
 
 def answer():
     limit = 10 ** 6
-    for n in count(limit):
-        if least_divisible(n) > limit:
-            return n
+    return next((n for n in count(limit) if least_divisible(n) > limit), None)
 
 
 if __name__ == '__main__':

@@ -21,11 +21,11 @@ from fractions import Fraction
 
 def answer():
     threshold = Fraction(1, 10)
-    num_primes = 0
-    for n in count(1, 2):
-        num_primes += sum(is_prime(n ** 2 - i * (n - 1)) for i in range(4))
-        if Fraction(num_primes, n * 2 - 1) < threshold:
-            return n
+    p = 0
+    return next((
+        n for n in count(1, 2)
+                if Fraction(p := p + sum(is_prime(n ** 2 - i * (n - 1)) for i in range(4)), n * 2 - 1) < threshold
+    ), None)
 
 
 if __name__ == '__main__':

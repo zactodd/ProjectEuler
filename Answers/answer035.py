@@ -17,12 +17,8 @@ def circle(n):
 
 def answer():
     n = int(1e6)
-    count = 0
     primes = fast_primes(n)
-    for p in primes:
-        if all(c in primes for c in circle(p)):
-            count += 1
-    return count
+    return sum(all(c in primes for c in circle(p)) for p in primes)
 
 
 if __name__ == '__main__':

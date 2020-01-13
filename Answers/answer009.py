@@ -12,12 +12,10 @@ Find the product abc.
 
 def answer():
     n = 1000
-    for a in range(1, n + 1):
-        for b in range(a + 1, n + 1):
-            c = n - a - b
-            if a * a + b * b == c * c:
-                return str(a * b * c)
-    return None
+    return next((
+        a * b * c for a in range(1, n + 1) for b in range(a + 1, n + 1)
+            if a * a + b * b == (c := (n - a - b)) ** 2
+    ), None)
 
 
 if __name__ == '__main__':

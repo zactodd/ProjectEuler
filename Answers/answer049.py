@@ -8,22 +8,27 @@ What 12-digit number do you form by concatenating the three terms in this sequen
 """
 
 from utils import is_prime
+from itertools import cycle
 
 
 def is_perm(a, b):
     return sorted(str(a)) == sorted(str(b))
 
 
+def is_stepping_prime_perm(n, s):
+    a, b = n + s, n + 2 * s
+    return is_prime(n) and is_prime(a) and is_prime(b) and is_perm(n, a) and is_perm(n, b)
+
+
 def answer():
-    n, sign = 1487, -1
-    while True:
-        n += 3 + sign
-        sign = -sign
-        b, c = n + 3330, n + 6660
-        if is_prime(n) and is_prime(b) and is_prime(c) and is_perm(n, b) and is_perm(b, c):
-            return int(str(n) + str(b) + str(c))
+    n, s = 1487, 3330
+    return next((
+        int(str(n) + str(n + s) + str(n + 2 * s)) for c in cycle((-1, 1))
+                 if is_stepping_prime_perm(n := (n + 3 + c), s)
+    ), None)
 
 
 if __name__ == '__main__':
     print("Answer is:", answer())
+
 

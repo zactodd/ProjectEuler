@@ -10,10 +10,7 @@ from utils import fast_primes
 
 def answer():
     n = int(2e6)
-    s = 0
-    for p in fast_primes(n):
-        s += int(p)
-    return s
+    return sum(int(p) for p in fast_primes(n))
 
 
 if __name__ == '__main__':

@@ -14,17 +14,12 @@ Using words.txt (right click and 'Save Link/Target As...'), a 16K text file cont
 WORDS_FILE = "../../../resources/words.txt"
 TRIANGLES = [t * (t + 1) // 2 for t in range(100)]
 
-
-def word_sum(n):
-    return sum(ord(l) - 64 for l in n)
-
-
 with open(WORDS_FILE, "r") as f:
     WORDS = [n.replace("\"", "") for n in f.readlines()[0].split(",")]
 
 
 def answer():
-    return sum(word_sum(w) in TRIANGLES for w in WORDS)
+    return sum(sum(ord(l) - 64 for l in w) in TRIANGLES for w in WORDS)
 
 
 if __name__ == '__main__':

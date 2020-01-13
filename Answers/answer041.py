@@ -12,10 +12,7 @@ from itertools import permutations
 def answer():
     n = int(1e9)
     primes = fast_primes(n)
-    for p in permutations("7654321"):
-        if (candidate := int("".join(p))) in primes:
-            return candidate
-    return None
+    return next(candidate for p in permutations("7654321") if (candidate := int("".join(p))) in primes)
 
 
 if __name__ == '__main__':
