@@ -23,21 +23,17 @@ def count_divisors_squared(n):
             break
         elif n % i != 0:
             continue
-        j = 0
-        while True:
+        for j in count():
             n //= i
-            j += 1
             if n % i != 0:
+                c *= j * 2 + 1
                 break
-        c *= j * 2 + 1
         end = math.sqrt(n)
     return c * 3 if n != 1 else c
 
 
 def answer():
-    for n in count(1):
-        if (count_divisors_squared(n) + 1) // 2 > 1000:
-            return n
+    return next((n for n in count(1)  if (count_divisors_squared(n) + 1) // 2 > 1000), None)
 
 
 if __name__ == '__main__':

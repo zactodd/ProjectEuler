@@ -14,20 +14,19 @@ It turns out that the conjecture was false.
 
 What is the smallest odd composite that cannot be written as the sum of a prime and twice a square?
 """
+from itertools import cycle
 
 
 def answer():
     n = 5
-    sign = -1
     primes = set()
-    while True:
+    for c in cycle((-1, 1)):
         if all(n % p for p in primes):
             primes.add(n)
         else:
             if not any((n - 2 * i ** 2) in primes for i in range(1, n)):
                 break
-        n += 3 + sign
-        sign = -sign
+        n += 3 + c
     return n
 
 

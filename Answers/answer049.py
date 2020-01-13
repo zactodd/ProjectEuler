@@ -7,12 +7,8 @@ There are no arithmetic sequences made up of three 1-, 2-, or 3-digit primes, ex
 What 12-digit number do you form by concatenating the three terms in this sequence?
 """
 
-from utils import is_prime
+from utils import is_prime, is_perm
 from itertools import cycle
-
-
-def is_perm(a, b):
-    return sorted(str(a)) == sorted(str(b))
 
 
 def is_stepping_prime_perm(n, s):
@@ -24,11 +20,9 @@ def answer():
     n, s = 1487, 3330
     return next((
         int(str(n) + str(n + s) + str(n + 2 * s)) for c in cycle((-1, 1))
-                 if is_stepping_prime_perm(n := (n + 3 + c), s)
+        if is_stepping_prime_perm(n := (n + 3 + c), s)
     ), None)
 
 
 if __name__ == '__main__':
     print("Answer is:", answer())
-
-

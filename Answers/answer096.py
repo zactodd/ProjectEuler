@@ -51,8 +51,10 @@ The 6K text file, sudoku.txt (right click and 'Save Link/Target As...'), contain
 
 By solving all fifty puzzles find the sum of the 3-digit numbers found in the top left corner of each solution grid; for example, 483 is the 3-digit number found in the top left corner of the solution grid above.
 """
+from functools import reduce
 
-SUDOKU_FILE = "../../../resources/sudoku.txt"
+
+SUDOKU_FILE = "../resources/sudoku.txt"
 GRID = "Grid"
 
 with open(SUDOKU_FILE, "r") as f:
@@ -73,22 +75,22 @@ def same_block(i, j):
     return i / 27 == j / 27 and (i % 9) / 3 == (j % 9) / 3
 
 
+def r(a, s):
+    i = a.find('0')
+    if i == -1:
+        s += int(a[0:3])
+    exclude = {a[j] for j in range(81) if same_row(i, j) or same_col(i, j) or same_block(i, j)}
+    for m in "123456789":
+        if m not in exclude:
+            s += r(a[:i] + m + a[i + 1:], s)
+    return s
+
 def answer():
-    def r(a, s):
-        i = a.find('0')
-        if i == -1:
-            s += int(a[0:3])
 
-        exclude = {a[j] for j in range(81) if same_row(i, j) or same_col(i, j) or same_block(i, j)}
-
-        for m in "123456789":
-            if m not in exclude:
-                s += r(a[:i] + m + a[i + 1:], s)
-        return s
     s = 0
     for p in fx:
         s = r(p, s)
-    return s
+    return
 
 
 if __name__ == '__main__':

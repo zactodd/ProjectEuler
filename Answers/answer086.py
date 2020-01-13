@@ -17,10 +17,8 @@ def answer():
     while c < limit:
         a += 1
         for bc in range(3, 2 * a):
-            if (bc * a) % 12 == 0:
-                s = math.sqrt(bc * bc + a * a)
-                if not s % 1:
-                    c += min(bc, a + 1) - (bc + 1) // 2
+            if (bc * a) % 12 == 0 and not math.sqrt(bc * bc + a * a) % 1:
+                c += min(bc, a + 1) - (bc + 1) // 2
     return a
 
 

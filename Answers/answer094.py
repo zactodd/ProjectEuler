@@ -10,7 +10,6 @@ Find the sum of the perimeters of all almost equilateral triangles with integral
 
 def answer():
     s0, s1, s, p, m = 1, 1, 0, 0, 1
-
     limit = 10 ** 9
     while p <= limit:
         s0, s1, m = s1, 4 * s1 - s0 + 2 * m, -m

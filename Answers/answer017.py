@@ -18,8 +18,6 @@ THOUSAND = ["", "Thousand"]
 
 def numbers_to_word_length(n):
     words = []
-
-    # Splits into groups of 3
     number = map(''.join, zip(*[iter(str(n).zfill(18))]*3))
     for nx, g in enumerate(number, 1):
         if g == "000":

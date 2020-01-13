@@ -12,19 +12,13 @@ A leap year occurs on any year evenly divisible by 4, but not on a century unles
 How many Sundays fell on the first of the month during the twentieth century (1 Jan 1901 to 31 Dec 2000)?
 """
 
-from datetime import datetime, timedelta
+from datetime import datetime
+from dateutil.rrule import rrule, WEEKLY
 
 
 def answer():
-    date = datetime(1900, 7, 1)
-    end_date = datetime(2000, 12, 31)
-    td = timedelta(days=7)
-    count = 0
-    while date < end_date:
-        if date.day == 1:
-            count += 1
-        date += td
-    return count
+    start, end = datetime(1900, 7, 1), datetime(2000, 12, 31)
+    return sum(date.day == 1 for date in rrule(WEEKLY, dtstart=start, until=end)) - 1
 
 
 if __name__ == '__main__':

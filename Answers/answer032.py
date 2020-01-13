@@ -14,13 +14,10 @@ from itertools import permutations
 
 
 def answer():
-    s = 0
     prods = set()
     for i in permutations("123456789*=", 11):
         if (star := i.index("*")) > (equals := i.index("=")) or abs(star - equals) == 1:
             continue
-        # elif star == 1:
-        #     break
         n, m, p = i[:star], i[star + 1:equals], i[equals + 1:]
         if len(p) < len(n) or len(p) < len(m) or len(n) == 0 or len(m) == 0:
             continue

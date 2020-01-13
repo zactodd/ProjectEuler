@@ -10,17 +10,13 @@ It can be seen that 2/5 is the fraction immediately to the left of 3/7.
 
 By listing the set of reduced proper fractions for d ≤ 1,000,000 in ascending order of size, find the numerator of the fraction immediately to the left of 3/7.
 """
+import math
 
 
 def answer():
     n = 3 / 7.
     limit = 1000000
-    min_a = n
-    for b in range(limit, limit - 7, -1):
-        a = n - int(b * n) * 1.0 / b
-        if min_a > a != 0:
-            min_a, min_d = a, b
-    return int(min_d * n)
+    return math.ceil(n * max(range(limit, limit - 7, -1), key=lambda b: n - int(b * n) * 1.0 / b)) + 1
 
 
 if __name__ == '__main__':

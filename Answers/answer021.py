@@ -20,12 +20,7 @@ def divisor_sums(n):
 def answer():
     n = 10000
     ds = divisor_sums(n)
-    s = 0
-    for i in range(1, len(ds)):
-        j = ds[i]
-        if j != i and j < len(ds) and ds[j] == i:
-            s += i
-    return s
+    return sum(i for i in range(1, len(ds)) if (j := ds[i]) != i and j < len(ds) and ds[j] == i)
 
 
 if __name__ == '__main__':

@@ -11,22 +11,22 @@ Unfortunately, this method is impractical for most users, so the modified method
 Your task has been made easy, as the encryption key consists of three lower case characters. Using p059_cipher.txt (right click and 'Save Link/Target As...'), a file containing the encrypted ASCII codes, and the knowledge that the plain text must contain common English words, decrypt the message and find the sum of the ASCII values in the original text.
 """
 
-CIPHER_FILE = "../../../resources/cipher.txt"
+CIPHER_FILE = "../resources/cipher.txt"
 
 with open(CIPHER_FILE, "r") as f:
     CIPHER_TEXT = [int(n) for n in f.readlines()[0].strip().split(",")]
 
 
 def score(plain):
-    result = 0
+    s = 0
     for c in plain:
         if 65 <= c <= 90:
-            result += 1
+            s += 1
         elif 97 <= c <= 122:
-            result += 2
-        elif c < 0x20 or c == 0x7F:
-            result -= 10
-    return result
+            s += 2
+        elif 0x7F == c < 0x20:
+            s -= 10
+    return s
 
 
 def decrypt(cipher, key):

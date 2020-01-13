@@ -17,8 +17,8 @@ def answer():
         for j in range(1, i):
             q, r = divmod(9 * j * i, 10 * j - i)
             if not r and q <= 9:
-                f *= i / float(j)
-    return f
+                f *= i / j
+    return int(f)
 
 
 if __name__ == '__main__':

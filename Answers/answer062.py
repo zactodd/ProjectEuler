@@ -7,7 +7,7 @@ Find the smallest cube for which exactly five permutations of its digits are cub
 
 
 def answer():
-    digits, min_cube = "", float('Inf')
+    digits, min_cube = "", float('-Inf')
     n, d = 100, 5
 
     cubes = {}

@@ -28,19 +28,14 @@ def fn(n):
 
 def chain(types, data, ds):
     if len(types) == 6 and data[0] // 100 == data[-1] % 100:
-        print(sum(data))
         return data, sum(data)
     else:
-        for t, n in ds.get((types[-1], data[-1]), []):
-            if t not in types:
-                return chain(types + [t], data + [n], ds)
-        return None
+        return next(chain(types + [t], data + [n], ds) for t, n in ds.get((types[-1], data[-1]), []) if t not in types)
 
 
 def answer():
     poly_nums = []
     n = 19
-
     while n < 141:
         poly_nums.extend([(t, d) for t, d in fn(n) if 1000 <= d <= 9999 and d % 100 > 9])
         n += 1

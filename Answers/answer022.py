@@ -13,12 +13,8 @@ with open(NAMES_FILE, "r") as f:
     NAMES = [n.replace("\"", "") for n in f.readlines()[0].split(",")]
 
 
-def name_sum(n):
-    return sum(ord(l) - 64 for l in n)
-
-
 def answer():
-    return sum((i + 1) * name_sum(n) for i, n in enumerate(sorted(NAMES)))
+    return sum((i + 1) * sum(ord(l) - 64 for l in n) for i, n in enumerate(sorted(NAMES)))
 
 
 if __name__ == '__main__':

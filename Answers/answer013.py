@@ -107,7 +107,6 @@ N = """
 """.strip().split("\n")
 
 
-
 def answer():
     n = 10
     return str(sum(int(i) for i in N))[:n]

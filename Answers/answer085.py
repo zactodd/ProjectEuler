@@ -7,19 +7,18 @@ Although there exists no rectangular grid that contains exactly two million rect
 """
 
 from math import sqrt
+from itertools import count
 
 
 def answer():
     limit, x, min_diff = 2000000, 2, float('Inf')
-    y = limit // 6
     area = None
-    while x <= y:
-        d = abs(x * (x + 1) * y * (y + 1) // 4 - limit)
-        if d < min_diff:
-            area, min_diff, xx, yy = x * y, d, x, y
-        x += 2
+    for x in count(2, 2):
         y = int(sqrt(limit * 4 / (x * x + x)))
-    return area
+        if x > y:
+            return area
+        elif (d:= (abs(x * (x + 1) * y * (y + 1) // 4 - limit))) < min_diff:
+            area, min_diff, xx, yy = x * y, d, x, y
 
 
 if __name__ == '__main__':

@@ -13,16 +13,10 @@ It can be seen that this sequence (starting at 13 and finishing at 1) contains 1
 Which starting number, under one million, produces the longest chain?
 """
 
-LIMIT = 1000000
-
-
-def hailstone(n):
-    return 3 * n + 1 if n % 2 else n // 2
-
 
 def recursive_hailstone(n, prev={1: 1}):
     if n not in prev:
-        prev[n] = recursive_hailstone(hailstone(n)) + 1
+        prev[n] = recursive_hailstone(3 * n + 1 if n % 2 else n // 2) + 1
     return prev[n]
 
 
