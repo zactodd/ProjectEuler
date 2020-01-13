@@ -17,7 +17,7 @@ NOTE: The first two examples in the file represent the triangles in the example 
 
 """
 
-TRIANGLES_FILE = "../../../../resources/triangles.txt"
+TRIANGLES_FILE = "../resources/triangles.txt"
 with open(TRIANGLES_FILE, "r") as f:
     TRIANGLES = [list(map(int, line.split(","))) for line in f.readlines()]
 

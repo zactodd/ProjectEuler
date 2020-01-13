@@ -56,7 +56,7 @@ How many hands does Player 1 win?
 
 from collections import Counter
 
-POKER_FILE = "../../../resources/poker.txt"
+POKER_FILE = "../resources/poker.txt"
 
 with open(POKER_FILE, "r") as f:
     HANDS = (line.split() for line in f.readlines())
