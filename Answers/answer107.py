@@ -20,7 +20,7 @@ Using network.txt (right click and 'Save Link/Target As...'), a 6K text file con
 """
 
 
-NETWORK_FILE = "../../../resources/network.txt"
+NETWORK_FILE = "../resources/network.txt"
 with open(NETWORK_FILE, "r") as f:
     WEIGHTS = [[int(v) if v != "-" else None for v in line.strip("\n").split(",")] for line in f.readlines()]
 
