@@ -27,26 +27,18 @@ def fn(n):
 
 
 def chain(types, data, ds):
-    if len(types) == 6 and data[0] // 100 == data[-1] % 100:
-        return data, sum(data)
-    else:
-        return next(chain(types + [t], data + [n], ds) for t, n in ds.get((types[-1], data[-1]), []) if t not in types)
+    return sum(data) if len(types) == 6 and data[0] // 100 == data[-1] % 100 else \
+        next((chain(types + [t], data + [n], ds) for t, n in ds.get((types[-1], data[-1]), []) if t not in types), None)
 
 
 def answer():
-    poly_nums = []
-    n = 19
-    while n < 141:
-        poly_nums.extend([(t, d) for t, d in fn(n) if 1000 <= d <= 9999 and d % 100 > 9])
-        n += 1
+    poly_nums = [(t, d) for n in range(19, 141) for t, d in fn(n) if 1000 <= d <= 9999 and d % 100 > 9]
     ds = {}
     for t1, d1 in poly_nums:
         for t2, d2 in poly_nums:
             if t1 != t2 and d1 % 100 == d2 // 100:
                 ds[(t1, d1)] = ds.get((t1, d1), []) + [(t2, d2)]
-
-    for t, d in ds:
-        chain([t], [d], ds)
+    return next((int(s) for t, d in ds if (s := chain([t], [d], ds)) is not None), None)
 
 
 if __name__ == '__main__':

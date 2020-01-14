@@ -65,14 +65,14 @@ def answer():
     w = 4
     for y in range(height := len(GRID)):
         for x in range(width := len(GRID[0])):
-            if x + w < width:
-                max_prod = max(grid_product(GRID, x, y, 1, 0, w), max_prod)
-            if y + w < height:
-                max_prod = max(grid_product(GRID, x, y, 0, 1, w), max_prod)
-            if x + w < width and y + w < height:
-                max_prod = max(grid_product(GRID, x, y, 1, 1, w), max_prod)
             if x - w > -1 and y + w < height:
                 max_prod = max(grid_product(GRID, x, y, -1, 1, w), max_prod)
+            elif x + w < width and y + w < height:
+                max_prod = max(grid_product(GRID, x, y, 1, 1, w), max_prod)
+            elif y + w < height:
+                max_prod = max(grid_product(GRID, x, y, 0, 1, w), max_prod)
+            elif x + w < width:
+                max_prod = max(grid_product(GRID, x, y, 1, 0, w), max_prod)
     return max_prod
 
 

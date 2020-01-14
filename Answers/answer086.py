@@ -13,7 +13,7 @@ import math
 
 
 def answer():
-    limit, c, a = 1000000, 0, 2
+    limit, c, a = int(1e6), 0, 2
     while c < limit:
         a += 1
         for bc in range(3, 2 * a):

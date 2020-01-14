@@ -13,9 +13,9 @@ def is_palindrome(n):
 
 
 def answer():
-    pal = set()
     limit = 10 ** 8
     sq_limit = int(10 ** 4)
+    pal = set()
     for i in range(1, sq_limit):
         s = i ** 2
         while s < limit:

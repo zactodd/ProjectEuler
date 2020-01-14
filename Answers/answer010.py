@@ -9,8 +9,8 @@ from utils import fast_primes
 
 
 def answer():
-    n = int(2e6)
-    return sum(int(p) for p in fast_primes(n))
+    limit = int(2e6)
+    return sum(int(p) for p in fast_primes(limit))
 
 
 if __name__ == '__main__':

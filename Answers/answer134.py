@@ -9,18 +9,15 @@ Find ∑ S for every pair of consecutive primes with 5 ≤ p1 ≤ 1000000.
 from itertools import count
 from utils import fast_primes, reciprocal_mod
 
+import math
 
 def answer():
-    limit = 1000000
-    s = 0
+    limit, s = int(1e6), 0
     primes = fast_primes(2 * limit)
     for i in count(2):
         if (p := int(primes[i])) > limit:
             break
-        q = int(primes[i + 1])
-        k = 1
-        while k < p:
-            k *= 10
+        q, k = int(primes[i + 1]), 10 ** round(math.log10(p))
         m = (q - p) * reciprocal_mod(k % q, q) % q
         s += m * k + p
     return s

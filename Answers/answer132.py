@@ -15,7 +15,6 @@ from utils import is_prime
 
 
 def answer():
-
     limit, n = 10 ** 9, 5
     s = set()
     while len(s) < 40:

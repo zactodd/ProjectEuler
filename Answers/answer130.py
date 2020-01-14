@@ -15,11 +15,10 @@ from utils import is_prime
 
 
 def answer():
-
     limit, n = 25, 91
     dps = set()
     while len(dps) < limit:
-        if not is_prime(n) and pow(10, n-1, 9*n) == 1:
+        if not is_prime(n) and pow(10, n - 1, 9 * n) == 1:
             dps.add(n)
         n += 2
     return sum(dps)

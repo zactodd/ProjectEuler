@@ -15,8 +15,7 @@ def answer():
             if f <= 0 or not is_perfect_square(f):
                 continue
             for k in range(1 if j % 2 == 1 else 2, j, 2):
-                d = k ** 2
-                e = a - d
+                e = a - k ** 2
                 b = c - e
                 if b <= 0 or e <= 0 or not is_perfect_square(b) or not is_perfect_square(e):
                     continue

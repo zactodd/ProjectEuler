@@ -12,8 +12,8 @@ from utils import fast_primes
 
 
 def answer():
-    n = 50000000
-    return sum((p < n / 4) + (p < n / 16) + ((p - 3) % 4 == 0) for p in fast_primes(n))
+    limit = int(5e7)
+    return sum((p < limit / 4) + (p < limit / 16) + ((p - 3) % 4 == 0) for p in fast_primes(limit))
 
 
 if __name__ == '__main__':

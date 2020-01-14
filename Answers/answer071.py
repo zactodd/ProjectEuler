@@ -14,8 +14,7 @@ import math
 
 
 def answer():
-    n = 3 / 7.
-    limit = 1000000
+    limit, n = int(1e6),  3 / 7.
     return math.ceil(n * max(range(limit, limit - 7, -1), key=lambda b: n - int(b * n) * 1.0 / b)) + 1
 
 

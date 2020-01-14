@@ -21,8 +21,8 @@ def recursive_hailstone(n, prev={1: 1}):
 
 
 def answer():
-    n = int(1e6)
-    return max(range(1, n), key=recursive_hailstone)
+    limit = int(1e6)
+    return max(range(1, limit), key=recursive_hailstone)
 
 
 if __name__ == '__main__':

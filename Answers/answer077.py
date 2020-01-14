@@ -14,6 +14,7 @@ What is the first value which can be written as the sum of primes in over five t
 from utils import SMALL_PRIMES
 from itertools import count
 
+
 def answer():
     limit = 5000
     for t in count(11):
@@ -23,6 +24,7 @@ def answer():
                 ways[i] += ways[i - p]
         if ways[t] > limit:
             return t
+    return None
 
 
 if __name__ == '__main__':

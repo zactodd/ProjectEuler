@@ -30,7 +30,7 @@ def answer():
                 break
             if n % p == 0:
                 return False
-        return True
+        return all()
 
     return sum(n for n in range(0, limit, 10) if has_consecutive(n))
 

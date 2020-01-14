@@ -6,13 +6,12 @@ The next such arrangement, for which there is exactly 50% chance of taking two b
 
 By finding the first arrangement to contain over 1012 = 1,000,000,000,000 discs in total, determine the number of blue discs that the box would contain.
 """
+from itertools import count
 
 
 def answer():
-    b, n, limit = 3, 4, 10 ** 12
-    while n <= limit:
-        b, n = 3 * b + 2 * n - 2, 4 * b + 3 * n - 3
-    return b
+    d, limit = (3, 4), 10 ** 12
+    return next((d[0] for _ in count() if (d := (3 * d[0] + 2 * d[1] - 2, 4 * d[0] + 3 * d[1] - 3))[1] > limit), None)
 
 
 if __name__ == '__main__':

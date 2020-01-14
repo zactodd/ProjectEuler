@@ -23,19 +23,12 @@ with open(TRIANGLES_FILE, "r") as f:
 
 
 def sgn(x):
-    if x > 0:
-        return 1
-    elif x < 0:
-        return -1
-    else:
-        return 0
+    return (x > 0) - (x < 0)
 
 
 def is_origin(x0, y0, x1, y1, x2, y2):
-    a = sgn((y0 - y1) * x0 - (x0 - x1) * y0)
-    b = sgn((y1 - y2) * x1 - (x1 - x2) * y1)
-    c = sgn((y2 - y0) * x2 - (x2 - x0) * y2)
-    return 0 in (a, b, c) or a == b == c
+    o = sgn((y0 - y1) * x0 - (x0 - x1) * y0), sgn((y1 - y2) * x1 - (x1 - x2) * y1), sgn((y2 - y0) * x2 - (x2 - x0) * y2)
+    return 0 in o or len(set(o)) == 1
 
 
 def answer():

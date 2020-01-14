@@ -12,10 +12,7 @@ def digits_sum(n):
 
 def answer():
     n = 30
-    a = []
-    for b in range(2, 100):
-        a.extend([p for e in range(2, 10) if digits_sum(p := (b ** e)) == b])
-    return sorted(a)[n - 1]
+    return sorted(p for e in range(2, 10) for b in range(2, 100) if digits_sum(p := (b ** e)) == b)[n - 1]
 
 
 if __name__ == '__main__':

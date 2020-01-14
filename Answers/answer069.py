@@ -20,8 +20,7 @@ from utils import SMALL_PRIMES
 
 
 def answer():
-    limit = int(1e6)
-    max_n = 1
+    limit, max_n = int(1e6), 1
     return next(p for p in SMALL_PRIMES if (max_n := (max_n * p)) > limit)
 
 

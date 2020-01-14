@@ -14,14 +14,9 @@ from utils import fast_primes
 
 
 def answer():
-    limit = 50000000
-    p = set()
-    for a, b, c in product(fast_primes(7072), fast_primes(369), fast_primes(85)):
-        q = a ** 2 + b ** 3 + c ** 4
-        if q >= limit:
-            continue
-        p.add(q)
-    return len(p)
+    limit = int(5e7)
+    return len({q for a, b, c in product(fast_primes(7072), fast_primes(369), fast_primes(85))
+               if (q := (a ** 2 + b ** 3 + c ** 4)) < limit})
 
 
 if __name__ == '__main__':

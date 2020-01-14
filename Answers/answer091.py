@@ -14,12 +14,8 @@ from math import gcd
 
 def answer():
     n = 50
-    t = 0
-    for x in range(1, n + 1):
-        for y in range(1, n):
-            m = gcd(x, y)
-            t += min(x * m // y, m * (n - y) // x)
-    return t * 2 + 3 * n ** 2
+    return 3 * n ** 2 + 2 * \
+           sum(min(x * (m := gcd(x, y)) // y, m * (n - y) // x) for x in range(1, n + 1) for y in range(1, n))
 
 
 if __name__ == '__main__':

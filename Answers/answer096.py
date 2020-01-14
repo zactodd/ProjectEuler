@@ -53,7 +53,6 @@ By solving all fifty puzzles find the sum of the 3-digit numbers found in the to
 """
 from functools import reduce
 
-
 SUDOKU_FILE = "../resources/sudoku.txt"
 GRID = "Grid"
 
@@ -63,7 +62,6 @@ with open(SUDOKU_FILE, "r") as f:
 
 
 def same_row(i, j):
-
     return i / 9 == j / 9
 
 
@@ -85,12 +83,12 @@ def r(a, s):
             s += r(a[:i] + m + a[i + 1:], s)
     return s
 
-def answer():
 
+def answer():
     s = 0
     for p in fx:
         s = r(p, s)
-    return
+    return s
 
 
 if __name__ == '__main__':

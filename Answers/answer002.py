@@ -9,17 +9,12 @@ By considering the terms in the Fibonacci sequence whose values do not exceed fo
 """
 
 from utils import fast_fib
+from itertools import count
 
 
 def answer():
-    fib_sum = 0
-    n = 0
-    limit = 4e6
-
-    # Every third Fibonacci value is even.
-    while (fib_n := fast_fib(n := n + 3)) < limit:
-        fib_sum += fib_n
-    return fib_sum
+    limit, s = 4e6, 0
+    return next((s for n in count(step=3) if (s := (s + fast_fib(n))) > limit), None)
 
 
 if __name__ == '__main__':
