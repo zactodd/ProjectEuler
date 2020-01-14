@@ -1,5 +1,5 @@
 """
-Question 66:
+Problem 66:
 onsider quadratic Diophantine equations of the form:
 
 x2 – Dy2 = 1

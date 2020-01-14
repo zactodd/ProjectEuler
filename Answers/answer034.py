@@ -1,5 +1,5 @@
 """
-Question 34:
+Problem 34:
 
 145 is a curious number, as 1! + 4! + 5! = 1 + 24 + 120 = 145.
 

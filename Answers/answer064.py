@@ -1,5 +1,5 @@
 """
-Question 64:
+Problem 64:
 All square roots are periodic when written as continued fractions and can be written in the form:
 
 N−−√=a0+1a1+1a2+1a3+…

@@ -1,5 +1,5 @@
 """
-Question 104:
+Problem 104:
 The Fibonacci sequence is defined by the recurrence relation:
 
 Fn = Fn−1 + Fn−2, where F1 = 1 and F2 = 1.

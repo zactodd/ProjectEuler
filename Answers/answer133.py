@@ -1,5 +1,5 @@
 """
-Question 133:
+Problem 133:
 A number consisting entirely of ones is called a repunit. We shall define R(k) to be a repunit of length k; for example, R(6) = 111111.
 
 Let us consider repunits of the form R(10n).

@@ -1,5 +1,5 @@
 """
-Question 84:
+Problem 84:
 In the game, Monopoly, the standard board is set up in the following way:
 
 GO	A1	CC1	A2	T1	R1	B1	CH1	B2	B3	JAIL

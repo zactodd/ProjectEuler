@@ -1,5 +1,5 @@
 """
-Question 111:
+Problem 111:
 Considering 4-digit primes containing repeated digits it is clear that they cannot all be the same: 1111 is divisible by 11, 2222 is divisible by 22, and so on. But there are nine 4-digit primes containing three ones:
 
 1117, 1151, 1171, 1181, 1511, 1811, 2111, 4111, 8111

@@ -1,5 +1,5 @@
 """
-Question 110:
+Problem 110:
 In the following equation x, y, and n are positive integers.
 
 1

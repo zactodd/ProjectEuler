@@ -1,5 +1,5 @@
 """
-Question 93:
+Problem 93:
 By using each of the digits from the set, {1, 2, 3, 4}, exactly once, and making use of the four arithmetic operations (+, −, *, /) and brackets/parentheses, it is possible to form different positive integer targets.
 
 For example,

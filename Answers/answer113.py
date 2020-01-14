@@ -1,5 +1,5 @@
 """
-Question 113:
+Problem 113:
 Working from left-to-right if no digit is exceeded by the digit to its left it is called an increasing number; for example, 134468.
 
 Similarly if no digit is exceeded by the digit to its right it is called a decreasing number; for example, 66420.

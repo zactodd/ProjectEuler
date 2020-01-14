@@ -1,5 +1,5 @@
 """
-Question 131:
+Problem 131:
 There are some prime values, p, for which there exists a positive integer, n, such that the expression n3 + n2p is a perfect cube.
 
 For example, when p = 19, 83 + 82×19 = 123.

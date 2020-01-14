@@ -1,5 +1,5 @@
 """
-Question 36:
+Problem 36:
 
 The decimal number, 585 = 1001001001 (binary), is palindromic in both bases.
 

@@ -1,5 +1,5 @@
 """
-Question 122:
+Problem 122:
 The most naive way of computing n15 requires fourteen multiplications:
 
 n × n × ... × n = n15

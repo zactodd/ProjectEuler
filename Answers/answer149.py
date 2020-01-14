@@ -1,5 +1,5 @@
 """
-Question 149:
+Problem 149:
 Looking at the table below, it is easy to verify that the maximum possible sum of adjacent numbers in any direction (horizontal, vertical, diagonal or anti-diagonal) is 16 (= 8 + 7 + 1).
 
 −2	5	3	2

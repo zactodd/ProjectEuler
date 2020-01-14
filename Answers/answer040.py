@@ -1,5 +1,5 @@
 """
-Question 40:
+Problem 40:
 
 An irrational decimal fraction is created by concatenating the positive integers:
 

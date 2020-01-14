@@ -1,5 +1,5 @@
 """
-Question 148:
+Problem 148:
 We can easily verify that none of the entries in the first seven rows of Pascal's triangle are divisible by 7:
 
  	 	 	 	 	 	 1

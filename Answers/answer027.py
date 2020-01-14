@@ -1,5 +1,5 @@
 """
-Question 27:
+Problem 27:
 Euler discovered the remarkable quadratic formula:
 
 n2+n+41

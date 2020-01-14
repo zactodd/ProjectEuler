@@ -1,5 +1,5 @@
 """
-Question 106:
+Problem 106:
 Let S(A) represent the sum of elements in set A of size n. We shall call it a special sum set if for any two non-empty disjoint subsets, B and C, the following properties are true:
 
 S(B) ≠ S(C); that is, sums of subsets cannot be equal.

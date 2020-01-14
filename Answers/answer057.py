@@ -1,5 +1,5 @@
 """
-Question 57:
+Problem 57:
 It is possible to show that the square root of two can be expressed as an infinite continued fraction.
 
 2–√=1+1/2+1/2+1/2+…

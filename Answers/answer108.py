@@ -1,5 +1,5 @@
 """
-Question 108:
+Problem 108:
 In the following equation x, y, and n are positive integers.
 
 1x+1y=1n

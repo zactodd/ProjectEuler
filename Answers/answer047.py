@@ -1,5 +1,5 @@
 """
-Question 47:
+Problem 47:
 
 The first two consecutive numbers to have two distinct prime factors are:
 

@@ -1,5 +1,5 @@
 """
-Question 65:
+Problem 65:
 The square root of 2 can be written as an infinite continued fraction.
 
 2–√=1+12+12+12+12+...

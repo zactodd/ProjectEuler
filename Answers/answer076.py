@@ -1,5 +1,5 @@
 """
-Question 76:
+Problem 76:
 
 It is possible to write five as a sum in exactly six different ways:
 

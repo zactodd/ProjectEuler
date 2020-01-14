@@ -1,5 +1,5 @@
 """
-Question 92:
+Problem 92:
 A number chain is created by continuously adding the square of the digits in a number to form a new number until it has been seen before.
 
 For example,

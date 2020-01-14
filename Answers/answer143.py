@@ -1,5 +1,5 @@
 """
-Question 143:
+Problem 143:
 Let ABC be a triangle with all interior angles being less than 120 degrees. Let X be any point inside the triangle and let XA = p, XC = q, and XB = r.
 
 Fermat challenged Torricelli to find the position of X such that p + q + r was minimised.

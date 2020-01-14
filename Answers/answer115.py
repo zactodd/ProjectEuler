@@ -1,5 +1,5 @@
 """
-Question 115:
+Problem 115:
 OTE: This is a more difficult version of Problem 114.
 
 A row measuring n units in length has red blocks with a minimum length of m units placed on it, such that any two red blocks (which are allowed to be different lengths) are separated by at least one black square.

@@ -1,5 +1,5 @@
 """
-Question 43:
+Problem 43:
 
 The number, 1406357289, is a 0 to 9 pandigital number because it is made up of each of the digits 0 to 9 in some order, but it also has a rather interesting sub-string divisibility property.
 
