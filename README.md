@@ -9,7 +9,7 @@ The answers .py files have the follow format:
 Problem <Problem Number>:
 <Problem Question>
 """
-# imports
+imports # imports if any
 
 ... # helper code
 
