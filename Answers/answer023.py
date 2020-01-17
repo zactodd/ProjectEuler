@@ -14,10 +14,7 @@ import math
 def abundant(n):
     t = math.sqrt(n)
     s = -t if t.is_integer() else 1
-    for i in range(2, int(t) + 1):
-        if n % i == 0:
-            s += i + n / i
-    return s
+    return s + sum(i + n / i for i in range(2, int(t) + 1) if n % i == 0)
 
 
 def answer():

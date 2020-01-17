@@ -12,7 +12,7 @@ NOTE: This problem is related to Problem 103 and Problem 106.
 """
 
 
-SETS_FILE = "../../../resources/sets.txt"
+SETS_FILE = "../resources/sets.txt"
 with open(SETS_FILE, "r") as f:
     SETS = [list(map(int, line.split(","))) for line in f.readlines()]
 

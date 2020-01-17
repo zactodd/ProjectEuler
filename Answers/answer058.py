@@ -16,7 +16,6 @@ If one complete new layer is wrapped around the spiral above, a square spiral wi
 """
 from itertools import count
 from utils import is_prime
-from fractions import Fraction
 
 
 def d(n):
