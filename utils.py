@@ -11,19 +11,23 @@ PHI = (1 + SQRT5) / 2
 
 
 def fast_fib(n):
+    """
+    Calualted the nth fibanci number
+    :param n:
+    :return:
+    """
     return round(math.pow(PHI, n) / SQRT5)
 
 
 def is_prime(n):
+    """
+    Determines if n is a prime number.
+    :param n: The number to check.
+    :return:
+    """
     if n & 1 == 0:
         return False
-    d = 3
-    sq_n = math.sqrt(n)
-    while d <= sq_n:
-        if n % d == 0:
-            return False
-        d += 2
-    return True
+    return all(n % d != 0 for d in range(3, int(math.sqrt(n) + 1), 2))
 
 
 # primes below 1000
@@ -126,7 +130,6 @@ def fast_primes(n):
             k = 3 * i + 1 | 1
             sieve[((k * k) // 3)::2 * k] = False
             sieve[(k * k + 4 * k - 2 * k * (i & 1)) // 3::2 * k] = False
-
     return np.r_[2, 3, ((3 * np.nonzero(sieve)[0] + 1) | 1)]
 
 
@@ -219,3 +222,10 @@ def is_perfect_square(n):
 def lambda_feedback(inputs, func, repeat=None, cond=lambda _: True, depth=1):
     return lambda_feedback(func(inputs), func, repeat, depth=depth + 1) \
         if (repeat is None or repeat > depth) and cond(inputs) else inputs
+
+
+def multinomial(n, k):
+    r = math.factorial(n)
+    for i in k:
+        r //= math.factorial(i)
+    return r

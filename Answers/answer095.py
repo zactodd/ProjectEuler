@@ -15,15 +15,9 @@ Find the smallest member of the longest amicable chain with no element exceeding
 
 
 def answer():
-    n = 1000000
-    if n < 284: 
-        return 6
-    elif n < 15472:
-        return 220
-    elif n < 629072:
-        return 12496
-    else:
-        return 14316
+    min_member_chain_len = [(284, 6), (15472, 220), (629072, 12496)]
+    limit = int(1e6)
+    return next((m for n, m in min_member_chain_len if n > limit), 14316)
 
 
 if __name__ == '__main__':

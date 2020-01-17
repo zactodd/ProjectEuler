@@ -19,14 +19,25 @@ from utils import is_prime
 from fractions import Fraction
 
 
+def d(n):
+    return (n - 1) * 4 + 1
+
+
+def c(n, i, ln=0):
+    return 4 * (n ** 2) - 10 * n + 7 + (2 * n - 2) * i
+
+
 def answer():
-    threshold = Fraction(1, 10)
     p = 0
+    threshold = 0.1
     return next((
-        n for n in count(1, 2)
-                if Fraction(p := p + sum(is_prime(n ** 2 - i * (n - 1)) for i in range(4)), n * 2 - 1) < threshold
+        2 * n - 1 for n in count(2) if (p := (p + sum(is_prime(c(n, i)) for i in range(0, 4)))) / d(n) < threshold
     ), None)
 
 
 if __name__ == '__main__':
     print("Answer is:", answer())
+
+
+
+
