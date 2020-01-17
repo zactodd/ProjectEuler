@@ -52,42 +52,61 @@ The 6K text file, sudoku.txt (right click and 'Save Link/Target As...'), contain
 By solving all fifty puzzles find the sum of the 3-digit numbers found in the top left corner of each solution grid; for example, 483 is the 3-digit number found in the top left corner of the solution grid above.
 """
 from functools import reduce
-
+import pickle, copy
+CONSTRAINTS, INVERSE = pickle.load(open('../resources/constraints.db', 'rb'))
 SUDOKU_FILE = "../resources/sudoku.txt"
-GRID = "Grid"
-
 with open(SUDOKU_FILE, "r") as f:
-    fx = "".join([line[:9] for line in f.readlines() if GRID not in line])
-    fx = [fx[i:(i + 81)] for i in range(0, len(fx), 81)]
+    lines = f.readlines()
+    GRIDS = [[list(j.rstrip()) for j in lines[i + 1: i + 10]] for i in range(0, len(lines), 10)]
 
 
-def same_row(i, j):
-    return i / 9 == j / 9
+def exactcover(constraints, inverse, solution=[]):
+    if not len(inverse):
+        yield sorted(solution)
+    else:
+        for r in inverse[min(inverse, key=lambda k: len(inverse[k]))]:
+            solution.append(r)
+            cache = trim(constraints, inverse, r)
+            for s in exactcover(constraints, inverse, solution):
+                yield s
+            recover(constraints, inverse, r, cache)
+            solution.pop()
 
 
-def same_col(i, j):
-    return (i - j) % 9 == 0
+def trim(constraints, inverse, r):
+    cache = {}
+    for j in constraints[r]:
+        for i in inverse[j]:
+            for k in constraints[i]:
+                if k != j:
+                    inverse[k].remove(i)
+        cache[j] = inverse.pop(j)
+    return cache
 
 
-def same_block(i, j):
-    return i / 27 == j / 27 and (i % 9) / 3 == (j % 9) / 3
+def recover(constraints, inverse, r, cache):
+    for j in reversed(constraints[r]):
+        inverse[j] = cache.pop(j)
+        for i in inverse[j]:
+            for k in constraints[i]:
+                if k != j:
+                    inverse[k].add(i)
 
 
-def r(a, s):
-    i = a.find('0')
-    if i == -1:
-        s += int(a[0:3])
-    exclude = {a[j] for j in range(81) if same_row(i, j) or same_col(i, j) or same_block(i, j)}
-    for m in "123456789":
-        if m not in exclude:
-            s += r(a[:i] + m + a[i + 1:], s)
-    return s
+def solve(grid, constraints=CONSTRAINTS, inverse=copy.deepcopy(INVERSE)):
+    for i in range(len(grid)):
+        for j in range(len(grid[i])):
+            if grid[i][j] != '0':
+                trim(constraints, inverse, (i, j, grid[i][j]))
+    return list({tuple(s) for s in exactcover(constraints, inverse)})
 
 
 def answer():
     s = 0
-    for p in fx:
-        s = r(p, s)
+    for g in GRIDS:
+        for r in solve(g, constraints=CONSTRAINTS, inverse=copy.deepcopy(INVERSE))[0]:
+            g[r[0]][r[1]] = r[2]
+        s += int(''.join(g[0][:3]))
     return s
 
 
