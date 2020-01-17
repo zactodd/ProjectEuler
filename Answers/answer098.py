@@ -10,7 +10,7 @@ NOTE: All anagrams formed must be contained in the given text file.
 """
 from itertools import permutations, combinations
 
-WORDS_FILE = "../../../resources/words.txt"
+WORDS_FILE = "../resources/words.txt"
 with open(WORDS_FILE, "r") as f:
     WORDS = [(w[1:-1], sorted(w[1:-1])) for w in f.readlines()[0].split(",")]
 
