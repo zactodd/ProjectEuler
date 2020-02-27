@@ -21,11 +21,7 @@ Given that A is an optimum special sum set for n = 7, find its set string.
 NOTE: This problem is related to Problem 105 and Problem 106.
 """
 
-
-def divide_till(s, d, t=0):
-    while s > t:
-        yield s
-        s //= d
+from utils import divide_till
 
 
 def lex_lowest(t, max_sum):
