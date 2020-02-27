@@ -22,7 +22,7 @@ def d(n):
     return (n - 1) * 4 + 1
 
 
-def c(n, i, ln=0):
+def c(n, i):
     return 4 * (n ** 2) - 10 * n + 7 + (2 * n - 2) * i
 
 
