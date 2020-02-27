@@ -19,6 +19,8 @@ Find the number of characters saved by writing each of these in their minimal fo
 
 Note: You can assume that all the Roman numerals in the file contain no more than four consecutive identical units.
 """
+from utils import divide_till
+
 
 ROMAN_FILE = "../resources/roman.txt"
 with open(ROMAN_FILE, "r") as f:
@@ -56,13 +58,7 @@ def parse_roman(s):
 
 def roman_numeral_len(n):
     assert 1 < n < 5000
-    l = 0
-    if n >= 4000:
-        l += 2
-    while n > 0:
-        l += LENGTHS[n % 10]
-        n //= 10
-    return l
+    return (n >= 4000) * 2 + sum(LENGTHS[i % 10] for i in divide_till(n, 10))
 
 
 def answer():

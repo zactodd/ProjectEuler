@@ -229,3 +229,9 @@ def multinomial(n, k):
     for i in k:
         r //= math.factorial(i)
     return r
+
+
+def divide_till(s, d, t=0):
+    while s > t:
+        yield s
+        s //= d
