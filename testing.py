@@ -16,7 +16,7 @@ with open("resources/problem_difficulty.txt") as f:
 
 
 def import_answer(answer_num):
-    return import_module("Answers.answer{:03d}".format(answer_num)).answer
+    return import_module(f"Answers.answer{answer_num:03d}").answer
 
 
 def test_answer_time(answer_num, tests=100):
@@ -42,14 +42,14 @@ def test_answer_memory_usage(answer_num, tests=100):
 
 
 def answer_loc(answer_num):
-    file = ANSWERS_DIR + "answer{:03d}.py".format(answer_num)
+    file = ANSWERS_DIR + f"answer{answer_num:03d}.py"
     with open(file, "r") as f:
         lines = f.readlines()
         return len(lines) - lines.index("\"\"\"\n", 1)
 
 
 def answer_main_loc(answer_num):
-    file = ANSWERS_DIR + "answer{:03d}.py".format(answer_num)
+    file = ANSWERS_DIR + f"answer{answer_num:03d}.py"
     with open(file, "r") as f:
         count = None
         for line in f.readlines():
