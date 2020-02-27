@@ -12,14 +12,12 @@ NOTE: This problem is an easier version of Problem 110; it is strongly advised t
 """
 
 from itertools import count, takewhile
-import math
+from math import sqrt, prod
 
 
 def count_divisors_squared(n):
-    c = 1
-    for i in takewhile(lambda x: x <= int(math.sqrt(n)), count(2)):
-        if n % i == 0:
-            c *= next(j for j in count(1) if (n := (n // i)) % i != 0) * 2 + 1
+    c = prod(next(j for j in count(1) if (n := (n // i)) % i != 0) * 2 + 1
+             for i in takewhile(lambda x: x <= int(sqrt(n)), count(2)) if n % i == 0)
     return c * 3 if n != 1 else c
 
 

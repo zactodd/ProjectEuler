@@ -48,12 +48,11 @@ N = """73167176531330624919225119674426574742355349194934
 05886116467109405077541002256983155200055935729725
 71636269561882670428252483600823257530420752963450""".replace("\n", "")
 
+from math import prod
+
 
 def str_prod(values):
-    p = 1
-    for v in values:
-        p *= int(v)
-    return p
+    return prod(map(int, values))
 
 
 def answer():
