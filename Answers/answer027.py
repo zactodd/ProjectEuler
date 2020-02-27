@@ -17,20 +17,14 @@ Find the product of the coefficients, a and b, for the quadratic expression that
 """
 
 from utils import fast_primes, is_prime
+from itertools import count
 
 
 def answer():
     n = 1000
-    max_value = 0
-    p = None
-    for b in fast_primes(n + 1):
-        for a in range(-b + 2, 0, 2):
-            n = 1
-            while is_prime(abs(n * n + a * n + b)):
-                n += 1
-            if n > max_value:
-                max_value, p = n, a * b
-    return p
+    a, b = max(((a, b) for b in fast_primes(n + 1) for a in range(-b + 2, 0, 2)),
+               key=lambda x: next(i for i in count(1) if not is_prime(abs(i ** 2 + x[0] * i + x[1]))))
+    return a * b
 
 
 if __name__ == '__main__':

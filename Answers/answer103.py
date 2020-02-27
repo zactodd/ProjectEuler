@@ -22,6 +22,12 @@ NOTE: This problem is related to Problem 105 and Problem 106.
 """
 
 
+def divide_till(s, d, t=0):
+    while s > t:
+        yield s
+        s //= d
+
+
 def lex_lowest(t, max_sum):
     def recur(set_info, size, s, start=1):
         if size == 0:
@@ -61,22 +67,16 @@ def update(val, set_info):
     candidate_posb = posb + [False] * val
     for i in reversed(range(val, len(candidate_posb))):
         candidate_posb[i] |= candidate_posb[i - val]
-    if (u := (values + [val], candidate_posb, candidate_min, candidate_max)) is None:
-        return None
-    else:
-        return u
+    return values + [val], candidate_posb, candidate_min, candidate_max
 
 
 def answer():
     size, max_sum = 7, 1
     while lex_lowest(size, max_sum) is None:
         max_sum *= 2
-    i = max_sum // 4
-    while i > 0:
+    for i in divide_till(max_sum // 4, 2):
         max_sum += i if lex_lowest(size, max_sum - 1) is None else - 1
-        i //= 2
-    values, *_ = lex_lowest(size, max_sum)
-    return int("".join(map(str, values)))
+    return int("".join(map(str, lex_lowest(size, max_sum)[0])))
 
 
 if __name__ == '__main__':
