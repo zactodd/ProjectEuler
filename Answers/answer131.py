@@ -16,7 +16,7 @@ def answer():
     m = 10 ** 6
     primes = fast_primes(m)
     m = int(math.sqrt(m / 3))
-    return len(set(3 * x * x + 3 * x + 1 for x in range(m)).intersection(primes))
+    return len(set(3 * x ** 2 + 3 * x + 1 for x in range(m)).intersection(primes))
 
 
 if __name__ == '__main__':

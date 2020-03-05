@@ -31,27 +31,23 @@ import numpy as np
 def lcg_random():
     state = 0
     while True:
-        state = (615949 * state + 797807) & ((1 << 20) - 1)
-        yield state - (1 << 19)
+        yield (state := (615949 * state + 797807) & ((1 << 20) - 1)) - (1 << 19)
+
+
+def sub_triangle_sum(row_sums, i, j, n):
+    ks = np.arange(i, n, dtype=np.uint32)
+    return np.min(np.cumsum(row_sums[ks, ks - i + 1 + j] - row_sums[ks, j], dtype=np.int64))
 
 
 def answer():
     r = 1000
     rand = lcg_random()
-    triangle = [[next(rand) for j in range(i + 1)] for i in range(r)]
-
+    triangle = [[next(rand) for _ in range(i + 1)] for i in range(r)]
     r = len(triangle)
     row_sums = np.zeros([r, r + 2], dtype=np.int64)
-    for (i, row) in enumerate(triangle):
+    for i, row in enumerate(triangle):
         row_sums[i, :i + 2] = np.cumsum([0] + row, dtype=np.int64)
-    m = 0
-    for i in range(len(triangle)):
-        for j in range(len(triangle[i])):
-            ks = np.arange(i, r, dtype=np.uint32)
-            terms = row_sums[ks, ks - i + 1 + j] - row_sums[ks, j]
-            sums = np.cumsum(terms, dtype=np.int64)
-            m = min(np.min(sums), m)
-    return m
+    return min(sub_triangle_sum(row_sums, i, j, r) for i in range(len(triangle)) for j in range(len(triangle[i])))
 
 
 if __name__ == '__main__':
