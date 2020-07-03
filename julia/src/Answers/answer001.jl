@@ -14,12 +14,7 @@ include("utils.jl")
 
 
 divideGauss(n, d) = d * Utils.gauss(div(n, d))
-
-
-function answer()
-    n = 999
-    return divideGauss(n, 5) + divideGauss(n, 3) - divideGauss(n, 15)
-end
+answer(n=999) = divideGauss(n, 5) + divideGauss(n, 3) - divideGauss(n, 15)
 
 
 # Output
