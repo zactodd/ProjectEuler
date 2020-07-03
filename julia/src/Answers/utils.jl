@@ -6,8 +6,7 @@ utils:
 =#
 module Utils
 
-export gauss, nth_fib, is_prime
-Pkg.add("IterTools")
+export gauss, nth_fib, is_prime, PHI, SQRT5
 
 
 SQRT5 = sqrt(5)
@@ -36,6 +35,6 @@ function primes()
 end
 
 
-nth_prime(n) = IterTools.nth(primes, n)
+# nth_prime(n) = IterTools.nth(primes, n)
 
 end
