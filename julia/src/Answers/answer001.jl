@@ -13,8 +13,8 @@ Find the sum of all the multiples of 3 or 5 below 1000.
 include("utils.jl")
 
 
-divideGauss(n, d) = d * Utils.gauss(div(n, d))
-answer(n=999) = divideGauss(n, 5) + divideGauss(n, 3) - divideGauss(n, 15)
+divide_gauss(n, d) = d * Utils.gauss(div(n, d))
+answer(n=999) = divide_gauss(n, 5) + divide_gauss(n, 3) - divide_gauss(n, 15)
 
 
 # Output

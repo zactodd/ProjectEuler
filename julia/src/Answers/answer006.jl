@@ -8,8 +8,8 @@ answer006:
 include("utils.jl")
 
 
-gaussSqures(n) = (2 * n + 1) * Utils.gauss(n) / 3
-answer(n=100) = Utils.gauss(n) ^ 2 - gaussSqures(n)
+gauss_sqaures(n) = (2 * n + 1) * Utils.gauss(n) / 3
+answer(n=100) = Utils.gauss(n) ^ 2 - gauss_sqaures(n)
 
 # Output
 println("Answer is: ", answer())

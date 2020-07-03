@@ -18,7 +18,7 @@ function answer()
     n = 4e6
     s = 0
     for i in Iterators.countfrom(0, 3)
-        s += Utils.nthFib(i)
+        s += Utils.nth_fib(i)
         s >= n && return s
     end
     return nothing
