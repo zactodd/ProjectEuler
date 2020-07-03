@@ -30,7 +30,7 @@ def quad_roots(a, b, c):
 
 
 def answer():
-    x_a, y_a, x_o, y_o  = 0.0, 10.1, 1.4, -9.6
+    x_a, y_a, x_o, y_o = 0.0, 10.1, 1.4, -9.6
     count = 0
     while x_o > 0.01 or x_o < -0.01 or y_o < 0:
         slope_a = (y_o - y_a) / (x_o - x_a)
