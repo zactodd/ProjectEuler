@@ -22,7 +22,7 @@ We shall call AF(x) a golden nugget if x is rational, because they become increa
 
 Find the 15th golden nugget.
 =#
-include("utils.jl")
+include("../utils.jl")
 
 answer(n=15) = Utils.nth_fib(2 * n) * Utils.nth_fib(2 * n + 1)
 

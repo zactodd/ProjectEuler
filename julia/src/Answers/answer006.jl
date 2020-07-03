@@ -5,7 +5,7 @@ answer006:
 - Date: 2020-07-03
 =#
 
-include("utils.jl")
+include("../utils.jl")
 
 
 gauss_sqaures(n) = (2 * n + 1) * Utils.gauss(n) / 3

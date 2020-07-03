@@ -26,7 +26,7 @@ The 12th term, F12, is the first term to contain three digits.
 
 What is the index of the first term in the Fibonacci sequence to contain 1000 digits?
 =#
-include("utils.jl")
+include("../utils.jl")
 
 
 answer(n=1000) = ceil((log10(5) / 2 + n - 1) / log10(Utils.PHI))
