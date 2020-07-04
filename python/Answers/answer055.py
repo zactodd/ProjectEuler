@@ -21,7 +21,7 @@ NOTE: Wording was modified slightly on 24 April 2007 to emphasise the theoretica
 
 
 def is_lychrel(n):
-    return all(str(n := (n + int(str(n)[:: -1]))) != str(n)[:: -1] for _ in range(50))
+    return all(str(n := (n + int(str(n)[::-1]))) != str(n)[::-1] for _ in range(50))
 
 
 def answer():
