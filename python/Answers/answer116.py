@@ -20,7 +20,7 @@ NOTE: This is related to Problem 117.
 
 
 def f(m, n):
-    ways = [1] * m + [0] * (n-m+1)
+    ways = [1] * m + [0] * (n - m + 1)
     for j in range(m, n+1):
         ways[j] += ways[j - 1] + ways[j - m]
     return ways[n] - 1
