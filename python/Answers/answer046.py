@@ -23,9 +23,8 @@ def answer():
     for c in cycle((-1, 1)):
         if all(n % p for p in primes):
             primes.add(n)
-        else:
-            if not any((n - 2 * i ** 2) in primes for i in range(1, n)):
-                break
+        elif not any((n - 2 * i ** 2) in primes for i in range(1, n)):
+            break
         n += 3 + c
     return n
 
