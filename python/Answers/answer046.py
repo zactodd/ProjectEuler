@@ -20,12 +20,12 @@ from itertools import cycle
 def answer():
     n = 5
     primes = set()
-    for c in cycle((-1, 1)):
+    for c in cycle((2, 4)):
         if all(n % p for p in primes):
             primes.add(n)
         elif not any((n - 2 * i ** 2) in primes for i in range(1, n)):
             break
-        n += 3 + c
+        n += c
     return n
 
 

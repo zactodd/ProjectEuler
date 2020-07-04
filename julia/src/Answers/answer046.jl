@@ -24,7 +24,7 @@ What is the smallest odd composite that cannot be written as the sum of a prime 
 function answer()
     n = 5
     primes = Set()
-    for c in Iterators.cycle([-1, 1])
+    for c in Iterators.cycle([2, 4])
         if all(n % p != 0 for p in primes)
             union!(primes, n)
         elseif !any((n - 2 * i ^ 2) in primes for i in 1:(n - 1))
