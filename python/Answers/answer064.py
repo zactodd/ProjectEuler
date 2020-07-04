@@ -44,7 +44,7 @@ def answer():
     n, odd_period = 10000, 0
     for i in range(2, n + 1):
         r = limit = int(sqrt(i))
-        if limit**2 == i:
+        if limit ** 2 == i:
             continue
 
         k, period = 1, 0
