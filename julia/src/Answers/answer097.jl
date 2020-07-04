@@ -13,7 +13,7 @@ Find the last ten digits of this prime number.
 
 =#
 
-answer(a=BigInt(2), b=BigInt(7830457), c=BigInt(28433), m=BigInt(10 ^ 10)) = mod(c * mod(a ^ b, m) + 1, m)
+answer(a=BigInt(2), b=BigInt(7830457), c=BigInt(28433), m=BigInt(10 ^ 10)) = c * a ^ b % m + 1 % m
 
 
 println("Answer is: ", answer())

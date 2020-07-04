@@ -20,7 +20,7 @@ function is_prime(n)
     if n & 1 == 0
         return false
     else
-        return all(mod(n, d) != 0 for d in 3:2:(sqrt(n) + 1))
+        return all(n % d != 0 for d in 3:2:(sqrt(n) + 1))
     end
 end
 
