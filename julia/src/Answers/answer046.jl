@@ -30,7 +30,7 @@ function answer()
         elseif !any((n - 2 * i ^ 2) in primes for i in 1:(n - 1))
             break
         end
-        n += 3 + c
+        n += c
     end
     return n
 end
