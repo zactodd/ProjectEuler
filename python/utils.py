@@ -170,7 +170,7 @@ def pell(n):
     m, k, a, b = 1, 1, 1, 0
     while k != 1 or b == 0:
         m = k * (m // k + 1) - m
-        m = m - int((m - math.sqrt(n)) // k) * k
+        m -= int((m - math.sqrt(n)) // k) * k
         a, b = (a + b * m) // abs(k), (a * m + n * b) // abs(k)
         k = (m * m - n) // k
     return a
