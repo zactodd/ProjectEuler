@@ -63,5 +63,4 @@ function reciprocal_mod(x, m)
     end
     return a % m
 end
-
 end
