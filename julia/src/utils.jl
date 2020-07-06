@@ -7,7 +7,7 @@ utils:
 module Utils
 
 export PHI, SQRT5, gauss, nth_fib, is_prime, is_palindrome, sieves, reciprocal_mod
-
+using IterTools
 
 SQRT5 = sqrt(5)
 PHI = (1 + SQRT5) / 2
@@ -35,7 +35,7 @@ function primes()
 end
 
 
-# nth_prime(n) = IterTools.nth(primes, n)
+nth_prime(n) = IterTools.nth(primes, n)
 
 is_coprime(p, i) = !any(x -> i % x == 0, p)
 
@@ -63,4 +63,5 @@ function reciprocal_mod(x, m)
     end
     return a % m
 end
+
 end
