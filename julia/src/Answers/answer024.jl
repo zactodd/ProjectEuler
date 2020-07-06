@@ -15,8 +15,7 @@ What is the millionth lexicographic permutation of the digits 0, 1, 2, 3, 4, 5, 
 using Combinatorics, IterTools
 
 
-
-answer(n::BigInt=1000000) = IterTools.nth(Combinatorics.permutations(0:9, 9), n)
+answer(n=BigInt(1000000)) = join(map(string, IterTools.nth(Combinatorics.permutations(0:9, 9), n)))
 
 
 # Output
