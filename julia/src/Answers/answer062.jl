@@ -14,8 +14,7 @@ using DataStructures
 
 
 function answer()
-    ds = []
-    d = 5
+    n, d = 100, 5
     cubes = DataStructures.DefaultDict(() -> [])
     for n in Iterators.countfrom(100)
         c::BigInt = n ^ 3
@@ -23,7 +22,6 @@ function answer()
         append!(cubes[ds], c)
         length(cubes[ds]) == d && return cubes[ds][1]
     end
-    return min_cube
 end
 
 
