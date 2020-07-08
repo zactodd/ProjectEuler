@@ -10,16 +10,12 @@ It can be seen that there are 21 elements in this set.
 
 How many elements would be contained in the set of reduced proper fractions for d ≤ 1,000,000?
 """
+from python.utils import totients
 
 
 def answer():
     limit = int(1e6)
-    phi = list(range(limit + 1))
-    for n in range(2, limit + 1):
-        if phi[n] == n:
-            for k in range(n, limit + 1, n):
-                phi[k] -= phi[k] // n
-    return sum(phi) - 1
+    return sum(totients(limit)) - 1
 
 
 if __name__ == '__main__':

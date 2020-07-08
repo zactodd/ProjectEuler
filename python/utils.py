@@ -182,9 +182,9 @@ def is_perm(a, b):
 
 def totients(n):
     result = list(range(n + 1))
-    for i in range(2, len(result)):
+    for i in range(2, n + 1):
         if result[i] == i:
-            for j in range(i, len(result), i):
+            for j in range(i, n + 1, i):
                 result[j] -= result[j] // i
     return result
 
