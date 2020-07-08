@@ -39,8 +39,8 @@ def answer():
                 x = o[0](o[1](o[2](p[0], p[1]), p[2]), p[3])
                 if x % 1 == 0 and x > 0:
                     s.add(int(x))
-            if (s_len := seq_length(s)) > max_m:
-                max_m, max_n = s_len, terms
+        if (s_len := seq_length(s)) > max_m:
+            max_m, max_n = s_len, terms
     return int("".join(str(i) for i in max_n))
 
 
