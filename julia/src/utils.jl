@@ -6,7 +6,7 @@ utils:
 =#
 module Utils
 
-export PHI, SQRT5, gauss, nth_fib, is_prime, is_palindrome, sieves, reciprocal_mod
+export PHI, SQRT5, SMALL_PRIMES, gauss, nth_fib, is_prime, is_palindrome, sieves, reciprocal_mod
 using IterTools
 
 SQRT5 = sqrt(5)
@@ -23,6 +23,8 @@ function is_prime(n)
         return all(n % d != 0 for d in 3:2:(sqrt(n) + 1))
     end
 end
+
+SMALL_PRIMES = vcat([2], [n for n in 3:2:1000 if is_prime(n)])
 
 
 function primes()
