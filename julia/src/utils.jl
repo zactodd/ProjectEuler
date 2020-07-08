@@ -15,6 +15,7 @@ PHI = (1 + SQRT5) / 2
 nth_fib(n) = round((PHI ^ n) / SQRT5)
 gauss(n) = div(n * (n + 1), 2)
 is_palindrome(n) = string(n) == reverse(string(n))
+is_perm(a, b) = sort(digits(a)) == sort(digits(b))
 
 function is_prime(n)
     if n & 1 == 0
@@ -64,6 +65,16 @@ function reciprocal_mod(x, m)
         x, y = y, x % y
     end
     return a % m
+end
+
+function totients(n)
+    results = Array(1:n)
+    for i in 2:n
+        if results[i] == i
+            results[i:i:n] -= results[i:i:n] / i
+        end
+    end
+    return results
 end
 
 end
