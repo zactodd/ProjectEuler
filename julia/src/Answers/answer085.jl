@@ -24,7 +24,6 @@ function answer()
             area, min_diff, xx, yy = x * y, d, x, y
         end
     end
-    return nothing
 end
 
 

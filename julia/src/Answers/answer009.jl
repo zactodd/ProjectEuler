@@ -23,7 +23,6 @@ function answer()
         c = n - a - b
         a * a + b * b == c ^ 2 && return a * b * c
     end
-    return nothing
 end
 
 

@@ -21,7 +21,6 @@ function answer()
         s += Utils.nth_fib(i)
         s >= n && return s
     end
-    return nothing
 end
 
 

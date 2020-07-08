@@ -34,7 +34,6 @@ function answer()
             d - 1 == p && return d
         end
     end
-    return nothing
 end
 
 
