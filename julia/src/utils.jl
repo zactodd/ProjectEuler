@@ -7,7 +7,8 @@ utils:
 module Utils
 
 export PHI, SQRT5, SMALL_PRIMES, gauss, nth_fib, is_prime, is_palindrome, sieves, reciprocal_mod
-using IterTools
+
+using IterTools, ResumableFunctions
 
 SQRT5 = sqrt(5)
 PHI = (1 + SQRT5) / 2
@@ -16,6 +17,7 @@ nth_fib(n) = round((PHI ^ n) / SQRT5)
 gauss(n) = div(n * (n + 1), 2)
 is_palindrome(n) = string(n) == reverse(string(n))
 is_perm(a, b) = sort(digits(a)) == sort(digits(b))
+is_coprime(p, i) = !any(x -> i % x == 0, p)
 
 function is_prime(n)
     if n & 1 == 0
@@ -25,22 +27,23 @@ function is_prime(n)
     end
 end
 
-SMALL_PRIMES = vcat([2], [n for n in 3:2:1000 if is_prime(n)])
 
+function nth_prime(n)
+    n == 1 && return 2
 
-function primes()
-    produce(2)
-    for n in Iterators.countfrom(3, 2)
-        if is_prime(n)
-            produce(n)
+    primes = [2]
+    for num in Iterators.countfrom(3, 2)
+        if is_prime(num)
+            append!(primes, num)
         end
+        length(primes) == n && return num
     end
 end
 
 
-nth_prime(n) = IterTools.nth(primes, n)
+SMALL_PRIMES = vcat([2], [n for n in 3:2:1000 if is_prime(n)])
 
-is_coprime(p, i) = !any(x -> i % x == 0, p)
+
 
 function sieves(n)
        is_prime = ones(Bool, n)
