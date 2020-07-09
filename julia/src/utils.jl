@@ -15,7 +15,8 @@ PHI = (1 + SQRT5) / 2
 
 nth_fib(n) = round((PHI ^ n) / SQRT5)
 gauss(n) = div(n * (n + 1), 2)
-is_palindrome(n) = string(n) == reverse(string(n))
+is_palindrome(n::Int) = string(n) == reverse(string(n))
+is_palindrome(n::Array) = n == reverse(n)
 is_perm(a, b) = sort(digits(a)) == sort(digits(b))
 is_coprime(p, i) = !any(x -> i % x == 0, p)
 
