@@ -51,23 +51,9 @@ N = """73167176531330624919225119674426574742355349194934
 from math import prod
 
 
-def str_prod(values):
-    return prod(map(int, values))
-
-
 def answer():
     w = 13
-    i = 0
-    max_prod = 0
-    while i < len(N):
-        sliding_window = N[i:i + w]
-        if "0" in sliding_window:
-            i += w
-            continue
-        elif (p := str_prod(sliding_window)) > max_prod:
-            max_prod = p
-        i += 1
-    return max_prod
+    return max(prod(map(int, N[i:i + w])) for i in range(0, len(N) - w))
 
 
 if __name__ == '__main__':
