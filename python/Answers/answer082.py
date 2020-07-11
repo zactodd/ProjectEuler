@@ -9,8 +9,7 @@ Find the minimal path sum from the top left to the bottom right by only moving r
 from python.Answers.answer081 import MATRIX
 
 
-def answer():
-    matrix = MATRIX.copy()
+def answer(matrix=MATRIX):
     n, m = len(matrix), len(matrix[0])
     cost = [matrix[i][-1] for i in range(n)]
     for i in range(m - 2, -1, -1):

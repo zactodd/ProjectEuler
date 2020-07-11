@@ -13,8 +13,7 @@ By listing the set of reduced proper fractions for d ≤ 1,000,000 in ascending 
 import math
 
 
-def answer():
-    limit, n = int(1e6),  3 / 7.
+def answer(limit=int(1e6), n=3/7.):
     return math.ceil(n * max(range(limit, limit - 7, -1), key=lambda b: n - int(b * n) * 1.0 / b)) + 1
 
 

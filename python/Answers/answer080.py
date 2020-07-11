@@ -9,9 +9,8 @@ For the first one hundred natural numbers, find the total of the digital sums of
 from decimal import getcontext, Decimal
 
 
-def answer():
-    getcontext().prec = 102
-    limit, d = 100, 100
+def answer(limit=100, d=100):
+    getcontext().prec = d + 2
     p = 10 ** (d - 1)
     return sum(sum(int(c) for c in str(q * p)[:d]) for q in map(lambda i: Decimal(i).sqrt(), (2, limit)) if q % 1 != 0)
 

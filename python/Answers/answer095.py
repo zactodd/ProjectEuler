@@ -14,9 +14,8 @@ Find the smallest member of the longest amicable chain with no element exceeding
 """
 
 
-def answer():
+def answer(limit=int(1e6)):
     min_member_chain_len = [(284, 6), (15472, 220), (629072, 12496)]
-    limit = int(1e6)
     return next((m for n, m in min_member_chain_len if n > limit), 14316)
 
 

@@ -19,8 +19,8 @@ Find the value of n ≤ 1,000,000 for which n/φ(n) is a maximum.
 from python.utils import SMALL_PRIMES
 
 
-def answer():
-    limit, max_n = int(1e6), 1
+def answer(limit=int(1e6)):
+    max_n = 1
     return next(p for p in SMALL_PRIMES if (max_n := (max_n * p)) > limit)
 
 

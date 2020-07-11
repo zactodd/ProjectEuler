@@ -25,8 +25,7 @@ from math import factorial
 DIGIT_FACTS = [factorial(d) for d in range(10)]
 
 
-def answer():
-    limit = 1000000
+def answer(limit=1000000):
     sigs = [367945, 367954, 373944, 379443, 379465, 735964]
     return len([i for i in range(69, limit) if sum(DIGIT_FACTS[int(j)] for j in str(i)) in sigs])
 

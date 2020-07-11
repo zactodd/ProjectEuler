@@ -41,8 +41,7 @@ def num_count(counts, min_digits, max_digits):
     )
 
 
-def answer():
-    limit = 10 ** 7
+def answer(limit=10 ** 7):
     md = len(str(limit - 1))
     sl = md * 9 ** 2 + 1
     arrive = [None] * sl

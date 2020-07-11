@@ -12,8 +12,7 @@ Given that 0 ≤ x1, y1, x2, y2 ≤ 50, how many right triangles can be formed?
 from math import gcd
 
 
-def answer():
-    n = 50
+def answer(n=50):
     return 3 * n ** 2 + 2 * \
            sum(min(x * (m := gcd(x, y)) // y, m * (n - y) // x) for x in range(1, n + 1) for y in range(1, n))
 

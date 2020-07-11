@@ -9,8 +9,7 @@ import networkx as nx
 from python.Answers.answer081 import MATRIX
 
 
-def answer():
-    matrix = MATRIX.copy()
+def answer(matrix=MATRIX):
     n, m = len(matrix), len(matrix[0])
     g = nx.DiGraph()
     for i in range(n):

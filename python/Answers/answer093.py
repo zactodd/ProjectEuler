@@ -27,12 +27,12 @@ def seq_length(s, c=1):
     return c - 1
 
 
-def answer():
+def answer(ops=OPERATIONS):
     max_n, max_m = 0, 0
     for terms in combinations(range(1, 10), 4):
         s = set()
         for p in permutations(terms):
-            for o in product(OPERATIONS, repeat=3):
+            for o in product(ops, repeat=3):
                 x = o[0](o[1](p[0], p[1]), o[2](p[2], p[3]))
                 if x % 1 == 0 and x > 0:
                     s.add(int(x))

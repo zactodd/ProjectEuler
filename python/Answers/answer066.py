@@ -24,8 +24,7 @@ from python.utils import pell
 import math
 
 
-def answer():
-    limit = 1000
+def answer(limit=1000):
     return max(range(2, limit + 1), key=lambda d: pell(d) if int(math.sqrt(d)) ** 2 != d else 0)
 
 

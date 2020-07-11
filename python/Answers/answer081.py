@@ -9,8 +9,7 @@ with open(MATRIX_FILE, "r") as f:
     MATRIX = [list(map(int, row.split(','))) for row in f.readlines()]
 
 
-def answer():
-    matrix = MATRIX.copy()
+def answer(matrix=MATRIX):
     n, m = len(matrix), len(matrix[0])
     for i in range(n):
         for j in range(m):

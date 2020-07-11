@@ -14,8 +14,7 @@ How many different ways can one hundred be written as a sum of at least two posi
 """
 
 
-def answer():
-    t = 100
+def answer(t=100):
     ways = [1] + [0] * t
     for n in range(1, t):
         for i in range(n, t + 1):

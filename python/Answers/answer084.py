@@ -59,9 +59,7 @@ class Deck(object):
         return result
 
 
-def answer():
-    samples = 10 ** 7
-
+def answer(samples=10 ** 7):
     counts = [0] * 40
 
     # Decks

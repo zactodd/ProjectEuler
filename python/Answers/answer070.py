@@ -11,8 +11,8 @@ Find the value of n, 1 < n < 107, for which φ(n) is a permutation of n and the 
 from python.utils import totients, is_perm
 
 
-def answer():
-    ts = totients(10 ** 7)
+def answer(limit=10 ** 7):
+    ts = totients(limit)
     m, n = 1, 0
     for i, t in enumerate(ts[2:], 2):
         if i * n < m * t and is_perm(i, t):

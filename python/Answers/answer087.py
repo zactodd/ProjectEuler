@@ -13,8 +13,7 @@ from itertools import product
 from python.utils import fast_primes
 
 
-def answer():
-    limit = int(5e7)
+def answer(limit=int(5e7)):
     return len({q for a, b, c in product(fast_primes(7072), fast_primes(369), fast_primes(85))
                if (q := (a ** 2 + b ** 3 + c ** 4)) < limit})
 

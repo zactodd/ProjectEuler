@@ -57,7 +57,6 @@ def parse_roman(s):
 
 
 def roman_numeral_len(n):
-    assert 1 < n < 5000
     return (n >= 4000) * 2 + sum(LENGTHS[i % 10] for i in divide_till(n, 10))
 
 
