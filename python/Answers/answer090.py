@@ -30,7 +30,7 @@ def check(c1, c2, squares):
 def answer():
     squares = [(0, 1), (0, 4), (0, 6), (1, 6), (2, 5), (3, 6), (4, 6), (8, 1)]
     cube = list(combinations([0, 1, 2, 3, 4, 5, 6, 7, 8, 6], 6))
-    return sum(1 for i, c1 in enumerate(cube) for c2 in cube[:i] if check(c1, c2, squares))
+    return sum(check(c1, c2, squares) for i, c1 in enumerate(cube) for c2 in cube[:i])
 
 
 if __name__ == '__main__':
