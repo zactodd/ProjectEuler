@@ -219,11 +219,6 @@ def is_perfect_square(n):
     return int(root + 0.5) ** 2 == n
 
 
-def lambda_feedback(inputs, func, repeat=None, cond=lambda _: True, depth=1):
-    return lambda_feedback(func(inputs), func, repeat, depth=depth + 1) \
-        if (repeat is None or repeat > depth) and cond(inputs) else inputs
-
-
 def multinomial(n, k):
     r = math.factorial(n)
     for i in k:

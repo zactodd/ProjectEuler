@@ -7,13 +7,12 @@ How many ways can a row measuring fifty units in length be tiled?
 
 NOTE: This is related to Problem 116.
 """
-from python.utils import lambda_feedback
+from itertools import accumulate
 
 
 def answer():
     n = 50
-    inputs = 0, 0, 0, 1
-    return lambda_feedback(inputs, lambda x: (x[1], x[2], x[3], sum(x)), n)[-1]
+    return list(accumulate(range(n), lambda x, _: (x[1], x[2], x[3], sum(x)), initial=(0, 0, 0, 1)))[-1][2]
 
 
 if __name__ == '__main__':
