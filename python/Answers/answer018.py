@@ -31,8 +31,7 @@ TRIANGLE = """
 """.strip()
 
 
-def answer():
-    triangle = [[int(v) for v in row.split()] for row in TRIANGLE.split("\n")]
+def answer(triangle=[[int(v) for v in row.split()] for row in TRIANGLE.split("\n")]):
     for row in range(len(triangle) - 1, 0, -1):
         for col in range(0, row):
             triangle[row - 1][col] += max(triangle[row][col], triangle[row][col + 1])

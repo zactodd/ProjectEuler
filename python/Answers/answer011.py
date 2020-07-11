@@ -60,9 +60,8 @@ def grid_product(grid, ox, oy, dx, dy, n):
     return prod(grid[oy + i * dy][ox + i * dx] for i in range(n))
 
 
-def answer():
+def answer(w=4):
     max_prod = 0
-    w = 4
     for y in range(height := len(GRID)):
         for x in range(width := len(GRID[0])):
             if x - w > -1 and y + w < height:

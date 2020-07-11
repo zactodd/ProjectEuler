@@ -9,8 +9,7 @@ How many such routes are there through a 20×20 grid?
 from python.utils import binomial
 
 
-def answer():
-    n, k = 40, 20
+def answer(n=40, k=20):
     return binomial(n, k)
 
 

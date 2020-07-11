@@ -16,8 +16,7 @@ from datetime import datetime
 from dateutil.rrule import rrule, WEEKLY
 
 
-def answer():
-    start, end = datetime(1900, 7, 1), datetime(2000, 12, 31)
+def answer(start=datetime(1900, 7, 1), end=datetime(2000, 12, 31)):
     return sum(date.day == 1 for date in rrule(WEEKLY, dtstart=start, until=end)) - 1
 
 

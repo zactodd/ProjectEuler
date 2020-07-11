@@ -12,8 +12,7 @@ def divide_gauss(n, f):
     return f * gauss(n // f)
 
 
-def answer():
-    n = 999
+def answer(n=999):
     return divide_gauss(n, 3) + divide_gauss(n, 5) - divide_gauss(n, 15)
 
 

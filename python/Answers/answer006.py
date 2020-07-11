@@ -18,8 +18,7 @@ def gauss_squares(n):
     return (2 * n + 1) * gauss(n) / 3
 
 
-def answer():
-    n = 100
+def answer(n=100):
     return gauss(n) ** 2 - gauss_squares(n)
 
 

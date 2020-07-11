@@ -8,8 +8,7 @@ What is the 10 001st prime number?
 from python.utils import nth_prime
 
 
-def answer():
-    n = 10001
+def answer(n=10001):
     return nth_prime(n)
 
 

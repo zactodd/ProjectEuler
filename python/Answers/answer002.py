@@ -9,12 +9,11 @@ By considering the terms in the Fibonacci sequence whose values do not exceed fo
 """
 
 from python.utils import fast_fib
-from itertools import count
+from itertools import count, accumulate
 
 
-def answer():
-    limit, s = 4e6, 0
-    return next((s for n in count(step=3) if (s := (s + fast_fib(n))) > limit), None)
+def answer(limit=4e6):
+    return next((s for s in accumulate(count(step=3), lambda a, b: a + fast_fib(b), initial=0) if s > limit), None)
 
 
 if __name__ == '__main__':

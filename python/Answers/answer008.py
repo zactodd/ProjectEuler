@@ -51,8 +51,7 @@ N = """73167176531330624919225119674426574742355349194934
 from math import prod
 
 
-def answer():
-    w = 13
+def answer(w=13):
     return max(prod(map(int, N[i:i + w])) for i in range(0, len(N) - w))
 
 

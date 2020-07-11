@@ -10,8 +10,7 @@ Find the sum of the digits in the number 100!
 from math import factorial
 
 
-def answer():
-    n = 100
+def answer(n=100):
     return sum(int(i) for i in str(factorial(n)))
 
 

@@ -20,8 +20,7 @@ def recursive_hailstone(n, prev={1: 1}):
     return prev[n]
 
 
-def answer():
-    limit = int(1e6)
+def answer(limit=int(1e6)):
     return max(range(1, limit), key=recursive_hailstone)
 
 

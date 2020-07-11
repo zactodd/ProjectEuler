@@ -38,8 +38,8 @@ def numbers_to_word_length(n):
     return len("".join(words))
 
 
-def answer():
-    return sum(numbers_to_word_length(i) for i in range(1, 1001))
+def answer(n=1000):
+    return sum(numbers_to_word_length(i) for i in range(1, n + 1))
 
 
 if __name__ == '__main__':

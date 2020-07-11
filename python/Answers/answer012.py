@@ -19,9 +19,7 @@ What is the value of the first triangle number to have over five hundred divisor
 """
 
 
-def answer():
-    limit = 500
-    n = int(1e6)
+def answer(n=int(1e6), limit=500):
     d = [0] * n
     for i in range(1, n):
         for j in range(i, n, i):

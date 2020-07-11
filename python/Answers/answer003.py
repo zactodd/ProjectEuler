@@ -8,8 +8,7 @@ What is the largest prime factor of the number 600851475143 ?
 from python.utils import factors
 
 
-def answer():
-    n = 600851475143
+def answer(n=600851475143):
     return factors(n)
 
 
