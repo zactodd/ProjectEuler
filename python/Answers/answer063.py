@@ -6,8 +6,7 @@ How many n-digit positive integers exist which are also an nth power?
 """
 
 
-def answer():
-    limit = 25
+def answer(limit=25):
     return sum(len(str(i ** j)) == j for i in range(1, 10) for j in range(1, limit))
 
 

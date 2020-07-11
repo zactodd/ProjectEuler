@@ -13,8 +13,7 @@ How many elements would be contained in the set of reduced proper fractions for 
 from python.utils import totients
 
 
-def answer():
-    limit = int(1e6)
+def answer(limit=int(1e6)):
     return sum(totients(limit)) - 1
 
 

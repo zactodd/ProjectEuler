@@ -22,9 +22,9 @@ def all_prime(chain):
     return all(is_prime(int(str(p1) + str(p2))) for p1, p2 in permutations(chain, 2))
 
 
-def answer():
+def answer(l=10000):
     chain = 0
-    primes = list(fast_primes(10000))
+    primes = list(fast_primes(l))
     n = 5
     while not chain:
         p = primes.pop(0)

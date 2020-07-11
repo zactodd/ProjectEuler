@@ -24,8 +24,8 @@ def is_lychrel(n):
     return all(str(n := (n + int(str(n)[::-1]))) != str(n)[::-1] for _ in range(50))
 
 
-def answer():
-    return sum(is_lychrel(i) for i in range(10000))
+def answer(n=10000):
+    return sum(is_lychrel(i) for i in range(n))
 
 
 if __name__ == '__main__':

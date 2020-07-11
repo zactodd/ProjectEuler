@@ -16,8 +16,7 @@ def ceil_division(a, b):
     return -(-a // b)
 
 
-def answer():
-    limit = 12000
+def answer(limit=12000):
     n1, n2, d1, d2 = 1, 1, 3, 2
     n = [0] * (limit + 1)
     for d in range(1, limit + 1):

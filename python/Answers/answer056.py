@@ -6,8 +6,8 @@ Considering natural numbers of the form, ab, where a, b < 100, what is the maxim
 """
 
 
-def answer():
-    return max(sum(map(int, str(a ** b))) for a in range(100) for b in range(100))
+def answer(n=100):
+    return max(sum(map(int, str(a ** b))) for a in range(n) for b in range(n))
 
 
 if __name__ == '__main__':

@@ -21,14 +21,14 @@ def is_subsequence(short, long):
     return any(c == short[i] and (i := (i + 1)) == len(short) for c in long)
 
 
-def answer():
-    chars = sorted(set(SEQ))
+def answer(seq=SEQ):
+    chars = sorted(set(seq))
     base = len(chars)
     for length in count(base):
         inds = [0] * length
         while True:
             guess = "".join(chars[d] for d in inds)
-            if all(is_subsequence(s, guess) for s in SEQ):
+            if all(is_subsequence(s, guess) for s in seq):
                 return guess
             i = 0
             while i < length and inds[i] == base - 1:

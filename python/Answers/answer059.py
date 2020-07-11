@@ -33,10 +33,10 @@ def decrypt(cipher, key):
     return [(c ^ key[i % len(key)]) for (i, c) in enumerate(cipher)]
 
 
-def answer():
+def answer(cipher_text=CIPHER_TEXT):
     key = max(((i, j, k) for i in range(97, 123) for j in range(97, 123) for k in range(97, 123)),
-              key=lambda x: score(decrypt(CIPHER_TEXT, x)))
-    return sum(decrypt(CIPHER_TEXT, key))
+              key=lambda x: score(decrypt(cipher_text, x)))
+    return sum(decrypt(cipher_text, key))
 
 
 if __name__ == '__main__':

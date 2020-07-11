@@ -22,9 +22,8 @@ with open(TRIANGLE_FILE, "r") as f:
     TRIANGLE = str(f.read())
 
 
-def answer():
-    q18.TRIANGLE = TRIANGLE
-    return q18.answer()
+def answer(triangle=TRIANGLE):
+    return q18.answer(triangle)
 
 
 if __name__ == '__main__':

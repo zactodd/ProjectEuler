@@ -18,8 +18,7 @@ Given that L is the length of the wire, for how many values of L ≤ 1,500,000 c
 from math import gcd, sqrt
 
 
-def answer():
-    limit = 1500001
+def answer(limit=1500001):
     include, remove = set(), set()
     for m in range(2, int(sqrt(limit / 2))):
         for n in range(m - 1, 0, -2):

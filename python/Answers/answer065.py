@@ -21,12 +21,11 @@ The sum of digits in the numerator of the 10th convergent is 1+4+5+7=17.
 
 Find the sum of digits in the numerator of the 100th convergent of the continued fraction for e.
 """
+from functools import reduce
 
 
-def answer():
-    n0, n1, limit = 1, 2, 100
-    for i in range(2, limit + 1):
-        n0, n1 = n1, n0 + n1 * (1 if i % 3 else 2 * i // 3)
+def answer(limit=100):
+    _, n1 = reduce(lambda n, i:(n[1], n[0] + n[1] * (1 if i % 3 else 2 * i // 3)), range(2, limit + 1), (1, 2))
     return sum(map(int, str(n1)))
 
 

@@ -76,8 +76,8 @@ def hand_rank(hand):
     return score
 
 
-def answer():
-    return sum(hand_rank(h[:5]) > hand_rank(h[5:]) for h in HANDS)
+def answer(hands=HANDS):
+    return sum(hand_rank(h[:5]) > hand_rank(h[5:]) for h in hands)
 
 
 if __name__ == '__main__':

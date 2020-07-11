@@ -15,8 +15,7 @@ from python.utils import SMALL_PRIMES
 from itertools import count
 
 
-def answer():
-    limit = 5000
+def answer(limit=5000):
     for t in count(11):
         ways = [1] + [0] * t
         for p in SMALL_PRIMES:

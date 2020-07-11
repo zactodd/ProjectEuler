@@ -8,8 +8,7 @@ from collections import defaultdict
 from itertools import count
 
 
-def answer():
-    n, d = 100, 5
+def answer(n=100, d=5):
     cubes = defaultdict(list)
     for n in count(n):
         c = n ** 3

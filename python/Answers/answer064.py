@@ -40,8 +40,8 @@ How many continued fractions for N≤10000 have an odd period?
 from math import sqrt
 
 
-def answer():
-    n, odd_period = 10000, 0
+def answer(n=10000):
+    odd_period = 0
     for i in range(2, n + 1):
         r = limit = int(sqrt(i))
         if limit ** 2 == i:
