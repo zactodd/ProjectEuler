@@ -26,7 +26,7 @@ But because we are allowing 6 and 9 to be reversed, the two distinct sets in the
 How many distinct arrangements of the two cubes allow for all of the square numbers to be displayed?
 
 =#
-using Combinatorics
+using Combinatorics: combinations
 
 
 check(c1, c2, squares) = all(x in c1 && y in c2 || x in c2 && y in c1 for (x, y) in squares)
@@ -34,7 +34,7 @@ check(c1, c2, squares) = all(x in c1 && y in c2 || x in c2 && y in c1 for (x, y)
 
 function answer()
     squares = [[0, 1], [0, 4], [0, 6], [1, 6], [2, 5], [3, 6], [4, 6], [8, 1]]
-    cube = collect(Combinatorics.combinations([0, 1, 2, 3, 4, 5, 6, 7, 8, 6], 6))
+    cube = collect(combinations([0, 1, 2, 3, 4, 5, 6, 7, 8, 6], 6))
     return sum([check(c1, c2, squares) for (i, c1) in enumerate(cube) for c2 in cube[1:i]])
 end
 

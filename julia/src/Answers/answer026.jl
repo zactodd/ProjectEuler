@@ -23,16 +23,13 @@ Find the value of d < 1000 for which 1/d contains the longest recurring cycle in
 =#
 
 include("../utils.jl")
+using IterTools: takewhile
 
 
 function answer()
     n = 1000
-    for d in reverse(Utils.sieves(n))
-        p = 1
-        while BigInt(10) ^ p % d != 1
-            p += 1
-            d - 1 == p && return d
-        end
+    for d in reverse(Utils.sieves(n)), p in takewhile(i -> BigInt(10) ^ i % d != 1, Iterators.countfrom(1)).+1
+        d - 1 == p && return d
     end
 end
 

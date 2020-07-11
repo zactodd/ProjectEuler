@@ -21,7 +21,7 @@ Using the set, {1, 2, 3, 4}, it is possible to obtain thirty-one different targe
 Find the set of four distinct digits, a < b < c < d, for which the longest set of consecutive positive integers, 1 to n, can be obtained, giving your answer as a string: abcd.
 
 =#
-using Combinatorics, IterTools
+using Combinatorics: permutations, combinations
 
 
 OPS = [(a, b) -> (a + b), (a, b) -> (a * b), (a, b) -> (a - b), (a, b) -> a / b]
@@ -37,9 +37,9 @@ end
 
 function answer()
     max_n, max_m = 0, 0
-    for term in Combinatorics.combinations(1:9, 4)
+    for term in combinations(1:9, 4)
         s = Set()
-        for p in Combinatorics.permutations(term), o in Iterators.product(ntuple(i-> OPS, 3)...)
+        for p in permutations(term), o in Iterators.product(ntuple(i-> OPS, 3)...)
             x = o[1](o[2](p[1], p[2]), o[3](p[3], p[4]))
             if x % 1 == 0 && x > 0
                 union!(s, floor(x))

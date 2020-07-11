@@ -16,10 +16,10 @@ By finding the first arrangement to contain over 1012 = 1,000,000,000,000 discs 
 
 function answer()
     a::BigInt, b::BigInt, l::BigInt = 3, 4, 10 ^ 12
-    for _ in Iterators.countfrom()
+    while b <= l
         a, b = 3 * a + 2 * b - 2, 4 * a + 3 * b - 3
-        b > l && return a
     end
+    return a
 end
 
 

@@ -20,8 +20,7 @@ What is the largest 1 to 9 pandigital 9-digit number that can be formed as the c
 
 function answer()
     for n in 9999:-1:9000
-        p = sort([digits(2 * n)..., digits(n)...])
-        sort(p) == Array(1:9) && return string(n) * string(n * 2)
+        sort([digits(2 * n)..., digits(n)...]) == Array(1:9) && return string(n) * string(n * 2)
     end
 end
 
