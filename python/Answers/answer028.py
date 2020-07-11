@@ -14,8 +14,7 @@ What is the sum of the numbers on the diagonals in a 1001 by 1001 spiral formed 
 """
 
 
-def answer():
-    n = 1001
+def answer(n=1001):
     d = (n - 1) // 2
     return (16 * d ** 3 + 30 * d ** 2 + 26 * d + 3) // 3
 

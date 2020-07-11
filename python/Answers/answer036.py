@@ -10,8 +10,7 @@ Find the sum of all numbers, less than one million, which are palindromic in bas
 from python.utils import is_palindrome, bin_as_10
 
 
-def answer():
-    n = int(1e6)
+def answer(n=int(1e6)):
     return sum(i for i in range(1, n) if is_palindrome(i) and is_palindrome(bin_as_10(i)))
 
 

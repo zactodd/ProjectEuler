@@ -9,8 +9,7 @@ from python.utils import fast_primes
 from itertools import permutations
 
 
-def answer():
-    n = int(1e9)
+def answer(n=int(1e9)):
     primes = fast_primes(n)
     return next(candidate for p in permutations("7654321") if (candidate := int("".join(p))) in primes)
 

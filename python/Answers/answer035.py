@@ -15,8 +15,7 @@ def circle(n):
     return [n] + [int(str_n[i:] + str_n[:i]) for i in range(1, len(str(n)))]
 
 
-def answer():
-    n = int(1e6)
+def answer(n=int(1e6)):
     primes = fast_primes(n)
     return sum(all(c in primes for c in circle(p)) for p in primes)
 

@@ -11,8 +11,7 @@ from math import factorial
 DIGIT_FACTS = [factorial(d) for d in range(10)]
 
 
-def answer():
-    limit = int(1e5)
+def answer(limit=int(1e5)):
     return sum(i for i in range(10, limit) if i == sum(DIGIT_FACTS[int(j)] for j in str(i)))
 
 

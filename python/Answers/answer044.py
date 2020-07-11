@@ -11,8 +11,7 @@ Find the pair of pentagonal numbers, Pj and Pk, for which their sum and differen
 """
 
 
-def answer():
-    i = 1001
+def answer(i=1001):
     s = (3 * i * i - i) // 2
     ps = set()
     while not any(s - j in ps and (result := s - 2 * j) in ps for j in ps):

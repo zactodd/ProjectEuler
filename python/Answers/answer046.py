@@ -17,8 +17,7 @@ What is the smallest odd composite that cannot be written as the sum of a prime 
 from itertools import cycle, accumulate
 
 
-def answer():
-    n = 5
+def answer(n=5):
     primes = set()
     for n in accumulate(cycle((2, 4)), initial=n):
         if all(n % p for p in primes):

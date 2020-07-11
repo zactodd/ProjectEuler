@@ -14,8 +14,7 @@ d1 × d10 × d100 × d1000 × d10000 × d100000 × d1000000
 from math import prod
 
 
-def answer():
-    limit = int(1e6)
+def answer(limit=int(1e6)):
     c = "".join(str(i) for i in range(1, limit))
     return prod(int(c[10 ** i - 1]) for i in range(6))
 

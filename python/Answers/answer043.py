@@ -19,9 +19,9 @@ from itertools import permutations
 SMALL_PRIMES = [2, 3, 5, 7, 11, 13, 17]
 
 
-def answer():
+def answer(primes=SMALL_PRIMES):
     return sum(int("".join(p)) for p in permutations("0123456789")
-               if all(int("".join(p[i + 1:i + 4])) % sp == 0 for i, sp in enumerate(SMALL_PRIMES)))
+               if all(int("".join(p[i + 1:i + 4])) % sp == 0 for i, sp in enumerate(primes)))
 
 
 if __name__ == '__main__':

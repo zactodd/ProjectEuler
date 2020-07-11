@@ -14,10 +14,9 @@ How many different ways can £2 be made using any number of coins?
 COINS = [1, 2, 5, 10, 20, 50, 100, 200]
 
 
-def answer():
-    t = 200
+def answer(t=200, coins=COINS):
     ways = [1] + [0] * t
-    for c in COINS:
+    for c in coins:
         for i in range(c, t + 1):
             ways[i] += ways[i - c]
     return ways[t]

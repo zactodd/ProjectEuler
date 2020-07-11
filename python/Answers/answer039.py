@@ -13,8 +13,7 @@ def py_triples(n):
     return sum(a * a + b * b == (n - a - b) ** 2 for a in range(1, n + 1) for b in range(a + 1, n + 1))
 
 
-def answer():
-    n = 1001
+def answer(n=1001):
     return max(range(n), key=py_triples)
 
 

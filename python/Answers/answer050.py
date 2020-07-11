@@ -12,8 +12,7 @@ Which prime, below one-million, can be written as the sum of the most consecutiv
 from python.utils import fast_primes
 
 
-def answer():
-    limit = 1000000
+def answer(limit=1000000):
     primes = fast_primes(limit)
     prime_sum = [0]
     for p in primes:

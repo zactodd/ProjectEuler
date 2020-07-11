@@ -17,9 +17,7 @@ Find the first four consecutive integers to have four distinct prime factors eac
 """
 
 
-def answer():
-    limit = int(1e7)
-    n = 4
+def answer(n=4, limit=int(1e7)):
     limit += n
     fs = [0] * limit
     c = 0

@@ -10,8 +10,7 @@ What is the millionth lexicographic permutation of the digits 0, 1, 2, 3, 4, 5, 
 from itertools import permutations
 
 
-def answer():
-    n = int(1e6)
+def answer(n=int(1e6)):
     return "".join(list(permutations("0123456789", 9))[n - 1])
 
 

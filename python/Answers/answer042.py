@@ -18,8 +18,8 @@ with open(WORDS_FILE, "r") as f:
     WORDS = [n.replace("\"", "") for n in f.readlines()[0].split(",")]
 
 
-def answer():
-    return sum(sum(ord(l) - 64 for l in w) in TRIANGLES for w in WORDS)
+def answer(triangles=TRIANGLES, words=WORDS):
+    return sum(sum(ord(l) - 64 for l in w) in triangles for w in words)
 
 
 if __name__ == '__main__':

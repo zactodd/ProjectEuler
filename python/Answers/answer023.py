@@ -17,8 +17,7 @@ def abundant(n):
     return s + sum(i + n / i for i in range(2, int(t) + 1) if n % i == 0)
 
 
-def answer():
-    n = 20161
+def answer(n=20161):
     s = 0
     abn = set()
     for i in range(1, n + 1):

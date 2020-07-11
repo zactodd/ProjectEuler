@@ -18,8 +18,7 @@ Find the value of d < 1000 for which 1/d contains the longest recurring cycle in
 from python.utils import fast_primes
 
 
-def answer():
-    n = 1000
+def answer(n=1000):
     for d in fast_primes(n)[::-1]:
         p = 1
         while 10 ** p % d != 1:

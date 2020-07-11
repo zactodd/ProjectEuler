@@ -20,8 +20,7 @@ from python.utils import fast_primes, is_prime
 from itertools import count
 
 
-def answer():
-    n = 1000
+def answer(n=1000):
     a, b = max(((a, b) for b in fast_primes(n + 1) for a in range(-b + 2, 0, 2)),
                key=lambda x: next(i for i in count(1) if not is_prime(abs(i ** 2 + x[0] * i + x[1]))))
     return a * b
