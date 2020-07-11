@@ -18,8 +18,7 @@ def truncates(n):
     return ts
 
 
-def answer():
-    limit = int(1e6)
+def answer(limit=int(1e6)):
     primes = fast_primes(limit)
     return sum(islice((p for p in primes if p > 10 and all(c in primes for c in truncates(p))), 11))
 

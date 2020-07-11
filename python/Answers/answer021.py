@@ -17,8 +17,7 @@ def divisor_sums(n):
     return ds
 
 
-def answer():
-    n = 10000
+def answer(n=10000):
     ds = divisor_sums(n)
     return sum(i for i, s in enumerate(ds) if s != i and s < n and ds[s] == i)
 

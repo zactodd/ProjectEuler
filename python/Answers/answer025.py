@@ -25,8 +25,7 @@ from python.utils import PHI
 import math
 
 
-def answer():
-    n = 1000
+def answer(n=1000):
     return math.ceil((math.log10(5) / 2 + n - 1) / math.log10(PHI))
 
 
