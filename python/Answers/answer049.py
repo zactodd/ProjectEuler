@@ -19,8 +19,8 @@ def is_stepping_prime_perm(n, s):
 def answer():
     n, s = 1487, 3330
     return next((
-        int(str(n) + str(n + s) + str(n + 2 * s)) for c in cycle((-1, 1))
-        if is_stepping_prime_perm(n := (n + 3 + c), s)
+        int(str(n) + str(n + s) + str(n + 2 * s)) for c in cycle((2, 4))
+        if is_stepping_prime_perm(n := (n + c), s)
     ), None)
 
 

@@ -7,13 +7,11 @@ What is the smallest positive number that is evenly divisible by all of the numb
 """
 
 from math import gcd
+from itertools import accumulate
 
 
 def answer():
-    p = 1
-    for i in range(1, 21):
-        p *= i // gcd(i, p)
-    return p
+    return list(accumulate(range(1, 21), lambda x, y: x * y // gcd(y, x), initial=1))[-1]
 
 
 if __name__ == '__main__':
