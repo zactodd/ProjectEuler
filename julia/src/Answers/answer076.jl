@@ -1,4 +1,9 @@
-"""
+#=
+answer076:
+- Julia version: 1.4.2
+- Author: Zac
+- Date: 2020-07-11
+
 Problem 76:
 
 It is possible to write five as a sum in exactly six different ways:
@@ -11,17 +16,19 @@ It is possible to write five as a sum in exactly six different ways:
 1 + 1 + 1 + 1 + 1
 
 How many different ways can one hundred be written as a sum of at least two positive integers?
-"""
+
+=#
 
 
-def answer():
-    t = 100
-    ways = [1] + [0] * t
-    for n in range(1, t):
-        for i in range(n, t + 1):
-            ways[i] += ways[i - n]
+function answer()
+    t = 101
+    ways = vcat([1], zeros(t))
+    for n in 1:t, i in n:t
+        ways[i] += ways[i - n]
+    end
     return ways[t]
+end
 
 
-if __name__ == '__main__':
-    print("Answer is:", answer())
+# Output
+println("Answer is: ", answer())
