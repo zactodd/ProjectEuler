@@ -21,8 +21,8 @@ def count_divisors_squared(n):
     return c * 3 if n != 1 else c
 
 
-def answer():
-    return next((n for n in count(1) if (count_divisors_squared(n) + 1) // 2 > 1000), None)
+def answer(limit=1000):
+    return next((n for n in count(1) if (count_divisors_squared(n) + 1) // 2 > limit), None)
 
 
 if __name__ == '__main__':

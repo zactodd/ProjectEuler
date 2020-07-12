@@ -11,8 +11,8 @@ Find the sum of all the primes below one-hundred thousand that will never be a f
 from python.utils import fast_primes
 
 
-def answer():
-    limit, q, s = 100000, pow(10, 20), 5
+def answer(limit=100000):
+    q, s = pow(10, 20), 5
     return s + sum(p for p in fast_primes(limit)[2:] if pow(10, q, int(p)) != 1)
 
 

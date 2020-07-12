@@ -11,8 +11,8 @@ from python.utils import fast_primes, reciprocal_mod
 import math
 
 
-def answer():
-    limit, s = int(1e6), 0
+def answer(limit=int(1e6)):
+    s = 0
     primes = fast_primes(2 * limit)
     for i in count(2):
         if (p := int(primes[i])) > limit:

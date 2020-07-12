@@ -84,9 +84,7 @@ If rad(n) is sorted for 1 ≤ n ≤ 100000, find E(10000).
 """
 
 
-def answer():
-    limit, k = 100000, 10000
-
+def answer(limit=100000, k=10000):
     e = [[1, i] for i in range(limit + 1)]
     for i in range(2, limit + 1):
         if e[i][0] == 1:

@@ -35,8 +35,7 @@ def f(l, b):
         return r * (r + 1) // 2 * s ** (len(l) - 1) + (r + 1) * f(l[1:], b)
 
 
-def answer():
-    m = 10 ** 9
+def answer(m=10 ** 9):
     return f(int2(m, 7), 7)
 
 

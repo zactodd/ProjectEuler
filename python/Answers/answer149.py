@@ -21,7 +21,7 @@ Finally, find the greatest sum of (any number of) adjacent entries in any direct
 """
 
 
-def answer():
+def answer(size=2000):
     def max_sub_sum(x, y, dx, dy):
         result, current = 0, 0
         while 0 <= x < size and 0 <= y < size:
@@ -31,7 +31,6 @@ def answer():
             y += dy
         return result
 
-    size = 2000
     seq = []
     for i in range(1, size ** 2 + 1):
         if i <= 55:

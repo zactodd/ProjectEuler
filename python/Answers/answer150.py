@@ -39,8 +39,7 @@ def sub_triangle_sum(row_sums, i, j, n):
     return np.min(np.cumsum(row_sums[ks, ks - i + 1 + j] - row_sums[ks, j], dtype=np.int64))
 
 
-def answer():
-    r = 1000
+def answer(r=1000):
     rand = lcg_random()
     triangle = [[next(rand) for _ in range(i + 1)] for i in range(r)]
     r = len(triangle)

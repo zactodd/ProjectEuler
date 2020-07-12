@@ -21,8 +21,7 @@ Find the 15th golden nugget.
 from python.utils import fast_fib
 
 
-def answer():
-    n = 15
+def answer(n=15):
     return fast_fib(2 * n) * fast_fib(2 * n + 1)
 
 

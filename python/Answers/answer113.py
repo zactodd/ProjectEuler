@@ -13,8 +13,7 @@ How many numbers below a googol (10100) are not bouncy?
 from python.utils import binomial
 
 
-def answer():
-    n = 100
+def answer(n=100):
     return binomial(n + 10, n) + binomial(n + 9, n) - (n * 10 + 2)
 
 

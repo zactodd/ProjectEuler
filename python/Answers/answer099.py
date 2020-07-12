@@ -14,8 +14,8 @@ with open(BASE_EXP_FILE, "r") as f:
     PAIRS = [tuple(map(int, line.split(","))) for line in f.readlines()]
 
 
-def answer():
-    return max(enumerate(PAIRS, 1), key=lambda x: x[1][1] * log(x[1][0]))[0]
+def answer(pairs=PAIRS):
+    return max(enumerate(pairs, 1), key=lambda x: x[1][1] * log(x[1][0]))[0]
 
 
 if __name__ == '__main__':

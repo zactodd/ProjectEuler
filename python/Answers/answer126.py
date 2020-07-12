@@ -13,12 +13,10 @@ It turns out that 154 is the least value of n for which C(n) = 10.
 
 Find the least value of n for which C(n) = 1000.
 """
+from itertools import accumulate
 
 
-def answer():
-    n = 1000
-    m = 20000
-
+def answer(n=1000, m=20000):
     cubes = [0] * m
     for a in range(1, m):
         for b in range(1, a + 1):
@@ -29,8 +27,7 @@ def answer():
                     break
                 ss = 4 * (a + b + c)
                 cubes[s] += 1
-                for k in range(0, m, 8):
-                    s += ss + k
+                for s in accumulate(range(ss, m + ss, 8), initial=s):
                     if s >= m:
                         break
                     cubes[s] += 1

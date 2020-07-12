@@ -16,7 +16,7 @@ We shall call AG(x) a golden nugget if x is rational, because they become increa
 
 Find the sum of the first thirty golden nuggets.
 """
-from python.utils import  SQRT5
+from python.utils import SQRT5
 
 
 def answer():

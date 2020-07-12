@@ -12,8 +12,7 @@ from python.utils import fast_primes
 import math
 
 
-def answer():
-    m = 10 ** 6
+def answer(m=10 ** 6):
     return len(set(3 * x ** 2 + 3 * x + 1 for x in range(int(math.sqrt(m / 3)))).intersection(fast_primes(m)))
 
 

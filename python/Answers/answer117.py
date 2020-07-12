@@ -10,8 +10,7 @@ NOTE: This is related to Problem 116.
 from functools import reduce
 
 
-def answer():
-    n = 50
+def answer(n=50):
     return list(reduce(lambda x, _: (x[1], x[2], x[3], sum(x)), range(n), (0, 0, 0, 1)))[2]
 
 

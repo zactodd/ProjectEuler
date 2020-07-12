@@ -8,8 +8,7 @@ How many reversible numbers are there below one-billion (109)?
 """
 
 
-def answer():
-    limit = 9
+def answer(limit=9):
     return sum(20 * pow(30, n // 2 - 1) if n % 2 == 0 else (100 * pow(500, n // 4) if n % 4 == 3 else 0)
                for n in range(2, limit + 1))
 

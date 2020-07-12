@@ -7,14 +7,11 @@ There are exactly eleven palindromes below one-thousand that can be written as c
 Find the sum of all the numbers less than 108 that are both palindromic and can be written as the sum of consecutive squares.
 """
 
-
-def is_palindrome(n):
-    return str(n) == str(n)[::-1]
+from python.utils import is_palindrome
 
 
-def answer():
-    limit = 10 ** 8
-    sq_limit = int(10 ** 4)
+def answer(limit=10 ** 8):
+    sq_limit = int(limit ** 0.5)
     pal = set()
     for i in range(1, sq_limit):
         s = i ** 2

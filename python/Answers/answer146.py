@@ -19,8 +19,7 @@ def has_consecutive_prime(s):
     return True
 
 
-def answer():
-    limit = int(1.5e8)
+def answer(limit=int(1.5e8)):
     return sum(int(math.sqrt(s)) for s in map(lambda x: x ** 2, range(10, limit, 10))
                if all(s % d != 0 for d in DIV_CHECKS) and has_consecutive_prime(s))
 

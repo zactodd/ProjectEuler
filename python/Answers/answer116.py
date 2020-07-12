@@ -26,8 +26,7 @@ def f(m, n):
     return ways[n] - 1
 
 
-def answer():
-    n = 50
+def answer(n=50):
     return f(2, n) + f(3, n) + f(4, n)
 
 

@@ -13,8 +13,7 @@ Find ∑L for the twelve smallest isosceles triangles for which h=b±1 and b, L 
 from python.utils import fast_fib
 
 
-def answer():
-    ns = 12
+def answer(ns=12):
     return sum(fast_fib(6 * n + 3) // 2 for n in range(1, ns + 1))
 
 

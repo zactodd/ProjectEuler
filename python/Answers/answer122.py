@@ -29,8 +29,7 @@ For 1 ≤ k ≤ 200, find ∑ m(k).
 from itertools import count
 
 
-def answer():
-    limit = 200
+def answer(limit=200):
     min_ops = [0, 0] + [None] * (limit - 1)
     num_unknown = [limit - 1]
 

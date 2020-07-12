@@ -20,8 +20,8 @@ What is the sum of all the minimal product-sum numbers for 2≤k≤12000?
 """
 
 
-def answer():
-    k_max = 12000
+def answer(k_max=12000):
+
     if k_max > 12:
         k_max += 1
     n = [2 * k_max] * k_max

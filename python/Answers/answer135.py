@@ -10,8 +10,7 @@ How many values of n less than one million have exactly ten distinct solutions?
 """
 
 
-def answer():
-    limit = 10 ** 6
+def answer(limit=10 ** 6):
     s = [0] * limit
     for m in range(1, limit * 2):
         for k in range(m // 5 + 1, (m + 1) // 2):

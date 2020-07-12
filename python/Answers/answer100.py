@@ -9,8 +9,8 @@ By finding the first arrangement to contain over 1012 = 1,000,000,000,000 discs 
 from itertools import count
 
 
-def answer():
-    d, limit = (3, 4), 10 ** 12
+def answer(limit=10 ** 12):
+    d = (3, 4)
     return next((d[0] for _ in count() if (d := (3 * d[0] + 2 * d[1] - 2, 4 * d[0] + 3 * d[1] - 3))[1] > limit), None)
 
 

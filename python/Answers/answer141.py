@@ -15,8 +15,7 @@ from itertools import count
 from python.utils import is_perfect_square
 
 
-def answer():
-    limit = int(1e12)
+def answer(limit=int(1e12)):
     p_set = set()
     for a in range(2, 10000):
         for b in range(1, a):

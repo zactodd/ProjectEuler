@@ -23,7 +23,6 @@ def sq(n, letters, y):
 
 def answer():
     pairs = [(w1, w2) for (w1, s1), (w2, s2) in combinations(WORDS, 2) if s1 == s2]
-
     max_sq = 0
     for w, a in pairs:
         letters = {x: y for y, x in enumerate(set(w))}

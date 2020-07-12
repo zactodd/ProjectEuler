@@ -22,8 +22,7 @@ def rect(m, n):
     return m * (m + 1) * n * (n + 1) // 4 + n * ((2 * m - n) * (4 * n ** 2 - 1) - 3) // 6
 
 
-def answer():
-    w, h = 47, 43
+def answer(w=47, h=43):
     return sum(rect(m, n) for m in range(1, w + 1) for n in range(1, h + 1))
 
 

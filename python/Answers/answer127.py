@@ -30,12 +30,9 @@ def rads(n):
     return r
 
 
-def answer():
-    limit = 120000
-
+def answer(limit=120000):
     rs = rads(limit)
     srs = sorted((r, n) for (n, r) in enumerate(rs))[1:]
-
     s = 0
     for c in range(2, limit):
         for (r, a) in srs:

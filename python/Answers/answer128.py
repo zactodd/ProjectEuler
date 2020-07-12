@@ -33,8 +33,8 @@ def tiles(limit):
     return n - 1
 
 
-def answer():
-    n = tiles(2000)
+def answer(limit=2000):
+    n = tiles(limit)
     return 3 * n * (n - 1) + 2 if is_prime(6 * n + 1) else 3 * n * (n + 1) + 1
 
 

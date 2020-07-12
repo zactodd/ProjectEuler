@@ -11,8 +11,7 @@ How many values of n less than fifty million have exactly one solution?
 from python.utils import fast_primes
 
 
-def answer():
-    limit = int(5e7)
+def answer(limit=int(5e7)):
     return sum((p < limit / 4) + (p < limit / 16) + ((p - 3) % 4 == 0) for p in fast_primes(limit))
 
 

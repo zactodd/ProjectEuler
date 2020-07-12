@@ -16,8 +16,8 @@ For m = 50, find the least value of n for which the fill-count function first ex
 """
 
 
-def answer():
-    limit, m, ways = 1000000, 50, [1]
+def answer(limit=1000000, m=50):
+    ways = [1]
     while ways[-1] < limit:
         ways += [sum(ways[:-m]) + ways[-1]]
     return len(ways) - 2

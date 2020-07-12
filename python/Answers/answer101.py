@@ -37,8 +37,7 @@ def tld(x):
     return [x[i] - x[i - 1] for i in range(1, len(x))]
 
 
-def answer():
-    k = 10
+def answer(k=10):
     seq = [list(map(u, range(1, k + 1)))]
     for i in range(k):
         seq += [tld(seq[-1])]

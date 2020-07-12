@@ -14,8 +14,7 @@ GCD(n, 10) = 1 and n − 1 is divisible by A(n).
 from python.utils import is_prime
 
 
-def answer():
-    limit, n = 10 ** 9, 5
+def answer(limit=10 ** 9, n=5):
     s = set()
     while len(s) < 40:
         if is_prime(n) and pow(10, limit, n) == 1:

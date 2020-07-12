@@ -14,8 +14,7 @@ Find the sum of all distinct values of p + q + r ≤ 120000 for Torricelli trian
 import math
 
 
-def answer():
-    limit = 120000
+def answer(limit=120000):
     sq_limit = int(math.sqrt(limit))
     pairs = []
     for i in range(1, sq_limit):

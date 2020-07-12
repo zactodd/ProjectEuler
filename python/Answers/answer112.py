@@ -14,20 +14,28 @@ Find the least number for which the proportion of bouncy numbers is exactly 99%.
 """
 
 
-from itertools import count
+from itertools import count, accumulate
+
+def is_bouncy(n):
+    s = str(n)
+    t = "".join(sorted(s))
+    return (s := str(n)) != () and s[::-1] != t
 
 
 def answer():
     c = 0
-    for i in count(1):
-        s = str(i)
-        t = "".join(sorted(s))
-        if s != t and s[::-1] != t:
-            c += 1
-        if c * 100 == 99 * i:
-            return str(i)
-    return None
+    # for i in count(1):
+    #     s = str(i)
+    #     t = "".join(sorted(s))
+    #     if s != t and s[::-1] != t:
+    #         c += 1
+    #     if :
+    #         return str(i)
+    # return None
 
+    return next((
+        str(i) for i, c in enumerate(accumulate(count(1), lambda a, b: b + is_bouncy(a))) if c * 100 == 99 * i
+    ), None)
 
 if __name__ == '__main__':
     print("Answer is:", answer())

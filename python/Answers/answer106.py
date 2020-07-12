@@ -19,8 +19,7 @@ def catalan(n):
     return binomial(n * 2, n) // (n + 1)
 
 
-def answer():
-    s = 12
+def answer(s=12):
     return sum(binomial(s, i * 2) * (binomial(i * 2, i) // 2 - catalan(i)) for i in range(2, s // 2 + 1))
 
 

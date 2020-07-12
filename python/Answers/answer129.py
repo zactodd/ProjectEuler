@@ -22,8 +22,7 @@ def least_divisible(n):
     return k
 
 
-def answer():
-    limit = 10 ** 6
+def answer(limit=10 ** 6):
     return next((n for n in count(limit) if least_divisible(n) > limit), None)
 
 

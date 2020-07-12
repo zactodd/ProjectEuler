@@ -12,8 +12,8 @@ Find the maximum prize fund that should be allocated to a single game in which f
 from math import factorial
 
 
-def answer():
-    n = 15
+def answer(n=15):
+
     r = (n - 1) // 2
     p = [1] + [0] * r
     for k in range(n + 1):

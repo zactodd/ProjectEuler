@@ -31,8 +31,8 @@ def is_origin(x0, y0, x1, y1, x2, y2):
     return 0 in o or len(set(o)) == 1
 
 
-def answer():
-    return sum(is_origin(*c) for c in TRIANGLES)
+def answer(triangles=TRIANGLES):
+    return sum(is_origin(*c) for c in triangles)
 
 
 if __name__ == '__main__':
