@@ -165,4 +165,4 @@ dmypy.json
 *.out
 *.app
 
-
+*cmake-build-debug
