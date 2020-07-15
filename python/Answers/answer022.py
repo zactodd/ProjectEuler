@@ -8,13 +8,12 @@ What is the total of all the name scores in the file?
 """
 
 NAMES_FILE = "../../resources/names.txt"
-
 with open(NAMES_FILE, "r") as f:
     NAMES = [n.replace("\"", "") for n in f.readlines()[0].split(",")]
 
 
 def answer():
-    return sum((i + 1) * sum(ord(l) - 64 for l in n) for i, n in enumerate(sorted(NAMES)))
+    return sum(i * sum(ord(l) - 64 for l in n) for i, n in enumerate(sorted(NAMES), 1))
 
 
 if __name__ == '__main__':
