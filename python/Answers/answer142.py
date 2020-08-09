@@ -20,7 +20,6 @@ def answer():
                 if b <= 0 or e <= 0 or not is_perfect_square(b) or not is_perfect_square(e):
                     continue
                 return (2 * c + e + f) // 2
-    return None
 
 
 if __name__ == '__main__':

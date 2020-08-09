@@ -12,7 +12,6 @@ Given that the perimeter of the right triangle is less than one-hundred million,
 
 
 def answer(limit=int(1e8)):
-
     x, y, c = 1, 1, 0
     while (x + y) < limit:
         x, y = 3 * x + 4 * y, 2 * x + 3 * y
