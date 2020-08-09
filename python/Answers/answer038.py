@@ -15,9 +15,7 @@ What is the largest 1 to 9 pandigital 9-digit number that can be formed as the c
 
 
 def answer():
-    return next((
-        int(p) for n in range(9999, 9000, -1) if sorted(p := str(n) + str(n * 2)) == list("123456789")
-    ), None)
+    return next((int(p) for n in range(9999, 9000, -1) if sorted(p := str(n) + str(n * 2)) == list("123456789")), None)
 
 
 if __name__ == '__main__':

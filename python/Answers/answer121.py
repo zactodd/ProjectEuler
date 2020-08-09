@@ -13,7 +13,6 @@ from math import factorial
 
 
 def answer(n=15):
-
     r = (n - 1) // 2
     p = [1] + [0] * r
     for k in range(n + 1):

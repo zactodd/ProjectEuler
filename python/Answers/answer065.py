@@ -25,7 +25,7 @@ from functools import reduce
 
 
 def answer(limit=100):
-    _, n1 = reduce(lambda n, i:(n[1], n[0] + n[1] * (1 if i % 3 else 2 * i // 3)), range(2, limit + 1), (1, 2))
+    _, n1 = reduce(lambda n, i: (n[1], n[0] + n[1] * (1 if i % 3 else 2 * i // 3)), range(2, limit + 1), (1, 2))
     return sum(map(int, str(n1)))
 
 

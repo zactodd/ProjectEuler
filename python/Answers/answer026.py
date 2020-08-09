@@ -25,7 +25,6 @@ def answer(n=1000):
             p += 1
             if d - 1 == p:
                 return d
-    return None
 
 
 if __name__ == '__main__':

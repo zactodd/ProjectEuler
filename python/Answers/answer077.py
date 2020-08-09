@@ -23,7 +23,6 @@ def answer(limit=5000):
                 ways[i] += ways[i - p]
         if ways[t] > limit:
             return t
-    return None
 
 
 if __name__ == '__main__':

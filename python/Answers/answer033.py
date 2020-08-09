@@ -9,16 +9,12 @@ There are exactly four non-trivial examples of this type of fraction, less than 
 
 If the product of these four fractions is given in its lowest common terms, find the value of the denominator.
 """
+from functools import reduce
 
 
 def answer():
-    f = 1
-    for i in range(1, 10):
-        for j in range(1, i):
-            q, r = divmod(9 * j * i, 10 * j - i)
-            if not r and q <= 9:
-                f *= i / j
-    return int(f)
+    return reduce(lambda x, y:  x * y[1] if not y[2] and y[1] <= 9 and print(y) is None else x,
+                  ((i / j, *divmod(9 * j * i, 10 * j - i)) for i in range(1, 10) for j in range(1, i)), 1)
 
 
 if __name__ == '__main__':

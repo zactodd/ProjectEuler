@@ -30,9 +30,8 @@ def answer():
     s = sum(WEIGHTS[i][j] for i in range(nodes) for j in range(i + 1, nodes) if WEIGHTS[i][j] is not None)
     connected = {0}
     for _ in range(nodes - 1):
-        l, new_node = min(
-            (WEIGHTS[j][k], k) for j in connected for k in range(nodes)
-            if k not in connected and WEIGHTS[j][k] is not None)
+        l, new_node = min((WEIGHTS[j][k], k) for j in connected for k in range(nodes)
+                          if k not in connected and WEIGHTS[j][k] is not None)
         connected.add(new_node)
         s -= l
     return s
