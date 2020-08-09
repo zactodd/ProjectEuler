@@ -12,15 +12,12 @@ Find the sum of the first twenty-five composite values of n for which
 GCD(n, 10) = 1 and n − 1 is divisible by A(n).
 """
 from python.utils import is_prime
+from itertools import accumulate, islice, repeat
 
 
-def answer(limit=25, n=91):
-    dps = set()
-    while len(dps) < limit:
-        if not is_prime(n) and pow(10, n - 1, 9 * n) == 1:
-            dps.add(n)
-        n += 2
-    return sum(dps)
+def answer(l=25, n=91):
+    return sum(islice((n for n in accumulate(repeat(2), initial=n)
+                       if not is_prime(n) and pow(10, n - 1, 9 * n) == 1), l))
 
 
 if __name__ == '__main__':
