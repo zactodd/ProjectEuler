@@ -5,7 +5,7 @@ The primes 3, 7, 109, and 673, are quite remarkable. By taking any two primes an
 Find the lowest sum for a set of five primes for which any two primes concatenate to produce another prime.
 """
 from python.utils import fast_primes, is_prime
-from itertools import permutations
+from itertools import permutations, repeat
 
 
 def make_chain(primes, chain, size):
@@ -22,14 +22,9 @@ def all_prime(chain):
     return all(is_prime(int(str(p1) + str(p2))) for p1, p2 in permutations(chain, 2))
 
 
-def answer(l=10000):
-    chain = 0
+def answer(l=10000, n=5):
     primes = list(fast_primes(l))
-    n = 5
-    while not chain:
-        p = primes.pop(0)
-        chain = make_chain(primes, [p], n)
-    return sum(map(int, chain))
+    return sum(map(int, next((c for _ in repeat(1) if (c := make_chain(primes, [primes.pop(0)], n))))))
 
 
 if __name__ == '__main__':
