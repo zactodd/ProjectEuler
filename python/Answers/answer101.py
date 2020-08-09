@@ -28,6 +28,8 @@ un = 1 − n + n2 − n3 + n4 − n5 + n6 − n7 + n8 − n9 + n10
 Find the sum of FITs for the BOPs.
 """
 
+from functools import reduce
+
 
 def u(n):
     return sum(n ** i * (1 if i % 2 == 0 else -1) for i in range(11))
@@ -38,10 +40,7 @@ def tld(x):
 
 
 def answer(k=10):
-    seq = [list(map(u, range(1, k + 1)))]
-    for i in range(k):
-        seq += [tld(seq[-1])]
-    return sum(sum(seq, []))
+    return sum(sum(reduce(lambda i, _: i + [tld(i[-1])], range(k), [list(map(u, range(1, k + 1)))]), []))
 
 
 if __name__ == '__main__':
