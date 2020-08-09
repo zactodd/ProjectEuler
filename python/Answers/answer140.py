@@ -17,13 +17,11 @@ We shall call AG(x) a golden nugget if x is rational, because they become increa
 Find the sum of the first thirty golden nuggets.
 """
 from python.utils import SQRT5
+from functools import reduce
 
 
-def answer():
-    limit, f = 30, [7, 14, 50, 97]
-    for i in range(limit - 4):
-        f.append(7 * f[-2] - f[-4])
-    return sum(int(x / SQRT5) - 1 for x in f)
+def answer(l=30):
+    return sum(int(x / SQRT5) - 1 for x in reduce(lambda x, _: x + [7 * x[-2] - x[-4]], range(l - 4), [7, 14, 50, 97]))
 
 
 if __name__ == '__main__':
