@@ -9,15 +9,13 @@ Find the value of n, 1 < n < 107, for which φ(n) is a permutation of n and the 
 """
 
 from python.utils import totients, is_perm
+from functools import reduce
 
 
 def answer(limit=10 ** 7):
     ts = totients(limit)
-    m, n = 1, 0
-    for i, t in enumerate(ts[2:], 2):
-        if i * n < m * t and is_perm(i, t):
-            m, n = i, ts[i]
-    return m
+    return reduce(lambda x, y: (ts[y[0]], y[0]) if is_perm(*y) and x[0] * y[0] < x[1] * y[1] else x,
+                  enumerate(ts[2:], 2), (0, 1))[0]
 
 
 if __name__ == '__main__':
