@@ -10,25 +10,16 @@ The longest sum of consecutive primes below one-thousand that adds to a prime, c
 Which prime, below one-million, can be written as the sum of the most consecutive primes?
 """
 from python.utils import fast_primes
+from functools import reduce
+from itertools import accumulate, takewhile
 
 
 def answer(limit=1000000):
-    primes = fast_primes(limit)
-    prime_sum = [0]
-    for p in primes:
-        prime_sum.append(prime_sum[-1] + p)
-        if prime_sum[-1] >= limit:
-            break
-    c = len(prime_sum)
-
-    consec = 1
-    for i in range(c):
-        for j in range(c - 1, i + consec, -1):
-            n = prime_sum[j] - prime_sum[i]
-            if j - i > consec and n in primes:
-                consec, max_prime = j - i, n
-                break
-    return max_prime
+    p_acc = list(takewhile(lambda p: p < limit, accumulate(primes := fast_primes(limit), initial=0)))
+    return reduce(lambda x, y: next(
+            ((j - y, n) for j in range(c - 1, y + x[0], -1) if j - y > x[0] and (n := p_acc[j] - p_acc[y]) in primes),
+            x
+        ), range(c := len(p_acc)), (1, 0))[1]
 
 
 if __name__ == '__main__':
