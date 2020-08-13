@@ -12,11 +12,7 @@ For n = 12, how many of the 261625 subset pairs that can be obtained need to be 
 
 NOTE: This problem is related to Problem 103 and Problem 105.
 """
-from python.utils import binomial
-
-
-def catalan(n):
-    return binomial(n * 2, n) // (n + 1)
+from python.utils import binomial, catalan
 
 
 def answer(s=12):
