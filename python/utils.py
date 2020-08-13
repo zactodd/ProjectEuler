@@ -230,3 +230,7 @@ def divide_till(s, d, t=0):
     while s > t:
         yield s
         s //= d
+
+
+def catalan(n):
+    return binomial(n * 2, n) // (n + 1)
