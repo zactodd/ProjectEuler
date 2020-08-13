@@ -8,7 +8,7 @@ What 12-digit number do you form by concatenating the three terms in this sequen
 """
 
 from python.utils import is_prime, is_perm
-from itertools import cycle
+from itertools import cycle, accumulate
 
 
 def is_stepping_prime_perm(n, s):
@@ -16,11 +16,9 @@ def is_stepping_prime_perm(n, s):
     return is_prime(n) and is_prime(a) and is_prime(b) and is_perm(n, a) and is_perm(n, b)
 
 
-def answer(s=3330):
-    n = 1487
-    return next((
-        int(str(n) + str(n + s) + str(n + 2 * s)) for c in cycle((2, 4)) if is_stepping_prime_perm(n := (n + c), s)
-    ), None)
+def answer(s=3330, n=1487):
+    return next(int(str(n) + str(n + s) + str(n + 2 * s)) for n in accumulate(cycle((4, 2)), initial=n + 2)
+                if is_stepping_prime_perm(n, s))
 
 
 if __name__ == '__main__':
