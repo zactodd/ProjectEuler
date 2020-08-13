@@ -17,7 +17,7 @@ def answer():
         y = int(sqrt(limit * 4 / (x * x + x)))
         if x > y:
             return area
-        elif (d:= (abs(x * (x + 1) * y * (y + 1) // 4 - limit))) < min_diff:
+        elif (d := (abs(x * (x + 1) * y * (y + 1) // 4 - limit))) < min_diff:
             area, min_diff, xx, yy = x * y, d, x, y
 
 

@@ -18,8 +18,6 @@ Find the set of four distinct digits, a < b < c < d, for which the longest set o
 from itertools import combinations, permutations, product
 from operator import add, sub, mul, truediv
 
-OPERATIONS = [add, mul, sub, truediv]
-
 
 def seq_length(s, c=1):
     while c in s:
@@ -27,7 +25,7 @@ def seq_length(s, c=1):
     return c - 1
 
 
-def answer(ops=OPERATIONS):
+def answer(ops=(add, mul, sub, truediv)):
     max_n, max_m = 0, 0
     for terms in combinations(range(1, 10), 4):
         s = set()
