@@ -23,7 +23,6 @@ def answer():
                     str_prime.count('1') == 3 and last_digit != '1' and eight_primes(str_prime, '1') or
                     str_prime.count('2') == 3 and eight_primes(str_prime, '2')):
                 return int(str_prime)
-    return None
 
 
 if __name__ == '__main__':

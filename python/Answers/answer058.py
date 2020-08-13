@@ -27,9 +27,9 @@ def c(n, i):
 
 
 def answer(p=0, threshold=0.1):
-    return next((
+    return next(
         2 * n - 1 for n in count(2) if (p := (p + sum(is_prime(c(n, i)) for i in range(0, 4)))) / d(n) < threshold
-    ), None)
+    )
 
 
 if __name__ == '__main__':

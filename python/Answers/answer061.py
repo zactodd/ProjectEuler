@@ -38,7 +38,7 @@ def answer():
         for t2, d2 in poly_nums:
             if t1 != t2 and d1 % 100 == d2 // 100:
                 ds[(t1, d1)] = ds.get((t1, d1), []) + [(t2, d2)]
-    return next((int(s) for t, d in ds if (s := chain([t], [d], ds)) is not None), None)
+    return next(int(s) for t, d in ds if (s := chain([t], [d], ds)) is not None)
 
 
 if __name__ == '__main__':
