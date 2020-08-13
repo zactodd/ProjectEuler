@@ -22,6 +22,7 @@ NOTE: This problem is related to Problem 105 and Problem 106.
 """
 
 from python.utils import divide_till
+from functools import reduce
 
 
 def lex_lowest(t, max_sum):
@@ -66,13 +67,12 @@ def update(val, set_info):
     return values + [val], candidate_posb, candidate_min, candidate_max
 
 
-def answer():
-    size, max_sum = 7, 1
-    while lex_lowest(size, max_sum) is None:
+def answer(n=7):
+    max_sum = 1
+    while lex_lowest(n, max_sum) is None:
         max_sum *= 2
-    for i in divide_till(max_sum // 4, 2):
-        max_sum += i if lex_lowest(size, max_sum - 1) is None else - 1
-    return int("".join(map(str, lex_lowest(size, max_sum)[0])))
+    max_sum += reduce(lambda x, y: y + (x if lex_lowest(n, y - 1) is None else - 1), divide_till(max_sum // 4, 2))
+    return int("".join(map(str, lex_lowest(n, max_sum)[0])))
 
 
 if __name__ == '__main__':
