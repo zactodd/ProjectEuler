@@ -11,6 +11,8 @@ OO   O   O   O
 O   O   O   O   O
 Find the least value of n for which p(n) is divisible by one million.
 """
+from itertools import takewhile, count
+from functools import reduce
 
 
 def answer():
@@ -18,11 +20,7 @@ def answer():
     p, sign, n, m = [1], [1, 1, -1, -1], 0, 1e6
     while p[n] > 0:
         n += 1
-        px, i = 0, 0
-        for i, v in enumerate(k):
-            if v <= n:
-                break
-            px += p[int(n - v)] * sign[i % 4]
+        px = sum(p[int(n - v)] * sign[i % 4] for i, v in enumerate(takewhile(lambda t: t <= n, k)))
         p.append(px % m)
     return n
 
