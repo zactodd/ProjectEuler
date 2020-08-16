@@ -16,15 +16,12 @@ Where 0.1(6) means 0.166666..., and has a 1-digit recurring cycle. It can be see
 Find the value of d < 1000 for which 1/d contains the longest recurring cycle in its decimal fraction part.
 """
 from python.utils import fast_primes
+from itertools import count, takewhile
 
 
 def answer(n=1000):
-    for d in fast_primes(n)[::-1]:
-        p = 1
-        while 10 ** p % d != 1:
-            p += 1
-            if d - 1 == p:
-                return d
+    return next(d for d in fast_primes(n)[::-1] for i in takewhile(lambda p: 10 ** p % d != 1, count(1))
+                if d - 1 == i + 1)
 
 
 if __name__ == '__main__':
