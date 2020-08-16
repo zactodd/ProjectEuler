@@ -60,19 +60,10 @@ def grid_product(grid, ox, oy, dx, dy, n):
     return prod(grid[oy + i * dy][ox + i * dx] for i in range(n))
 
 
-def answer(w=4):
-    max_prod = 0
-    for y in range(height := len(GRID)):
-        for x in range(width := len(GRID[0])):
-            if x - w > -1 and y + w < height:
-                max_prod = max(grid_product(GRID, x, y, -1, 1, w), max_prod)
-            elif x + w < width and y + w < height:
-                max_prod = max(grid_product(GRID, x, y, 1, 1, w), max_prod)
-            elif y + w < height:
-                max_prod = max(grid_product(GRID, x, y, 0, 1, w), max_prod)
-            elif x + w < width:
-                max_prod = max(grid_product(GRID, x, y, 1, 0, w), max_prod)
-    return max_prod
+def answer(g=GRID, n=4, directions=((-1, 1), (1, 1), (0, 1), (1, 0))):
+    h, w = len(g), len(g[0])
+    return max(grid_product(g, x, y, dx, dy, n) for y in range(h) for x in range(w)
+               for dx, dy in directions if h > x + dx * n >= 0 and w > y + dy * n >= 0)
 
 
 if __name__ == '__main__':
