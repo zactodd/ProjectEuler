@@ -10,8 +10,7 @@ def digits_sum(n):
     return sum(map(int, str(n)))
 
 
-def answer():
-    n = 30
+def answer(n=30):
     return sorted(p for e in range(2, 10) for b in range(2, 100) if digits_sum(p := (b ** e)) == b)[n - 1]
 
 

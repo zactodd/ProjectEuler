@@ -6,7 +6,7 @@ How many distinct sets containing each of the digits one through nine exactly on
 """
 
 from python.utils import is_prime_list, is_prime, next_permutation
-from itertools import count, accumulate
+from itertools import repeat, accumulate
 PRIMALITY = is_prime_list(10000)
 
 
@@ -17,7 +17,7 @@ def fast_is_prime(n):
         return is_prime(n)
 
 
-def count_prime_sets(start, prev, digits):
+def count_prime_sets(digits, start=0, prev=0):
     if start == len(digits):
         return 1
     else:
@@ -25,15 +25,12 @@ def count_prime_sets(start, prev, digits):
         for split in range(start + 1, len(digits) + 1):
             num = int("".join(map(str, digits[start: split])))
             if num > prev and fast_is_prime(num):
-                result += count_prime_sets(split, num, digits)
+                result += count_prime_sets(digits, split, num)
         return result
 
 
 def answer(digits=list(range(1, 10))):
-    return next((
-        s for s in accumulate(count(), lambda a, _: a + count_prime_sets(0, 0, digits), initial=0)
-        if not next_permutation(digits)
-    ))
+    return next(s for s in accumulate((count_prime_sets(digits) for _ in repeat(1))) if not next_permutation(digits))
 
 
 if __name__ == '__main__':

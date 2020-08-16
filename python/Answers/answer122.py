@@ -26,7 +26,7 @@ We shall define m(k) to be the minimum number of multiplications to compute nk; 
 For 1 ≤ k ≤ 200, find ∑ m(k).
 """
 
-from itertools import count
+from itertools import count, takewhile
 
 
 def answer(limit=200):
@@ -50,10 +50,9 @@ def answer(limit=200):
                     chain.pop()
 
     for o in count(1):
+        chains([1], o)
         if num_unknown[0] == 0:
             return sum(min_ops)
-        else:
-            chains([1], o)
 
 
 if __name__ == '__main__':

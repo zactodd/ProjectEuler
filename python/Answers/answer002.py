@@ -13,7 +13,7 @@ from itertools import count, accumulate
 
 
 def answer(limit=4e6):
-    return next((s for s in accumulate(count(step=3), lambda a, b: a + fast_fib(b), initial=0) if s > limit), None)
+    return next(s for s in accumulate(map(fast_fib, count(step=3))) if s > limit)
 
 
 if __name__ == '__main__':

@@ -15,10 +15,10 @@ Find the sum of all the numbers that can be written as the sum of fifth powers o
 from itertools import combinations_with_replacement
 
 
-def answer(n=5):
+def answer(n=1):
     p = {str(i): i ** n for i in range(10)}
     return sum(t for i in combinations_with_replacement("0123456789", n + 1)
-               if (t := sum(p[x] for x in i)) > 9 and t == sum(p[x] for x in str(t)))
+               if (t := sum(p[x] for x in i)) == sum(p[x] for x in str(t)))
 
 
 if __name__ == '__main__':

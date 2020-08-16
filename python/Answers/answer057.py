@@ -17,12 +17,9 @@ In the first one-thousand expansions, how many fractions contain a numerator wit
 from itertools import accumulate
 
 
-def answer():
-    n, d = 3, 2
-    return sum(
-        len(str(n)) > len(str(d))
-        for n, d in accumulate(range(999), lambda x, _: (2 * x[1] + x[0], x[0] + x[1]), initial=(n, d))
-    )
+def answer(n=1000):
+    return sum(len(str(n)) > len(str(d))
+               for n, d in accumulate(range(n - 1), lambda x, _: (2 * x[1] + x[0], x[0] + x[1]), initial=(3, 2)))
 
 
 if __name__ == '__main__':

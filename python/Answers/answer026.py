@@ -20,8 +20,7 @@ from itertools import count, takewhile
 
 
 def answer(n=1000):
-    return next(d for d in fast_primes(n)[::-1] for i in takewhile(lambda p: 10 ** p % d != 1, count(1))
-                if d - 1 == i + 1)
+    return next(d for d in fast_primes(n)[::-1] for i in takewhile(lambda p: 10 ** p % d != 1, count(1)) if d - 2 == i)
 
 
 if __name__ == '__main__':

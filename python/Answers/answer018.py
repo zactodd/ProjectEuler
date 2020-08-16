@@ -29,10 +29,10 @@ TRIANGLE = """
 63 66 04 68 89 53 67 30 73 16 69 87 40 31
 04 62 98 27 23 09 70 98 73 93 38 53 60 04 23
 """.strip()
+TRIANGLE = [list(map(int, row.split())) for row in TRIANGLE.split("\n")]
 
 
 def answer(triangle=TRIANGLE):
-    triangle = [[int(v) for v in row.split()] for row in TRIANGLE.split("\n")]
     for row in range(len(triangle) - 1, 0, -1):
         for col in range(0, row):
             triangle[row - 1][col] += max(triangle[row][col], triangle[row][col + 1])

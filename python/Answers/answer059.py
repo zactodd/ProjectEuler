@@ -10,6 +10,8 @@ Unfortunately, this method is impractical for most users, so the modified method
 
 Your task has been made easy, as the encryption key consists of three lower case characters. Using p059_cipher.txt (right click and 'Save Link/Target As...'), a file containing the encrypted ASCII codes, and the knowledge that the plain text must contain common English words, decrypt the message and find the sum of the ASCII values in the original text.
 """
+from itertools import permutations
+
 
 CIPHER_FILE = "../../resources/cipher.txt"
 
@@ -18,29 +20,21 @@ with open(CIPHER_FILE, "r") as f:
 
 
 def score(plain):
-    s = 0
-    for c in plain:
-        if 65 <= c <= 90:
-            s += 1
-        elif 97 <= c <= 122:
-            s += 2
-        elif 0x7F == c < 0x20:
-            s -= 10
-    return s
+    return sum((65 <= c <= 90) + 2 * (97 <= c <= 122) for c in plain)
 
 
 def decrypt(cipher, key):
-    return [(c ^ key[i % len(key)]) for (i, c) in enumerate(cipher)]
+    return [(c ^ key[i % len(key)]) for i, c in enumerate(cipher)]
 
 
 def answer(cipher_text=CIPHER_TEXT):
-    key = max(((i, j, k) for i in range(97, 123) for j in range(97, 123) for k in range(97, 123)),
-              key=lambda x: score(decrypt(cipher_text, x)))
+    key = max(((i, j, k) for i, j, k in permutations(range(97, 123), 3)), key=lambda x: score(decrypt(cipher_text, x)))
     return sum(decrypt(cipher_text, key))
 
 
 if __name__ == '__main__':
     print("Answer is:", answer())
+    print(0x7F)
 
 
 

@@ -26,10 +26,8 @@ def c(n, i):
     return 4 * (n ** 2) - 10 * n + 7 + (2 * n - 2) * i
 
 
-def answer(p=0, threshold=0.1):
-    return next(
-        2 * n - 1 for n in count(2) if (p := (p + sum(is_prime(c(n, i)) for i in range(0, 4)))) / d(n) < threshold
-    )
+def answer(p=0, t=0.1):
+    return next(2 * n - 1 for n in count(2) if (p := (p + sum(is_prime(c(n, i)) for i in range(0, 4)))) / d(n) < t)
 
 
 if __name__ == '__main__':

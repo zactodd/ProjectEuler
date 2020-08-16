@@ -7,7 +7,7 @@ The text file, keylog.txt, contains fifty successful login attempts.
 Given that the three characters are always asked for in order, analyse the file so as to determine the shortest possible secret passcode of unknown length.
 """
 
-from itertools import count
+from itertools import count, repeat
 SEQ = [
     '319', '680', '180', '690', '129', '620', '762', '689', '762', '318', '368', '710', '720', '710', '629', '168',
     '160', '689', '716', '731', '736', '729', '316', '729', '729', '710', '769', '290', '719', '680', '318', '389',
@@ -26,11 +26,10 @@ def answer(seq=SEQ):
     base = len(chars)
     for length in count(base):
         inds = [0] * length
-        while True:
+        for i in repeat(0):
             guess = "".join(chars[d] for d in inds)
             if all(is_subsequence(s, guess) for s in seq):
                 return guess
-            i = 0
             while i < length and inds[i] == base - 1:
                 inds[i] = 0
                 i += 1

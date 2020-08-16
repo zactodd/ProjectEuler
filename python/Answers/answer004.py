@@ -6,10 +6,11 @@ A palindromic number reads the same both ways. The largest palindrome made from 
 Find the largest palindrome made from the product of two 3-digit numbers.
 """
 from python.utils import is_palindrome
+from itertools import permutations
 
 
 def answer():
-    return max(r for i in range(100, 1000) for j in range(100, 1000) if is_palindrome(r := i * j))
+    return max(r for i, j in permutations(range(100, 1000), 2) if is_palindrome(r := i * j))
 
 
 if __name__ == '__main__':

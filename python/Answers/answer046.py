@@ -23,11 +23,9 @@ def answer(n=5):
         if all(n % p for p in primes):
             primes.add(n)
         elif not any((n - 2 * i ** 2) in primes for i in range(1, n)):
-            break
-    return n
+            return n
 
 
 if __name__ == '__main__':
     print("Answer is:", answer())
-
 
