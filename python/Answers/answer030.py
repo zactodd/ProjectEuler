@@ -17,10 +17,8 @@ from itertools import combinations_with_replacement
 
 def answer(n=5):
     p = {str(i): i ** n for i in range(10)}
-    if n <= 5:
-        n += 1
-    return sum(t for i in combinations_with_replacement("0123456789", n)
-               if (t := sum(p[x] for x in i)) == sum(p[x] for x in str(t)) and t > 9)
+    return sum(t for i in combinations_with_replacement("0123456789", n + 1)
+               if (t := sum(p[x] for x in i)) > 9 and t == sum(p[x] for x in str(t)))
 
 
 if __name__ == '__main__':
