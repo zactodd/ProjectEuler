@@ -25,6 +25,7 @@ def seq_length(s, c=1):
     return c - 1
 
 
+# TODO make general
 def answer(ops=(add, mul, sub, truediv)):
     max_n, max_m = 0, 0
     for terms in combinations(range(1, 10), 4):

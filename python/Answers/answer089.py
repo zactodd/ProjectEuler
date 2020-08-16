@@ -48,7 +48,7 @@ LENGTHS = [0, 1, 2, 3, 2, 1, 2, 3, 4, 2]
 def parse_roman(s):
     result = 0
     while len(s) > 0:
-        for (prefix, val) in ROMAN_PREFIXES:
+        for prefix, val in ROMAN_PREFIXES:
             if s.startswith(prefix):
                 result += val
                 s = s[len(prefix):]
