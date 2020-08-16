@@ -17,11 +17,12 @@ It can be seen that n=6 produces a maximum n/φ(n) for n ≤ 10.
 Find the value of n ≤ 1,000,000 for which n/φ(n) is a maximum.
 """
 from python.utils import SMALL_PRIMES
+from itertools import accumulate
+from operator import mul
 
 
 def answer(limit=int(1e6)):
-    max_n = 1
-    return next(p for p in SMALL_PRIMES if (max_n := (max_n * p)) > limit)
+    return next(m for m in accumulate(SMALL_PRIMES, mul) if m > limit)
 
 
 if __name__ == '__main__':
