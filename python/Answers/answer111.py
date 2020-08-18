@@ -26,10 +26,12 @@ For d = 0 to 9, the sum of all S(4, d) is 273700.
 Find the sum of all S(10, d).
 """
 
-from python.utils import fast_primes, next_permutation
+from python.utils import fast_primes
+from itertools import product, combinations, zip_longest, count
 import math
-DIGITS = 10
-PRIMES = fast_primes(int(math.sqrt(10 ** DIGITS)))
+
+
+PRIMES = fast_primes(int(math.sqrt(10 ** 10)))
 
 
 def is_prime(n):
@@ -42,35 +44,23 @@ def is_prime(n):
     return True
 
 
-def answer():
-    s = 0
-    for digit in range(10):
-        for rep in range(DIGITS, -1, -1):
-            ss = 0
-            digits = [0] * DIGITS
-            for i in range(9 ** (DIGITS - rep)):
-                for j in range(rep):
-                    digits[j] = digit
-                for j in range(DIGITS - rep):
-                    if (d := (i % 9)) >= digit:
-                        d += 1
-                    if j > 0 and d > digits[DIGITS - j]:
-                        break
-                    digits[-1 - j] = d
-                    i //= 9
-                else:
-                    digits.sort()
-                    while True:
-                        if digits[0] > 0 and is_prime(num := int("".join(map(str, digits)))):
-                            ss += num
-                        if not next_permutation(digits):
-                            break
-            if ss > 0:
-                s += ss
-                break
-    return s
+def generator(n, d, rep):
+    def filter_func(t):
+        return (t[0][0] != 0 or t[1][0] != 0) and (t[0][-1] != n - 1 or (t[1][-1] & 1 != 0 and t[1][-1] != 5))
+
+    inds, nums = combinations(range(n), n - rep), product(*([tuple(set(range(10)) - {d})] * (n - rep)))
+    for tup in filter(filter_func, product(inds, nums)):
+        base = [d for _ in range(n)]
+        for ind, val in zip_longest(*tup):
+            base[ind] = val
+        if base[0] != 0 and base[-1] & 1 != 0 and base[-1] != 5:
+            yield int("".join(map(str, base)))
 
 
-if __name__ == "__main__":
-    print(answer())
+def answer(n=10):
+    return sum(sum(next(f for f in map(lambda r: list(filter(is_prime, generator(n, d, r))), count(n - 1, -1)) if f))
+               for d in range(n))
 
+
+if __name__ == '__main__':
+    print("Answer is:", answer())
