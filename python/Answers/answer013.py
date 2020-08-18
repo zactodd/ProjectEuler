@@ -107,8 +107,8 @@ N = """
 """.strip().split("\n")
 
 
-def answer(n=10):
-    return str(sum(int(i) for i in N))[:n]
+def answer(n=10, n_str=N):
+    return str(sum(int(i) for i in n_str))[:n]
 
 
 if __name__ == '__main__':

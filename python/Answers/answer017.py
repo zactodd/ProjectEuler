@@ -9,14 +9,11 @@ NOTE: Do not count spaces or hyphens. For example, 342 (three hundred and forty-
 """
 
 
-ONES = ["", "One", "Two", "Three", "Four", "Five", "Six", "Seven", "Eight", "Nine"]
-TEENS = ["", "Eleven", "Twelve", "Thirteen", "Fourteen", "Fifteen", "Sixteen", "Seventeen", "Eighteen", "Nineteen"]
-TENS = ["", "Ten", "Twenty", "Thirty", "Forty", "Fifty", "Sixty", "Seventy", "Eighty", "Ninety"]
-HUNDRED = "Hundred"
-THOUSAND = ["", "Thousand"]
-
-
 def numbers_to_word_length(n):
+    ones = ["", "One", "Two", "Three", "Four", "Five", "Six", "Seven", "Eight", "Nine"]
+    teens = ["", "Eleven", "Twelve", "Thirteen", "Fourteen", "Fifteen", "Sixteen", "Seventeen", "Eighteen", "Nineteen"]
+    tens = ["", "Ten", "Twenty", "Thirty", "Forty", "Fifty", "Sixty", "Seventy", "Eighty", "Ninety"]
+    thousand = ["", "Thousand"]
     words = []
     number = map(''.join, zip(*[iter(str(n).zfill(18))]*3))
     for nx, g in enumerate(number, 1):
@@ -24,18 +21,16 @@ def numbers_to_word_length(n):
             continue
         h, t, o = map(int, g)
         if h > 0:
-            words += [ONES[h], HUNDRED]
+            words += [ones[h], "Hundred"]
         if t == 1:
-            words += [TEENS[o]] if o > 0 else [TENS[t]]
+            words += [teens[o]] if o > 0 else [tens[t]]
         else:
             if t > 0:
-                words += [TENS[t]]
+                words += [tens[t]]
             if o > 0:
-                words += [ONES[o]]
-        words += [THOUSAND[6 - nx]]
-    if HUNDRED in words and HUNDRED != words[-2]:
-        words.append("AND")
-    return len("".join(words))
+                words += [ones[o]]
+        words += [thousand[6 - nx]]
+    return len("".join(words)) + 3 * ("Hundred" in words and "Hundred" != words[-2])
 
 
 def answer(n=1000):
