@@ -17,14 +17,12 @@ from itertools import takewhile, chain
 
 def answer(limit=120000):
     sq_limit = int(math.sqrt(limit))
-    pairs = []
-    for i in range(1, sq_limit):
-        for a, b in takewhile(lambda p: sum(p) <= limit,
-                              map(lambda j: (2 * i * j + j ** 2, i ** 2 - j ** 2),
-                                  filter(lambda j: (i - j) % 3 != 0 and math.gcd(i, j) == 1, range(1, i)))):
-            for k in range(1, math.ceil(limit / (a + b))):
-                pairs.extend([(k * a, k * b), (k * b, k * a)])
-    pairs.sort()
+    pairs = sorted(list(chain(*([(k * a, k * b), (k * b, k * a)] for i in range(1, sq_limit)
+                                for a, b in takewhile(lambda p: sum(p) <= limit,
+                                                      map(lambda j: (2 * i * j + j ** 2, i ** 2 - j ** 2),
+                                                          filter(lambda j: (i - j) % 3 != 0 and math.gcd(i, j) == 1,
+                                                                 range(1, i))))
+                                for k in range(1, math.ceil(limit / (a + b)))))))
     index = [None] * limit
     for i, (a, _) in enumerate(pairs):
         if index[a] is None:
