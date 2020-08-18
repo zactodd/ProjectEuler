@@ -6,6 +6,8 @@ The number 3797 has an interesting property. Being prime itself, it is possible 
 Find the sum of the only eleven primes that are both truncatable from left to right and right to left.
 
 NOTE: 2, 3, 5, and 7 are not considered to be truncatable primes.
+
+Solved: O(n * (log n)^2)
 """
 from python.utils import fast_primes
 from itertools import islice

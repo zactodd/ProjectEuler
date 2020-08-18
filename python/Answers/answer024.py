@@ -5,6 +5,8 @@ A permutation is an ordered arrangement of objects. For example, 3124 is one pos
 012   021   102   120   201   210
 
 What is the millionth lexicographic permutation of the digits 0, 1, 2, 3, 4, 5, 6, 7, 8 and 9?
+
+Solved: O(1), limit occurs on the permutation which is O(n!) but is the same list each time.
 """
 
 from itertools import permutations

@@ -25,6 +25,7 @@ The four adjacent digits in the 1000-digit number that have the greatest product
 
 Find the thirteen adjacent digits in the 1000-digit number that have the greatest product. What is the value of this product?
 
+Solved: O(log n)
 """
 
 N = """73167176531330624919225119674426574742355349194934
