@@ -10,10 +10,6 @@ Given that Fk is the first Fibonacci number for which the first nine digits AND 
 from python.utils import is_perm
 
 
-def is_pandigital(a):
-    return is_perm(a, "123456789")
-
-
 def top(n):
     t = n * 0.20898764024997873 - 0.3494850021680094
     return int((pow(10, t - int(t) + 8)))

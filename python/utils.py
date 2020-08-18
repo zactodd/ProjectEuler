@@ -118,6 +118,10 @@ def generate_primes():
             yield num
 
 
+def is_pandigital(a):
+    return is_perm(a, "123456789")
+
+
 def nth_prime(n):
     return next(islice(generate_primes(), n, None))
 
