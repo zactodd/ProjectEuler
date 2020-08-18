@@ -12,47 +12,29 @@ If the sum is minimised and a, b, c, p, q and r are all positive integers we sha
 Find the sum of all distinct values of p + q + r ≤ 120000 for Torricelli triangles.
 """
 import math
+from itertools import takewhile, chain
 
 
 def answer(limit=120000):
     sq_limit = int(math.sqrt(limit))
     pairs = []
     for i in range(1, sq_limit):
-        for j in range(1, i):
-            if (i - j) % 3 == 0 or math.gcd(i, j) != 1:
-                continue
-            a = 2 * i * j + j ** 2
-            b = i ** 2 - j ** 2
-            if a + b > limit:
-                break
+        for a, b in takewhile(lambda p: sum(p) <= limit,
+                              map(lambda j: (2 * i * j + j ** 2, i ** 2 - j ** 2),
+                                  filter(lambda j: (i - j) % 3 != 0 and math.gcd(i, j) == 1, range(1, i)))):
             for k in range(1, math.ceil(limit / (a + b))):
                 pairs.extend([(k * a, k * b), (k * b, k * a)])
     pairs.sort()
     index = [None] * limit
-    sums = [False] * limit
     for i, (a, _) in enumerate(pairs):
         if index[a] is None:
             index[a] = i
-
-    for i in range(len(pairs)):
-        a, b = pairs[i]
-        va, vb = [], []
-
-        for j in range(index[a], len(pairs)):
-            aj, bj = pairs[j]
-            if aj != a:
-                break
-            va.append(bj)
-
-        for j in range(index[b], len(pairs)):
-            aj, bj = pairs[j]
-            if aj != b:
-                break
-            vb.append(bj)
-        for j in range(len(va)):
-            if va[j] in vb and a + b + va[j] < limit:
-                sums[a + b + va[j]] = True
-    return sum(i for i in range(limit) if sums[i])
+    s = set()
+    for i, (a, b) in enumerate(pairs):
+        va = {bj for _, bj in takewhile(lambda p: p[0] == a, map(lambda j: pairs[j], range(index[a], len(pairs))))}
+        vb = {bj for _, bj in takewhile(lambda p: p[0] == b, map(lambda j: pairs[j], range(index[b], len(pairs))))}
+        s |= {ss for aj in va if aj in vb and (ss := (a + b + aj)) < limit}
+    return sum(s)
 
 
 if __name__ == '__main__':
