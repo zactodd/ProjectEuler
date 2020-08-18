@@ -7,11 +7,14 @@ If p is the perimeter of a right angle triangle with integral length sides, {a,b
 
 For which value of p ≤ 1000, is the number of solutions maximised?
 """
-from itertools import combinations
+
+
+def py_triples(n):
+    return sum(a * a + b * b == (n - a - b) ** 2 for a in range(1, n + 1) for b in range(a + 1, n + 1))
 
 
 def answer(n=1001):
-    return max(range(n), key=lambda x: sum(a * a + b * b == (n - a - b) ** 2 for a, b in combinations(range(1, x), 2)))
+    return max(range(n), key=py_triples)
 
 
 if __name__ == '__main__':
