@@ -8,7 +8,7 @@ What is the largest square number formed by any member of such a pair?
 
 NOTE: All anagrams formed must be contained in the given text file.
 """
-from itertools import permutations, combinations
+from itertools import permutations, combinations, chain
 
 WORDS_FILE = "../../resources/words.txt"
 with open(WORDS_FILE, "r") as f:
@@ -16,20 +16,15 @@ with open(WORDS_FILE, "r") as f:
 
 
 def sq(n, letters, y):
-
     x = int("".join(str(y[letters[i]]) for i in n))
     return x if int(x ** 0.5) ** 2 == x else False
 
 
 def answer():
     pairs = [(w1, w2) for (w1, s1), (w2, s2) in combinations(WORDS, 2) if s1 == s2]
-    max_sq = 0
-    for w, a in pairs:
-        letters = {x: y for y, x in enumerate(set(w))}
-        for y in permutations(range(1, 10), len(letters)):
-            if (cw := sq(w, letters, y)) and (ca := sq(a, letters, y)):
-                max_sq = max(cw, ca, max_sq)
-    return max_sq
+    return max(max([0] + list(chain(*([ca, cw] for y in permutations(range(1, 10), len(letters))
+                                      if (cw := sq(w, letters, y)) and (ca := sq(a, letters, y))))))
+               for (w, a), letters in map(lambda p: (p, {x: y for y, x in enumerate(set(p[0]))}), pairs))
 
 
 if __name__ == '__main__':

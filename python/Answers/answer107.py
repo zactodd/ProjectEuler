@@ -25,14 +25,12 @@ with open(NETWORK_FILE, "r") as f:
     WEIGHTS = [[int(v) if v != "-" else None for v in line.strip("\n").split(",")] for line in f.readlines()]
 
 
-def answer():
-    nodes = len(WEIGHTS)
-    s = sum(WEIGHTS[i][j] for i in range(nodes) for j in range(i + 1, nodes) if WEIGHTS[i][j] is not None)
+def answer(nodes=len(WEIGHTS), weights=WEIGHTS):
+    s = sum(WEIGHTS[i][j] for i in range(nodes) for j in range(i + 1, nodes) if weights[i][j] is not None)
     connected = {0}
-    for _ in range(nodes - 1):
-        l, new_node = min((WEIGHTS[j][k], k) for j in connected for k in range(nodes)
-                          if k not in connected and WEIGHTS[j][k] is not None)
-        connected.add(new_node)
+    for l, n in map(lambda _: min((weights[j][k], k) for j in connected for k in range(nodes)
+                                  if k not in connected and weights[j][k] is not None), range(nodes - 1)):
+        connected.add(n)
         s -= l
     return s
 
