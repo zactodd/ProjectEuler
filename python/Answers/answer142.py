@@ -7,19 +7,10 @@ from python.utils import is_perfect_square
 
 
 def answer():
-    for i in count(4):
-        a = i ** 2
-        for j in range(3, i):
-            c = j ** 2
-            f = a - c
-            if f <= 0 or not is_perfect_square(f):
-                continue
-            for k in range(1 if j % 2 == 1 else 2, j, 2):
-                e = a - k ** 2
-                b = c - e
-                if b <= 0 or e <= 0 or not is_perfect_square(b) or not is_perfect_square(e):
-                    continue
-                return (2 * c + e + f) // 2
+    return next((c + e + a) // 2 for i, a in map(lambda x: (x, x ** 2), count(4))
+                for j, c in filter(lambda x: is_perfect_square(a - x[1]), map(lambda x: (x, x ** 2), range(3, i)))
+                for k in range(1 if j % 2 == 1 else 2, j, 2)
+                if (e := a - k ** 2) > 0 and (b := c - e) > 0 and is_perfect_square(e) and is_perfect_square(b))
 
 
 if __name__ == '__main__':
