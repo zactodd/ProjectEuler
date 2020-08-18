@@ -9,21 +9,12 @@ Find the sum of all products whose multiplicand/multiplier/product identity can 
 
 HINT: Some products can be obtained in more than one way so be sure to only include it once in your sum.
 """
+from python.utils import is_pandigital
+from itertools import combinations
 
-from itertools import permutations
 
-
-def answer():
-    prods = set()
-    for i in permutations("123456789*=", 11):
-        if (star := i.index("*")) > (equals := i.index("=")) or abs(star - equals) == 1:
-            continue
-        n, m, p = i[:star], i[star + 1:equals], i[equals + 1:]
-        if len(p) < len(n) or len(p) < len(m) or len(n) == 0 or len(m) == 0:
-            continue
-        elif int("".join(n)) * int("".join(m)) == (prod := int("".join(p))):
-            prods.add(prod)
-    return sum(prods)
+def answer(n=10000):
+    return sum({p for i, j in combinations(range(n), 2) if is_pandigital(str(p := i * j) + str(i) + str(j))})
 
 
 if __name__ == '__main__':
