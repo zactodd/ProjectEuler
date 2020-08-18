@@ -10,19 +10,16 @@ NOTE: 2, 3, 5, and 7 are not considered to be truncatable primes.
 Solved: O(n * (log n)^2)
 """
 from python.utils import fast_primes
-from itertools import islice
+from itertools import islice, chain
 
 
 def truncates(n):
-    ts = set()
-    for i in range(1, len(str_n := str(n))):
-        ts |= {int(str_n[i:]), int(str_n[:i])}
-    return ts
+    return set(chain(*({int(n[i:]), int(n[:i])} for i in range(1, len(n)))))
 
 
 def answer(limit=int(1e6)):
     primes = fast_primes(limit)
-    return sum(islice((p for p in primes if p > 10 and all(c in primes for c in truncates(p))), 11))
+    return sum(islice((p for p in primes if p > 10 and all(c in primes for c in truncates(str(p)))), 11))
 
 
 if __name__ == '__main__':
