@@ -9,23 +9,17 @@ As 12 is the smallest abundant number, 1 + 2 + 3 + 4 + 6 = 16, the smallest numb
 Find the sum of all the positive integers which cannot be written as the sum of two abundant numbers.
 """
 import math
+from itertools import accumulate
 
 
 def abundant(n):
-    t = math.sqrt(n)
-    s = -t if t.is_integer() else 1
-    return s + sum(i + n / i for i in range(2, int(t) + 1) if n % i == 0)
+    return (-t if (t := math.sqrt(n)).is_integer() else 1) + sum(i + n / i for i in range(2, int(t) + 1) if n % i == 0)
 
 
 def answer(n=20161):
-    s = 0
-    abn = set()
-    for i in range(1, n + 1):
-        if abundant(i) > i:
-            abn.add(i)
-        if not any((i - a in abn) for a in abn):
-            s += i
-    return s
+    return sum(i for i, abn in
+               enumerate(accumulate(({i} if abundant(i) > i else set() for i in range(1, n + 1)), set.union), 1)
+               if not any((i - a in abn) for a in abn))
 
 
 if __name__ == '__main__':
