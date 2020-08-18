@@ -10,26 +10,16 @@ The sum of all progressive perfect squares below one hundred thousand is 124657.
 
 Find the sum of all progressive perfect squares below one trillion (1012).
 """
-import math
-from itertools import count
+from math import gcd
+from itertools import count, takewhile
 from python.utils import is_perfect_square
 
 
 def answer(limit=int(1e12)):
-    p_set = set()
-    for a in range(2, 10000):
-        for b in range(1, a):
-            a3, b2 = a ** 3, b ** 2
-            if a3 * b2 + b2 >= limit:
-                break
-            elif math.gcd(a, b) > 1:
-                continue
-            for c in count():
-                if (n := (a3 * b * c ** 2 + b2 * c)) >= limit:
-                    break
-                elif is_perfect_square(n):
-                    p_set.add(n)
-    return sum(p_set)
+    return sum({n for a, a3 in map(lambda i: (i, i ** 3), range(2, 10000))
+               for b, b2 in takewhile(lambda x: a3 * x[1] + x[1] < limit, map(lambda i: (i, i ** 2), range(1, a)))
+               for n in takewhile(lambda x: x < limit, map(lambda c: a3 * b * c ** 2 + b2 * c, count()))
+               if is_perfect_square(n)})
 
 
 if __name__ == '__main__':
