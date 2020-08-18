@@ -19,6 +19,21 @@ def fast_fib(n):
     return round(math.pow(PHI, n) / SQRT5)
 
 
+def generate_fib(start_nth=1):
+    f0, f1 = 1, 1
+    if start_nth == 1:
+        yield 1
+        yield 1
+    elif start_nth == 2:
+        yield 1
+    else:
+        for _ in range(start_nth - 2):
+            f0, f1 = f1, (f1 + f0) % 10 ** 9
+    for _ in count(start_nth):
+        f0, f1 = f1, (f1 + f0) % 10 ** 9
+        yield f1
+
+
 def is_prime(n):
     """
     Determines if n is a prime number.
