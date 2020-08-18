@@ -7,21 +7,14 @@ What is the sum of all such integers n below 150 million?
 from python.utils import rabin_miller
 import math
 
-DIV_CHECKS = [3, 7, 9, 13, 27]
-CONSECUTIVE_CHECKS = [1, 3, -5, 7, 9, -11, 13, -17, -19, -21, -23, 27]
+
+def has_consecutive_prime(s, checks=(1, 3, -5, 7, 9, -11, 13, -17, -19, -21, -23, 27)):
+    return not any((not (is_primes := rabin_miller(s + abs(c))) and c > 0) or (c < 0 and is_primes) for c in checks)
 
 
-def has_consecutive_prime(s):
-    for c in CONSECUTIVE_CHECKS:
-        is_primes = rabin_miller(s + abs(c))
-        if (c > 0 and not is_primes) or (c < 0 and is_primes):
-            return False
-    return True
-
-
-def answer(limit=int(1.5e8)):
+def answer(limit=int(1.5e8), div_checks=(3, 7, 9, 13, 27)):
     return sum(int(math.sqrt(s)) for s in map(lambda x: x ** 2, range(10, limit, 10))
-               if all(s % d != 0 for d in DIV_CHECKS) and has_consecutive_prime(s))
+               if all(s % d != 0 for d in div_checks) and has_consecutive_prime(s))
 
 
 if __name__ == '__main__':
