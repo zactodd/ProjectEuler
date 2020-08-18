@@ -22,37 +22,31 @@ The animation on the right shows the first 10 reflections of the beam.
 How many times does the beam hit the internal surface of the white cell before exiting?
 """
 import math
+from itertools import repeat, accumulate
 
 
 def quad_roots(a, b, c):
-    disc_o2a = math.sqrt(b * b - 4 * a * c) / (2 * a)
-    return -b - disc_o2a, -b + disc_o2a
+    return (-b - (d := math.sqrt(b * b - 4 * a * c))) / (a2 := (2 * a)), (-b + d) / a2
 
 
-def answer():
-    x_a, y_a, x_o, y_o = 0.0, 10.1, 1.4, -9.6
-    count = 0
-    while x_o > 0.01 or x_o < -0.01 or y_o < 0:
-        slope_a = (y_o - y_a) / (x_o - x_a)
-        slope_o = -4 * x_o / y_o
-        tan_a = (slope_a - slope_o) / (1 + slope_a * slope_o)
-        slope_b = (slope_o - tan_a) / (1 + tan_a * slope_o)
-        intercept_b = y_o - slope_b * x_o
+def update_beam(xa, ya, xo, yo):
+    slope_a = (yo - ya) / (xo - xa)
+    slope_o = -4 * xo / yo
+    tan_a = (slope_a - slope_o) / (1 + slope_a * slope_o)
+    slope_b = (slope_o - tan_a) / (1 + tan_a * slope_o)
+    intercept_b = yo - slope_b * xo
 
-        a = 4 + slope_b ** 2
-        b = 2 * slope_b * intercept_b
-        c = intercept_b ** 2 - 100
+    r1, r2 = quad_roots(4 + slope_b ** 2, 2 * slope_b * intercept_b, intercept_b ** 2 - 100)
 
-        r1 = (-b + math.sqrt(b * b - 4 * a * c)) / (2 * a)
-        r2 = (-b - math.sqrt(b * b - 4 * a * c)) / (2 * a)
+    xa, ya = xo, yo
+    xo = r1 if (abs(r1 - xo) > abs(r2 - xo)) else r2
+    yo = slope_b * xo + intercept_b
+    return xa, ya, xo, yo
 
-        x_a = x_o
-        y_a = y_o
 
-        x_o = r1 if (abs(r1 - x_o) > abs(r2 - x_o)) else r2
-        y_o = slope_b * x_o + intercept_b
-        count += 1
-    return count
+def answer(xa=0.0, ya=10.1, xo=1.4, yo=-9.6):
+    return next(i for i, p in enumerate(accumulate(repeat(1), lambda p, _: update_beam(*p), initial=(xa, ya, xo, yo)))
+                if 0.01 >= p[2] >= -0.01 and p[3] >= 0)
 
 
 if __name__ == '__main__':
