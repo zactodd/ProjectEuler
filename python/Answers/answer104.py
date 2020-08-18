@@ -7,7 +7,7 @@ It turns out that F541, which contains 113 digits, is the first Fibonacci number
 
 Given that Fk is the first Fibonacci number for which the first nine digits AND the last nine digits are 1-9 pandigital, find k.
 """
-from python.utils import is_perm
+from python.utils import is_pandigital, generate_fib
 
 
 def top(n):
@@ -16,11 +16,7 @@ def top(n):
 
 
 def answer():
-    fn, f0, f1 = 2, 1, 1
-    while not is_pandigital(f1) or not is_pandigital(top(fn)):
-        f0, f1 = f1, (f1 + f0) % 10 ** 9
-        fn += 1
-    return fn
+    return next(i for i, f in enumerate(generate_fib(1), 1) if is_pandigital(f) and is_pandigital(top(i)))
 
 
 if __name__ == '__main__':
