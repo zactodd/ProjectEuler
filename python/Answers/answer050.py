@@ -16,10 +16,8 @@ from itertools import accumulate, takewhile
 
 def answer(limit=1000000):
     p_acc = list(takewhile(lambda p: p < limit, accumulate(primes := fast_primes(limit))))
-    return reduce(lambda x, y: next(
-            ((j - y, n) for j in range(c - 1, y + x[0], -1) if j - y > x[0] and (n := p_acc[j] - p_acc[y]) in primes),
-            x
-        ), range(c := len(p_acc)), (1, 0))[1]
+    return reduce(lambda x, y:  next(((j - y, n) for j in range(c - 1, y + x[0], -1)
+                                      if (n := p_acc[j] - p_acc[y]) in primes), x), range(c := len(p_acc)), (1, 0))[1]
 
 
 if __name__ == '__main__':
