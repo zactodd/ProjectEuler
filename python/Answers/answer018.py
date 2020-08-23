@@ -13,6 +13,8 @@ Find the maximum total from top to bottom of the triangle below:
 
 Solved: O(n^2)
 """
+from functools import reduce
+
 
 TRIANGLE = """
 75
@@ -35,10 +37,7 @@ TRIANGLE = [list(map(int, row.split())) for row in TRIANGLE.split("\n")]
 
 
 def answer(triangle=TRIANGLE):
-    for row in range(len(triangle) - 1, 0, -1):
-        for col in range(0, row):
-            triangle[row - 1][col] += max(triangle[row][col], triangle[row][col + 1])
-    return triangle[0][0]
+    return reduce(lambda i, j: [ji + max(*ii) for ji, *ii in zip(j, i, i[1:])], reversed(triangle))[0]
 
 
 if __name__ == '__main__':
