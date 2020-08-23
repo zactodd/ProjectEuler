@@ -15,6 +15,7 @@ Each polygonal type: triangle (P3,127=8128), square (P4,91=8281), and pentagonal
 This is the only set of 4-digit numbers with this property.
 Find the sum of the only ordered set of six cyclic 4-digit numbers for which each polygonal type: triangle, square, pentagonal, hexagonal, heptagonal, and octagonal, is represented by a different number in the set.
 """
+from collections import defaultdict
 
 
 def fn(n):
@@ -33,11 +34,7 @@ def chain(types, data, ds):
 
 def answer():
     poly_nums = [(t, d) for n in range(19, 141) for t, d in fn(n) if 1000 <= d <= 9999 and d % 100 > 9]
-    ds = {}
-    for t1, d1 in poly_nums:
-        for t2, d2 in poly_nums:
-            if t1 != t2 and d1 % 100 == d2 // 100:
-                ds[(t1, d1)] = ds.get((t1, d1), []) + [(t2, d2)]
+    ds = {(t1, d1): [(t2, d2) for t2, d2 in poly_nums if t1 != t2 and d1 % 100 == d2 // 100] for t1, d1 in poly_nums}
     return next(int(s) for t, d in ds if (s := chain([t], [d], ds)) is not None)
 
 
