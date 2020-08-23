@@ -12,12 +12,9 @@ from python.Answers.answer081 import MATRIX
 def answer(matrix=MATRIX):
     n, m = len(matrix), len(matrix[0])
     g = nx.DiGraph()
-    for i in range(n):
-        for j in range(m):
-            neighbors = [(i + x, j + y) for x, y in [(-1, 0), (0, -1), (1, 0), (0, 1)]
-                         if 0 <= i + x < n and 0 <= j + y < m]
-            for ix, jy in neighbors:
-                g.add_edge((i, j), (ix, jy), weight=matrix[ix][jy])
+    g.add_weighted_edges_from((((i, j), (ix, jy), matrix[ix][jy]) for i in range(n) for j in range(m)
+                               for ix, jy in ((i + x, j + y) for x, y in ((-1, 0), (0, -1), (1, 0), (0, 1))
+                                              if 0 <= i + x < n and 0 <= j + y < m)))
     return nx.dijkstra_path_length(g, source=(0, 0), target=(n - 1, m - 1)) + matrix[0][0]
 
 
