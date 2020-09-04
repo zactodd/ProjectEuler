@@ -28,13 +28,11 @@ def decrypt(cipher, key):
 
 
 def answer(cipher_text=CIPHER_TEXT):
-    key = max(((i, j, k) for i, j, k in permutations(range(97, 123), 3)), key=lambda x: score(decrypt(cipher_text, x)))
-    return sum(decrypt(cipher_text, key))
+    return sum(decrypt(cipher_text, max(permutations(range(97, 123), 3), key=lambda x: score(decrypt(cipher_text, x)))))
 
 
 if __name__ == '__main__':
     print("Answer is:", answer())
-    print(0x7F)
 
 
 
