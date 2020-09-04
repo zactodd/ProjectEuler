@@ -10,11 +10,9 @@ from math import sqrt
 from itertools import count
 
 
-def answer():
-    limit, x, min_diff = 2000000, 2, float('Inf')
-    area = None
-    for x in count(2, 2):
-        y = int(sqrt(limit * 4 / (x * x + x)))
+def answer(limit=2000000):
+    min_diff, area = float("Inf"), None
+    for x, y in map(lambda c: (c, int(sqrt(limit * 4 / (c * c + c)))), count(2, 2)):
         if x > y:
             return area
         elif (d := (abs(x * (x + 1) * y * (y + 1) // 4 - limit))) < min_diff:
