@@ -9,11 +9,11 @@ Solved: O(n)
 """
 
 from math import gcd
-from itertools import accumulate
+from functools import reduce
 
 
 def answer(n=20):
-    return list(accumulate(range(1, n + 1), lambda x, y: x * y // gcd(y, x), initial=1))[-1]
+    return reduce(lambda x, y: x * y // gcd(y, x), range(1, n + 1), 1)
 
 
 if __name__ == '__main__':
