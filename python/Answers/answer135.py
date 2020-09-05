@@ -8,16 +8,16 @@ It turns out that n = 1155 is the least value which has exactly ten solutions.
 
 How many values of n less than one million have exactly ten distinct solutions?
 """
+from collections import Counter
+from itertools import takewhile
 
 
 def answer(limit=10 ** 6):
-    s = [0] * limit
+    s = Counter()
     for m in range(1, limit * 2):
-        for k in range(m // 5 + 1, (m + 1) // 2):
-            if (index := (m - k) * (k * 5 - m)) >= limit:
-                break
-            s[index] += 1
-    return s.count(10)
+        for i in takewhile(lambda i: i < limit, map(lambda k: (m - k) * (k * 5 - m), range(m // 5 + 1, (m + 1) // 2))):
+            s[i] += 1
+    return sum(v == 10 for v in s.values())
 
 
 if __name__ == '__main__':
