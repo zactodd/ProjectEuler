@@ -11,22 +11,15 @@ PRIMALITY = is_prime_list(10000)
 
 
 def fast_is_prime(n):
-    if n < len(PRIMALITY):
-        return PRIMALITY[n]
-    else:
-        return is_prime(n)
+    return PRIMALITY[n] if n < len(PRIMALITY) else is_prime(n)
 
 
 def count_prime_sets(digits, start=0, prev=0):
     if start == len(digits):
         return 1
     else:
-        result = 0
-        for split in range(start + 1, len(digits) + 1):
-            num = int("".join(map(str, digits[start: split])))
-            if num > prev and fast_is_prime(num):
-                result += count_prime_sets(digits, split, num)
-        return result
+        return sum(count_prime_sets(digits, split, num) for split in range(start + 1, len(digits) + 1)
+                   if (num := int("".join(map(str, digits[start: split])))) > prev and fast_is_prime(num))
 
 
 def answer(digits=list(range(1, 10))):
