@@ -10,15 +10,12 @@ It can be shown that there are exactly 2060 distinct cuboids, ignoring rotations
 Find the least value of M such that the number of solutions first exceeds one million.
 """
 import math
+from itertools import count, accumulate
 
 
-def answer():
-    limit, c, a = int(1e6), 0, 2
-    while c < limit:
-        a += 1
-        c += sum(min(bc, a + 1) - (bc + 1) // 2 for bc in range(3, 2 * a)
-                 if (bc * a) % 12 == 0 and not math.sqrt(bc * bc + a * a) % 1)
-    return a
+def answer(limit=int(1e6)):
+    acc = lambda c, a: c + sum(min(b, a + 1) - (b + 1) // 2 for b in range(3, 2 * a) if not math.sqrt(b * b + a * a) % 1)
+    return next(a for a, c in enumerate(accumulate(count(2), acc), 2) if c >= limit)
 
 
 if __name__ == '__main__':
