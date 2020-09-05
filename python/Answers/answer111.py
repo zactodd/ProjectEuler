@@ -26,33 +26,18 @@ For d = 0 to 9, the sum of all S(4, d) is 273700.
 Find the sum of all S(10, d).
 """
 
-from python.utils import fast_primes
+from python.utils import is_prime
 from itertools import product, combinations, zip_longest, count
-import math
-
-
-PRIMES = fast_primes(int(math.sqrt(10 ** 10)))
-
-
-def is_prime(n):
-    end = math.sqrt(n)
-    for p in PRIMES:
-        if p > end:
-            break
-        if n % p == 0:
-            return False
-    return True
+from collections import defaultdict
 
 
 def generator(n, d, rep):
-    def filter_func(t):
-        return (t[0][0] != 0 or t[1][0] != 0) and (t[0][-1] != n - 1 or (t[1][-1] & 1 != 0 and t[1][-1] != 5))
+    f = lambda t: (t[0][0] != 0 or t[1][0] != 0) and (t[0][-1] != n - 1 or (t[1][-1] & 1 != 0 and t[1][-1] != 5))
 
     inds, nums = combinations(range(n), n - rep), product(*([tuple(set(range(10)) - {d})] * (n - rep)))
-    for tup in filter(filter_func, product(inds, nums)):
-        base = [d for _ in range(n)]
-        for ind, val in zip_longest(*tup):
-            base[ind] = val
+    for tup in filter(f, product(inds, nums)):
+        dd = defaultdict(lambda: d, {i: v for i, v in zip_longest(*tup)})
+        base = [dd[i] for i in range(n)]
         if base[0] != 0 and base[-1] & 1 != 0 and base[-1] != 5:
             yield int("".join(map(str, base)))
 
