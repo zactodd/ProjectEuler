@@ -17,7 +17,7 @@ Give your answer as a hexadecimal number.
 
 
 def answer():
-    return sum((15 * 16 ** n - 43 * 15 ** n + 41 * 14 ** n - 13 ** (n + 1)) for n in range(16))
+    return hex(sum((15 * 16 ** n - 43 * 15 ** n + 41 * 14 ** n - 13 ** (n + 1)) for n in range(16)))
 
 
 if __name__ == "__main__":
