@@ -52,7 +52,7 @@ def answer(n=10000):
             period += 1
             k = (i - r * r) // k
             r = (limit + r) // k * k - r
-        if period % 2 == 1:
+        if period % 2:
             odd_period += 1
     return odd_period
 
