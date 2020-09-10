@@ -26,7 +26,7 @@ def answer(n=int(1e6), limit=500):
     for i in range(1, n):
         for j in range(i, n, i):
             d[j] += 1
-        if (d[i - 1] * d[i // 2] if i % 2 == 0 else d[(i - 1) // 2] * d[i]) > limit:
+        if (d[(i - 1) // 2] * d[i] if i % 2 else d[i - 1] * d[i // 2]) > limit:
             return i * (i - 1) // 2
 
 
