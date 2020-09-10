@@ -32,7 +32,7 @@ from functools import reduce
 
 
 def u(n):
-    return sum(n ** i * (1 if i % 2 == 0 else -1) for i in range(11))
+    return sum(n ** i * (-1 if i % 2 else 1) for i in range(11))
 
 
 def tld(x):
