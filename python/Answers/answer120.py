@@ -8,8 +8,8 @@ For 3 ≤ a ≤ 1000, find ∑ rmax.
 """
 
 
-def answer():
-    return sum(i * (i - (2 if i % 2 == 0 else 1)) for i in range(3, 1001))
+def answer(l=1000):
+    return sum(i * (i - (i % 2) + 1) for i in range(3, l + 1))
 
 
 if __name__ == '__main__':
