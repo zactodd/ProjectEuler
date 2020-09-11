@@ -21,27 +21,25 @@ Finally, find the greatest sum of (any number of) adjacent entries in any direct
 """
 
 
-def answer(size=2000):
-    def max_sub_sum(x, y, dx, dy):
-        result, current = 0, 0
-        while 0 <= x < size and 0 <= y < size:
-            current = max(current + grid[y][x], 0)
-            result = max(current, result)
-            x += dx
-            y += dy
-        return result
+def max_sub_sum(size, grid, x, y, dx, dy):
+    result, current = 0, 0
+    while 0 <= x < size and 0 <= y < size:
+        current = max(current + grid[y][x], 0)
+        result = max(current, result)
+        x += dx
+        y += dy
+    return result
 
-    seq = []
-    for i in range(1, size ** 2 + 1):
-        if i <= 55:
-            seq.append((100003 - 200003 * i + 300007 * i ** 3) % 1000000 - 500000)
-        else:
-            seq.append((seq[-24] + seq[-55]) % 1000000 - 500000)
-    grid = [seq[i * size: (i + 1) * size] for i in range(size)]
+
+def answer(size=2000):
+    seq = [(100003 - 200003 * i + 300007 * i ** 3) % 1000000 - 500000 for i in range(56)]
+    for i in range(56, size ** 2 + 1):
+        seq.append((seq[-24] + seq[-55]) % 1000000 - 500000)
+    g = [seq[i * size: (i + 1) * size] for i in range(size)]
     return max(
         max(
-            max_sub_sum(0, i, +1, 0), max_sub_sum(i, 0, 0, +1), max_sub_sum(0, i, +1, +1),
-            max_sub_sum(i, 0, +1, +1), max_sub_sum(i, 0, -1, +1), max_sub_sum(size - 1, i, -1, +1)
+            max_sub_sum(size, g, 0, i, 1, 0), max_sub_sum(size, g, i, 0, 0, 1), max_sub_sum(size, g, 0, i, 1, 1),
+            max_sub_sum(size, g, i, 0, 1, 1), max_sub_sum(size, g, i, 0, -1, 1), max_sub_sum(size, g, size - 1, i, 1, 1)
         ) for i in range(size))
 
 
