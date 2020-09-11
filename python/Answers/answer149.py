@@ -35,7 +35,7 @@ def answer(size=2000):
     seq = [(100003 - 200003 * i + 300007 * i ** 3) % 1000000 - 500000 for i in range(56)]
     for i in range(56, size ** 2 + 1):
         seq.append((seq[-24] + seq[-55]) % 1000000 - 500000)
-    g = [seq[i * size: (i + 1) * size] for i in range(size)]
+    g = [seq[i * size:(i + 1) * size] for i in range(size)]
     return max(
         max(
             max_sub_sum(size, g, 0, i, 1, 0), max_sub_sum(size, g, i, 0, 0, 1), max_sub_sum(size, g, 0, i, 1, 1),
