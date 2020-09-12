@@ -45,7 +45,6 @@ end
 SMALL_PRIMES = vcat([2], [n for n in 3:2:1000 if is_prime(n)])
 
 
-
 function sieves(n)
        is_prime = ones(Bool, n)
        is_prime[1] = false
