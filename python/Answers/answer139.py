@@ -12,9 +12,9 @@ Given that the perimeter of the right triangle is less than one-hundred million,
 from itertools import accumulate, takewhile, repeat
 
 
-def answer(l=int(1e8)):
-    return sum((l - 1) // (x + y) for x, y in
-               takewhile(lambda j: sum(j) <= l,
+def answer(limit=int(1e8)):
+    return sum((limit - 1) // (x + y) for x, y in
+               takewhile(lambda j: sum(j) <= limit,
                          accumulate(repeat(1), lambda i, _: (3 * i[0] + 4 * i[1], 2 * i[0] + 3 * i[1]),
                                     initial=(7, 5))))
 
