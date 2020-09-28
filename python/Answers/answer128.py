@@ -25,10 +25,7 @@ def tiles(limit):
     while c <= limit:
         r = 6 * n
         if is_prime(r - 1):
-            if is_prime(r + 1) and is_prime(2 * r + 5):
-                c += 1
-            if is_prime(r + 5) and is_prime(2 * r - 7):
-                c += 1
+            c += (is_prime(r + 1) and is_prime(2 * r + 5)) + (is_prime(r + 5) and is_prime(2 * r - 7))
         n += 1
     return n - 1
 
