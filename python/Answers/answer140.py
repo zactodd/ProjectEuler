@@ -20,8 +20,8 @@ from python.utils import SQRT5
 from functools import reduce
 
 
-def answer(l=30):
-    return sum(int(x / SQRT5) - 1 for x in reduce(lambda x, _: x + [7 * x[-2] - x[-4]], range(l - 4), [7, 14, 50, 97]))
+def answer(n=30):
+    return sum(int(x / SQRT5) - 1 for x in reduce(lambda x, _: x + [7 * x[-2] - x[-4]], range(n - 4), [7, 14, 50, 97]))
 
 
 if __name__ == '__main__':
