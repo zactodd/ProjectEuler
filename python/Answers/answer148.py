@@ -18,7 +18,7 @@ Find the number of entries which are not divisible by 7 in the first one billion
 def int2(n, b):
     ret = []
     while n != 0:
-        n, k = n // b, n % b
+        n, k = divmod(n, b)
         ret.append(k)
     ret.reverse()
     return ret

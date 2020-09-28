@@ -12,13 +12,7 @@ What is the smallest positive number that is evenly divisible by all of the numb
 
 
 
-function answer()
-    p = 1
-    for i in 1:21
-        p *= div(i, gcd(i, p))
-    end
-    return p
-end
+answer(n=20) = reduce((x, y) -> div(x * y, gcd(y, x)), 1:n)
 
 
 # Output

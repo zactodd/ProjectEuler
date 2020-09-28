@@ -208,6 +208,21 @@ def totients(n):
     return result
 
 
+def totient(n):
+    i, p = 2, 1
+    end = math.sqrt(n)
+    while i <= end:
+        if n % i == 0:
+            p *= i - 1
+            n //= i
+            while n % i == 0:
+                p *= i
+                n //= i
+            end = math.sqrt(n)
+        i += 1
+    return p if n == 1 else p * (n - 1)
+
+
 def next_permutation(arr):
     i = len(arr) - 1
     while i > 0 and arr[i - 1] >= arr[i]:

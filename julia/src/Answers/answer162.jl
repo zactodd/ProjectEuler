@@ -1,4 +1,9 @@
-"""
+#=
+answer162:
+- Julia version: 1.4.2
+- Author: Zac
+- Date: 2020-09-10
+
 Problem 162:
 
 In the hexadecimal number system numbers are represented using 16 different digits:
@@ -13,12 +18,13 @@ How many hexadecimal numbers containing at most sixteen hexadecimal digits exist
 Give your answer as a hexadecimal number.
 
 (A,B,C,D,E and F in upper case, without any leading or trailing code that marks the number as hexadecimal and without leading zeroes , e.g. 1A3F and not: 1a3f and not 0x1a3f and not $1A3F and not #1A3F and not 0000001A3F)
-"""
+
+=#
 
 
-def answer():
-    return hex(sum(15 * 16 ** n - 43 * 15 ** n + 41 * 14 ** n - 13 ** (n + 1) for n in range(16)))
+hex(s) = string(s, base=16)
+answer() = hex(sum(15 * 16 ^ n - 43 * 15 ^ n + 41 * 14 ^ n - 13 ^ (n + 1) for n in 0:15))
 
 
-if __name__ == "__main__":
-    print("Answer is:", answer())
+# Output
+println("Answer is: ", answer())

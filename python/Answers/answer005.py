@@ -13,7 +13,7 @@ from functools import reduce
 
 
 def answer(n=20):
-    return reduce(lambda x, y: x * y // gcd(y, x), range(1, n + 1), 1)
+    return reduce(lambda x, y: x * y // gcd(y, x), range(1, n + 1))
 
 
 if __name__ == '__main__':
