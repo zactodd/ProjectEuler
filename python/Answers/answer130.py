@@ -15,9 +15,9 @@ from python.utils import is_prime
 from itertools import accumulate, islice, repeat
 
 
-def answer(l=25, n=91):
+def answer(limit=25, n=91):
     return sum(islice((n for n in accumulate(repeat(2), initial=n)
-                       if not is_prime(n) and pow(10, n - 1, 9 * n) == 1), l))
+                       if not is_prime(n) and pow(10, n - 1, 9 * n) == 1), limit))
 
 
 if __name__ == '__main__':
