@@ -22,8 +22,8 @@ def all_prime(chain):
     return all(is_prime(int(str(p1) + str(p2))) for p1, p2 in permutations(chain, 2))
 
 
-def answer(l=10000, n=5):
-    primes = list(fast_primes(l))
+def answer(limit=10000, n=5):
+    primes = list(fast_primes(limit))
     return sum(map(int, next((c for _ in repeat(1) if (c := make_chain(primes, [primes.pop(0)], n))))))
 
 
