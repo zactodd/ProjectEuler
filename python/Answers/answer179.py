@@ -5,8 +5,8 @@ Find the number of integers 1 < n < 107, for which n and n + 1 have the same num
 """
 
 
-def answer(l=10 ** 7):
-    ds = [2] * l
+def answer(n=10 ** 7):
+    ds = [2] * n
     for i in range(2, (len(ds) + 1) // 2):
         for j in range(i * 2, len(ds), i):
             ds[j] += 1
