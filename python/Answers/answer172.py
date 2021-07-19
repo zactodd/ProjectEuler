@@ -7,9 +7,7 @@ from collections import Counter
 
 
 def count_ways(freqs, l, b):
-    histogram = Counter()
-    for x in freqs:
-        histogram[x] += 1
+    histogram = Counter(freqs)
     ways = math.factorial(b)
     for x in histogram.values():
         ways //= math.factorial(x)
