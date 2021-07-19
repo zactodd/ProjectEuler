@@ -13,10 +13,9 @@ from itertools import takewhile
 
 
 def answer(limit=10 ** 6):
-    s = Counter()
-    for m in range(1, limit * 2):
-        for i in takewhile(lambda i: i < limit, map(lambda k: (m - k) * (k * 5 - m), range(m // 5 + 1, (m + 1) // 2))):
-            s[i] += 1
+    s = Counter(i for m in range(1, limit * 2)
+                for i in takewhile(lambda i: i < limit,
+                                   map(lambda k: (m - k) * (k * 5 - m), range(m // 5 + 1, (m + 1) // 2))))
     return sum(v == 10 for v in s.values())
 
 
