@@ -19,10 +19,8 @@ from itertools import takewhile
 
 
 def answer(l=1000000, n=10):
-    laminaes = Counter()
-    for i in range(3, l // 4 + 2):
-        for tiles in takewhile(lambda t: t <= l, map(lambda m: i * i - m * m, range(i - 2, 0, -2))):
-            laminaes[tiles] += 1
+    laminaes = Counter(tiles for i in range(3, l // 4 + 2)
+                       for tiles in takewhile(lambda t: t <= l, map(lambda m: i * i - m * m, range(i - 2, 0, -2))))
     return sum(v <= n for v in laminaes.values())
 
 
