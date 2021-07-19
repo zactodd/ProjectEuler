@@ -33,7 +33,6 @@ from collections import defaultdict
 
 def generator(n, d, rep):
     f = lambda t: (t[0][0] != 0 or t[1][0] != 0) and (t[0][-1] != n - 1 or (t[1][-1] & 1 != 0 and t[1][-1] != 5))
-
     inds, nums = combinations(range(n), n - rep), product(*([tuple(set(range(10)) - {d})] * (n - rep)))
     for tup in filter(f, product(inds, nums)):
         dd = defaultdict(lambda: d, {i: v for i, v in zip_longest(*tup)})
