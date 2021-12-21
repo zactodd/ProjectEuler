@@ -11,9 +11,7 @@ from itertools import count
 def answer(n=100, d=5):
     cubes = defaultdict(list)
     for n in count(n):
-        c = n ** 3
-        digits = "".join(sorted(str(c)))
-        cubes[digits].append(c)
+        cubes[digits := "".join(sorted(str(c := n ** 3)))].append(c)
         if len(cubes[digits]) == d:
             return cubes[digits][0]
 
