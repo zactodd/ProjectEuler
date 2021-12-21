@@ -15,8 +15,7 @@ Find the next triangle number that is also pentagonal and hexagonal.
 def answer():
     # As Triangle number are a subset of Hexagonal
     p = 165
-    h = 143
-    h = 84 * p + 97 * h - 38
+    h = 84 * p + 97 * 143 - 38
     return h * (2 * h - 1)
 
 
