@@ -13,9 +13,8 @@ from functools import reduce
 
 
 def answer(limit=10 ** 7):
-    ts = totients(limit)
     return reduce(lambda x, y: (ts[y[0]], y[0]) if is_perm(*y) and x[0] * y[0] < x[1] * y[1] else x,
-                  enumerate(ts[2:], 2), (0, 1))[0]
+                  enumerate((ts := totients(limit))[2:], 2), (0, 1))[0]
 
 
 if __name__ == '__main__':
