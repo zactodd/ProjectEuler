@@ -35,6 +35,10 @@ How many distinct ways can a player checkout with a score less than 100?
 
 
 def answer():
+    ss = [i * j for i in range(1, 21) for j in range(1, 4)] + [25, 50]
+    ds = [i * 2 for i in range(1, 21)] + [25 * 2]
+    ways = [[[None] * len(ss) for _ in range(101)] for __ in range(3)]
+
     def num_ways(throws, total, max_idx):
         result = total == 0 == throws
         if not throws:
@@ -44,10 +48,6 @@ def answer():
                 result += num_ways(throws - 1, total - ss[max_idx], max_idx)
         ways[throws][total][max_idx] = result
         return ways[throws][total][max_idx]
-
-    ss = [i * j for i in range(1, 21) for j in range(1, 4)] + [25, 50]
-    ds = [i * 2 for i in range(1, 21)] + [25 * 2]
-    ways = [[[None] * len(ss) for _ in range(101)] for __ in range(3)]
     return sum(num_ways(throws, r - p, len(ss) - 1) for r in range(1, 100) for throws in range(3) for p in ds if p <= r)
 
 
