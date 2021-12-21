@@ -47,70 +47,66 @@ import random
 
 class Deck(object):
     def __init__(self, size):
-        self.cards = list(range(size))
-        self.index = size
+        self.deck = list(range(size))
+        self.stack = []
 
     def next_card(self):
-        if self.index == len(self.cards):
-            random.shuffle(self.cards)
-            self.index = 0
-        result = self.cards[self.index]
-        self.index += 1
-        return result
+        if not len(self.stack):
+            self.stack = self.deck.copy()
+            random.shuffle(self.stack)
+        return self.stack.pop()
+
+
+def update_location(location, chance, community_chest):
+    match location:
+        case 7 | 22 | 36:  # Chance
+            match chance.next_card():
+                case 0:
+                    return 0
+                case 1:
+                    return 10  # Go to jail just visiting
+                case 2:
+                    return 11
+                case 3:
+                    return 24
+                case 4:
+                    return 39
+                case 5:
+                    return 5
+                case 6 | 7:  # Next railway
+                    return (location + 5) // 10 % 4 * 10 + 5
+                case 8:  # Next utility
+                    return 28 if (12 < location < 28) else 12
+                case 9:
+                    location = location - 3
+                    return update_location(location, chance, community_chest)
+        case 30:  # Go to jail
+            return 10
+        case 2 | 17 | 33:  # Community chest
+            match community_chest.next_card():
+                case 0:
+                    return 0  # Go to go
+                case 1:
+                    return 10  # Go to jail just visiting
+    return location
 
 
 def answer(samples=10 ** 7):
     counts = [0] * 40
-
-    # Decks
     chance = Deck(16)
     community_chest = Deck(16)
     triple_doubles = 0
     location = 0
 
-    for i in range(samples):
-        die0 = random.randint(1, 4)
-        die1 = random.randint(1, 4)
-        triple_doubles = triple_doubles + 1 if die0 == die1 else 0
-        if triple_doubles < 3:
-            location = (location + die0 + die1) % 40
-        else:
+    for _ in range(samples):
+        d0, d1 = random.randint(1, 4), random.randint(1, 4)
+        triple_doubles += d0 == d1
+        if triple_doubles >= 3:
             location = 30
             triple_doubles = 0
-
-        # Goto locations
-        if location in (7, 22, 36):  # Chance
-            card = chance.next_card()
-            if card == 0:
-                location = 0
-            elif card == 1:
-                location = 10
-            elif card == 2:
-                location = 11
-            elif card == 3:
-                location = 24
-            elif card == 4:
-                location = 39
-            elif card == 5:
-                location = 5
-            elif card in (6, 7):  # Next railway
-                location = (location + 5) // 10 % 4 * 10 + 5
-            elif card == 8:  # Next utility
-                location = 28 if (12 < location < 28) else 12
-            elif card == 9:
-                location -= 3
-        elif location == 30:  # Go to jail
-            location = 10
         else:
-            pass
-
-        if location in (2, 17, 33):  # Community chest
-            card = community_chest.next_card()
-            if card == 0:
-                location = 0
-            elif card == 1:
-                location = 10
-
+            location = (location + d0 + d1) % 40
+        location = update_location(location, chance, community_chest)
         counts[location] += 1
 
     return "".join("{:02d}".format(i) for (i, c) in sorted(enumerate(counts), key=(lambda ic: -ic[1]))[: 3])
@@ -118,6 +114,3 @@ def answer(samples=10 ** 7):
 
 if __name__ == '__main__':
     print("Answer is:", answer())
-
-
-
