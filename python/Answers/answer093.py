@@ -19,28 +19,12 @@ from itertools import combinations, permutations, product
 from operator import add, sub, mul, truediv
 
 
-def seq_length(s, c=1):
-    while c in s:
-        c += 1
-    return c - 1
-
-
 # TODO make general
 def answer(ops=(add, mul, sub, truediv)):
-    max_n, max_m = 0, 0
-    for terms in combinations(range(1, 10), 4):
-        s = set()
-        for p in permutations(terms):
-            for o in product(ops, repeat=3):
-                x = o[0](o[1](p[0], p[1]), o[2](p[2], p[3]))
-                if x % 1 == 0 and x > 0:
-                    s.add(int(x))
-                x = o[0](o[1](o[2](p[0], p[1]), p[2]), p[3])
-                if x % 1 == 0 and x > 0:
-                    s.add(int(x))
-        if (s_len := seq_length(s)) > max_m:
-            max_m, max_n = s_len, terms
-    return int("".join(str(i) for i in max_n))
+    return int("".join(str(i) for i in max((({x for p in permutations(terms) for o in product(ops, repeat=3)
+            for x in (o[0](o[1](p[0], p[1]), o[2](p[2], p[3])), o[0](o[1](o[2](p[0], p[1]), p[2]), p[3]))
+                        if x % 1 == 0 and x > 0}, terms) for terms in combinations(range(1, 10), 4)),
+               key=lambda x: next(i for i in range(1, 1 + len(x[0])) if i not in x[0]))[1]))
 
 
 if __name__ == '__main__':
