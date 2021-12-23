@@ -14,5 +14,5 @@ def answer(s=18):
         possible.append(update := {p for j in range(1, i // 2 + 1) for n1, d1 in possible[i - j]
                                     for n0, d0 in possible[j] for p in parallel_series(n0, d0, n1, d1)})
         all_possible |= update
-    return str(len(all_possible))
+    return len(all_possible)
 
