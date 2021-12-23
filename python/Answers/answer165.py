@@ -1,0 +1,53 @@
+"""
+Problem 165:
+A segment is uniquely defined by its two endpoints.
+By considering two line segments in plane geometry there are three possibilities:
+the segments have zero points, one point, or infinitely many points in common.
+
+Moreover when two segments have exactly one point in common it might be the case that that common point is an endpoint of either one of the segments or of both. If a common point of two segments is not an endpoint of either of the segments it is an interior point of both segments.
+We will call a common point T of two segments L1 and L2 a true intersection point of L1 and L2 if T is the only common point of L1 and L2 and T is an interior point of both segments.
+
+Consider the three segments L1, L2, and L3:
+
+L1: (27, 44) to (12, 32)
+L2: (46, 53) to (17, 62)
+L3: (46, 70) to (22, 40)
+
+It can be verified that line segments L2 and L3 have a true intersection point. We note that as the one of the end points of L3: (22,40) lies on L1 this is not considered to be a true point of intersection. L1 and L2 have no common point. So among the three line segments, we find one true intersection point.
+
+Now let us do the same for 5000 line segments. To this end, we generate 20000 numbers using the so-called "Blum Blum Shub" pseudo-random number generator.
+
+s0 = 290797
+
+sn+1 = sn×sn (modulo 50515093)
+
+tn = sn (modulo 500)
+
+To create each line segment, we use four consecutive numbers tn. That is, the first line segment is given by:
+
+(t1, t2) to (t3, t4)
+
+The first four numbers computed according to the above generator should be: 27, 144, 12 and 232. The first segment would thus be (27,144) to (12,232).
+
+How many distinct true intersection points are found among the 5000 line segments?
+"""
+from fractions import Fraction
+
+
+def bbs_random():
+    s = 290797
+    while True:
+        yield (s := s * s % 50515093) % 500
+
+
+def answer(segments=5000):
+    r = bbs_random()
+    lines = [(next(r), next(r), next(r), next(r)) for _ in range(segments)]
+    intersections = set()
+    for i, (x0, y0, x1, y1) in enumerate(lines):
+        for x2, y2, x3, y3 in lines[i + 1:]:
+            if d := (x0 - x1) * (y2 - y3) - (x2 - x3) * (y0 - y1):
+                n0, n1 = (x0 - x2) * (y2 - y3) - (x2 - x3) * (y0 - y2), (x1 - x0) * (y0 - y2) - (x0 - x2) * (y1 - y0)
+                if 0 < (t0 := Fraction(n0, d)) < 1 and 0 < Fraction(n1, d) < 1:
+                    intersections.add((x0 + t0 * (x1 - x0), y0 + t0 * (y1 - y0)))
+    return len(intersections)
