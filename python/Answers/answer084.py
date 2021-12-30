@@ -45,22 +45,19 @@ If, instead of using two 6-sided dice, two 4-sided dice are used, find the six-d
 import random
 
 
-class Deck(object):
-    def __init__(self, size):
-        self.deck = list(range(size))
-        self.stack = []
-
-    def next_card(self):
-        if not len(self.stack):
-            self.stack = self.deck.copy()
-            random.shuffle(self.stack)
-        return self.stack.pop()
+def deck(cards):
+    stack = cards.copy()
+    while True:
+        if not len(stack):
+            stack = cards.copy()
+            random.shuffle(stack)
+        yield stack.pop()
 
 
 def update_location(location, chance, community_chest):
     match location:
         case 7 | 22 | 36:  # Chance
-            match chance.next_card():
+            match next(chance):
                 case 0:
                     return 0
                 case 1:
@@ -83,7 +80,7 @@ def update_location(location, chance, community_chest):
         case 30:  # Go to jail
             return 10
         case 2 | 17 | 33:  # Community chest
-            match community_chest.next_card():
+            match next(community_chest):
                 case 0:
                     return 0  # Go to go
                 case 1:
@@ -93,8 +90,7 @@ def update_location(location, chance, community_chest):
 
 def answer(samples=10 ** 7):
     counts = [0] * 40
-    chance = Deck(16)
-    community_chest = Deck(16)
+    chance, community_chest = deck(list(range(16))), deck(list(range(16)))
     triple_doubles = 0
     location = 0
 
