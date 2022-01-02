@@ -14,7 +14,7 @@ from python.utils import fast_primes
 
 def circle(n):
     str_n = str(n)
-    return [n] + [int(str_n[i:] + str_n[:i]) for i in range(1, len(str(n)))]
+    return [n] + [int(str_n[i:] + str_n[:i]) for i in range(1, len(str_n))]
 
 
 def answer(n=int(1e6)):

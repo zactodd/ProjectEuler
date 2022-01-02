@@ -15,7 +15,7 @@ from math import prod
 
 
 def answer(limit=int(1e6)):
-    c = "".join(str(i) for i in range(1, limit))
+    c = ''.join(str(i) for i in range(1, limit))
     return prod(int(c[10 ** i - 1]) for i in range(6))
 
 

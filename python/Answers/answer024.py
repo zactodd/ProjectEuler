@@ -13,7 +13,7 @@ from itertools import permutations
 
 
 def answer(n=int(1e6)):
-    return "".join(list(permutations("0123456789", 9))[n - 1])
+    return "".join(list(permutations('0123456789', 9))[n - 1])
 
 
 if __name__ == '__main__':
