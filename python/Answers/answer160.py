@@ -9,17 +9,20 @@ For example,
 
 Find f(1,000,000,000,000)
 """
-from functools import reduce
+from functools import reduce, cache
 
 
+@cache
 def fact(n):
     return even_fact(n) * odd_fact(n) % 100000
 
 
+@cache
 def even_fact(n):
     return fact(n // 2) if n else 1
 
 
+@cache
 def odd_fact(n):
     return odd_fact(n // 5) * fact_coprime(n) % 100000 if n else 1
 
@@ -35,3 +38,7 @@ def count_factors(end, n):
 def answer(n=10 ** 12):
     twos = count_factors(n, 2) - count_factors(n, 5)
     return fact(n) * pow(2, twos if twos < 2505 else (twos - 5) % 2500 + 5, 100000) % 100000
+
+
+if __name__ == '__main__':
+    print("Answer is:", answer())

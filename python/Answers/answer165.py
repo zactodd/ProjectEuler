@@ -51,3 +51,4 @@ def answer(segments=5000):
                 if 0 < (t0 := Fraction(n0, d)) < 1 and 0 < Fraction(n1, d) < 1:
                     intersections.add((x0 + t0 * (x1 - x0), y0 + t0 * (y1 - y0)))
     return len(intersections)
+

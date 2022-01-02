@@ -29,3 +29,8 @@ def answer(k=10 ** 11):
                 c += 1
             d += 2
     return sum([ulm(n, k) for n in range(2, 10 + 1)])
+
+
+if __name__ == "__main__":
+    print("Answer is:", answer())
+

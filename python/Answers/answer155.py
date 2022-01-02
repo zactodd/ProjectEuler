@@ -32,3 +32,6 @@ def answer(s=18):
         all_possible |= update
     return len(all_possible)
 
+
+if __name__ == '__main__':
+    print("Answer is:", answer())

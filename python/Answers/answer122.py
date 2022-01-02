@@ -26,7 +26,7 @@ We shall define m(k) to be the minimum number of multiplications to compute nk; 
 For 1 ≤ k ≤ 200, find ∑ m(k).
 """
 
-from itertools import count, takewhile
+from itertools import count
 
 
 def answer(limit=200):
