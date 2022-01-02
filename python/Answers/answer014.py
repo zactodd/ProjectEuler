@@ -14,12 +14,12 @@ Which starting number, under one million, produces the longest chain?
 
 Solved: O(n * CP)
 """
+from functools import cache
 
 
-def recursive_hailstone(n, prev={1: 1}):
-    if n not in prev:
-        prev[n] = recursive_hailstone(3 * n + 1 if n % 2 else n // 2) + 1
-    return prev[n]
+@cache
+def recursive_hailstone(n):
+    return 1 if n == 1 else recursive_hailstone(3 * n + 1 if n % 2 else n // 2) + 1
 
 
 def answer(limit=int(1e6)):
