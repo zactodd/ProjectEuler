@@ -14,6 +14,7 @@ How many starting numbers below ten million will arrive at 89?
 
 from collections import Counter
 from python.utils import multinomial
+from functools import cache
 import math
 
 
@@ -22,6 +23,7 @@ def sq_digits(n):
     return sum((((n := n // 10) % 10) ** 2 for _ in range(int(math.log10(n)))))
 
 
+@cache
 def partitions(n, k, v):
     if n == 0:
         return [Counter()]
