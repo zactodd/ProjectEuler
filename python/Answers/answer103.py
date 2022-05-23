@@ -22,9 +22,10 @@ NOTE: This problem is related to Problem 105 and Problem 106.
 """
 
 from python.utils import divide_till
-from functools import reduce
+from functools import reduce, cache
 
 
+@cache
 def lex_lowest(t, max_sum):
     def recur(set_info, size, s, start=1):
         if size == 0:
