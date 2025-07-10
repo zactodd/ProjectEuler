@@ -21,8 +21,6 @@ def answer():
 
 @functools.cache
 def pandigital_steps(digits, head, low, high):
-	assert digits >= 0
-	assert low <= head <= high
 	if digits <= 1:
 		return 1 if (low == head == high) else 0
 	else:
@@ -35,7 +33,7 @@ def pandigital_steps(digits, head, low, high):
 			result += pandigital_steps(digits - 1, head + 1, low, high)
 			if head == low:
 				result += pandigital_steps(digits - 1, head + 1, low + 1, high)
-		assert 0 <= result < 10**digits
+		assert 0 <= result < 10 ** digits
 		return result
 
 
